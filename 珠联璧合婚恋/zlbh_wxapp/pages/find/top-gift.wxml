@@ -1,0 +1,50 @@
+<view class="container">
+  <block wx:if="undefined">
+    <view class="viewme">
+      <block wx:for="{{collect.items}}" wx:key="{{item}}" wx:for-item="item">
+        <block wx:if="undefined">
+          <view class="li {{collect.islock==1?'novip':''}}">
+            <view bindtap="gethyurl" class="item" data-id="{{item.id}}">
+              <i class="gc-icon-order">{{index+1}}</i>
+              <view class="thumb">
+                <span class="item-cover" style="background-image:url('{{item.avatarURL}}')"></span>
+              </view>
+              <view class="item-info">
+                <view class="label-wrap">
+                  <view class="name">{{item.nickname}}
+                    <span class="tag">
+                      <block wx:if="undefined">
+                        <span class="zxhy"></span>
+                      </block>
+                      <block wx:if="undefined">
+                        <span class="xjhy"></span>
+                      </block>
+                    </span>
+                  </view>
+                </view>
+                <view class="inner">
+                  <span>{{item.age}}</span>|
+                  <span>{{item.height}}</span>|
+                  <span>{{item.city}}</span>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+      <block wx:if="undefined">
+        <view class="mod-blank">
+          <view class="blank-info">暂时还木有推荐~</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:if="undefined">
+    <view class="loadmore">
+      <view class="loadmore__wrap">
+        <view class="loadmore__loading-icon"></view>
+        <text class="loadmore__loading-text">加载中...</text>
+      </view>
+    </view>
+  </block>
+</view>

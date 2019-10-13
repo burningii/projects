@@ -1,0 +1,75 @@
+<import  src="../../wxParse/wxParse.wxml"  />
+<import  src="../../components/toast/toast.wxml"  />
+<template is="toast" />
+ <block wx:if="{{1}}">
+    <view class="ui-wrapper">
+        <view class="vip-user-mod">
+            <view class="vip-pic">
+                <span class="item-cover" 
+                style="background-image:url('{{user.avatar}}')">
+                </span>
+            </view>
+            <view class="vip-msg">
+                <view class="vip-name">{{user.nickname}}
+                  <span class="user-author">
+                  <block wx:if="{{user.vip == 1}}">
+                    <span class="brand"></span>
+                  </block>
+                  <block wx:if="{{user.isauth == 2}}">
+                    <span class="auth"></span>
+                  </block>
+                  <block wx:if="{{user.zxhy == 1}}">
+                    <span class="top"></span>
+                  </block>
+                </span>
+            </view>
+            <view class="more-weak">
+                 <block wx:if="{{user.vip == 1}}">
+                    <span class="vip">{{user.viptime?user.viptime+'到期':'未开通'}}</span>
+                 </block>
+                 <block wx:if="{{user.vip == 0}}">
+                    <span class="vip">未开通</span>
+                 </block>
+                  <span class="gold">{{user.jbnums}}</span>
+                  <span class="key">{{user.imkey}}</span>
+                </view>
+            </view>
+          </view>
+          <view class="vip-main-mod">
+              <block wx:for="{{config.pro}}" wx:key="{{itm}}" wx:for-item="itm" wx:for-key="index">
+                  <block wx:if="{{t == index}}">
+                      <view class="vip-products vip-mod">
+                          <view class="title"><em>{{itm.name}}</em>
+                      </view>
+                      <view class="product-list">
+                          <block wx:for="{{itm.value}}" wx:key="{{item}}" wx:for-item="item">
+                              <block wx:if="undefined">
+                                  <view bindtap="getService" class="item {{actionItem==itm.key+','+index?'action':''}}" 
+                                  data-state="{{itm.key+','+index}}">
+                                      <view class="part-left">
+                                          <view class="title"><em>{{item.monthStr}}</em></view>
+                                          <view class="promotion">
+                                              <span class="desc">{{item.priceOfOneDay}}</span>
+                                          </view>
+                                         
+                                      </view>
+                                  <view class="price-area">
+                                      <span class="price"><i>￥{{item.realPriceStr}}.00</i>
+                                      </span>
+                                  </view>
+                              </view>
+                            </block>
+                        </block>
+                    </view>
+                  </view>
+                </block>
+              </block>
+              <view class="vip-buy vip-mod">
+                <view class="orderBottom">
+                  <view class="total">总计<i>￥{{nowPriceStr}}.00</i></view>
+                  <view bindtap="getBuy" class="doPay">确认支付</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>

@@ -1,0 +1,74 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<import  src="../../../wxParse/wxParse.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <form bindsubmit="submitForm">
+      <view class="weui-header">
+        <view class="thumb"> 
+          <span class="img">
+          </span>
+        </view>
+      </view>
+      <view class="weui-content">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">真实姓名：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="uname" placeholder="请输入真实姓名" type="text" value="{{user.uname}}"></input>
+            </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">身份证号：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="cert" placeholder="请输入身份证号" type="text" value="{{user.cert}}"></input>
+              </view>
+            </view>
+            </view>
+            <view class="weui-uploader">
+              <view class="weui-cells__title">上传个人照片</view>
+              <view class="weui-cell weui-cell_access">
+              <view class="weui-uploader__files">
+                <view class="txt">半身照</view>
+                <view bindtap="chooseImage" class="weui-uploader__input-box {{verify_photo!=null?'file':''}}" 
+                  style="{{verify_photo!=null?'background-image:url('+verify_photo+')':''}}"></view></view><view class="weui-uploader__exp">
+                  <view class="txt">示例</view>
+                <view class="weui-uploader__exp-img">
+                  <span class="img"></span>
+                </view>
+              </view>
+              </view>
+              </view>
+              </view>
+              <view class="weui-btn-area">
+                <button class="weui-btn" formType="submit" type="primary">下一步</button>
+              </view>
+              <view class="weui-tips gray">
+                <block wx:if="undefined">
+                  <view class="item">
+                    <view class="title">
+                      <i class="warn-ico"></i>
+                       注意事项
+                      </view>
+                    <view class="content">
+                      <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+                        <text bindtap="onTel" class="c_tx1">{{config.tel}}</text>
+                      </view>
+                    </view>
+                  </block>
+                  <block wx:if="undefined">
+                    <view class="item">
+                      <view class="title">
+                        <i class="warn-ico"></i>照片要求
+                      </view>
+                    <view class="content">
+                      <template is="wxParse" data="{{wxParseData:article1.nodes}}"></template>
+                    </view>
+                    </view>
+                    </block>
+                    </view>
+                    </form>
+                    </view>

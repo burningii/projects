@@ -1,0 +1,259 @@
+<!--   item1    -->
+<template name="item1">
+  <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+    <view bindtap="getCertUrl" class="item" data-id="{{item.id}}">
+      <view class="content-head">
+        <view class="item-thumb">
+          <block wx:if="{{item.vip==1}}">
+            <span class="vip-ico"></span>
+          </block>
+          <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+        </view>
+        <view class="item-info">
+          <view class="tit">
+            <span class="name">{{item.nickname}}  </span>
+            <text style='font-size:12px;color:#fe8278;'> 距离 {{item.dis}}</text>
+            <span class="tag">
+              <block wx:if="{{item.vip==1}}">
+                <span class="zxhy"></span>
+              </block>
+              <block wx:if="{{item.vip==1}}">
+                <span class="xjhy"></span>
+              </block>
+            </span>
+          </view>
+          <view class="info">
+            <span>{{item.occupationString}}</span>|
+            <span>{{item.educationString}}</span>|
+            <span>{{item.heightString}}</span>
+          </view>
+          <block wx:if="{{!item.xingname}}">
+            <view class="inner">
+              <view class="notag">Ta还没有添加标签</view>
+            </view>
+          </block>
+          <block wx:if="{{!tem.xingname}}">
+            <view class="inner">
+              <block wx:for="{{item.f_text}}" wx:key="{{index}}" wx:for-item="label">
+                <span class="ui-label">{{label}}</span>
+              </block>
+            </view>
+          </block>
+          <view class="photolist">
+            <block wx:if="{{!item.photolist}}">
+              <view class="photo-empty">
+                <i class="dian"></i>Ta没有更多照片了
+              </view>
+            </block>
+            <block wx:for="{{item.photolist}}" wx:key="{{id}}" wx:for-item="url">
+              <block wx:if="{{url}}">
+                <view class="photo-item">
+                  <span class="item-cover" style="background-image:url('{{url}}')">
+                  </span>
+                </view>
+              </block>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view class="content-text">
+        <i class="text-ico"></i>
+        <view class="text">{{item.introduce ? item.introduce : ''}} 
+        我正寻找 {{item.workCityString}} 年龄在 {{item.year}} 岁左右 ，身高{{item.heightString}} 月收入 {{item.salaryString}} 的
+        {{item.gender == 1 ? '女':'男'}}性 </view>
+      </view>
+    </view>
+  </block>
+
+
+</template>
+<!--   item2    -->
+<template name="item2">
+  <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+    <view bindtap="getLogin" class="item">
+      <view class="thumb">
+        <span class="item-cover" style="background-image:url('{{item.avatarURL}}')"></span>
+      </view>
+      <view class="item-info">
+        <view class="item-title">
+          <view class="name">{{item.nickname}}</view>
+          <view class="inner gray ui-nowrap">{{item.age}} {{item.height}} {{item.occupation}}</view>
+        </view>
+        <view class="item-btn">
+          <view class="like-btn"></view>
+        </view>
+      </view>
+      <view class="item-inner">
+        <block wx:for="{{item.f_text}}" wx:key="{{index}}" wx:for-item="label">
+          <span class="ui-label">{{label}}</span>
+        </block>
+      </view>
+    </view>
+  </block>
+</template>
+<!--   huiyuan    -->
+<template name="huiyuan">
+  <view class="mod-hd">
+    <view class="c_tx1">
+      <em>{{data.paginate.totalnum}}</em>位用户对你感兴趣</view>
+    <view class="c_tx2">开通会员查看访问你的人</view>
+    <view class="btn-wrap">
+      <button bindtap="getIospay" class="vip-btn btn-default">立即开通</button>
+    </view>
+  </view>
+  <view class="mod-bd" style='background:#fef2dd url(https://www.sho2o.top/addons/ss48_match/images/lovestory_bg.png?1) no-repeat bottom;'>
+    <view bindtap="getIospay" class="user-list">
+      <block wx:for="{{data.items}}" wx:key="{{item}}" wx:for-item="item">
+        <view class="useritem">
+          <view class="user-avatar">
+            <span class="item-cover" style="background-image:url('{{item.avatarURL}}')"></span>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="ui-panel">
+      <view class="ui-panel-hd">
+        <em>开通会员，您还能得到什么？</em>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-vip"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">会员身份标识</view>
+              <view class="sub-tit">专属身份标识,彰显身份地位</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-act"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">活动免费报名</view>
+              <view class="sub-tit">线下活动免费参加</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-gift"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">免费送金币与钥匙</view>
+              <view class="sub-tit">提高对方好感度</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-fk"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">查看访客</view>
+              <view class="sub-tit">谁对你感兴趣一看便知</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-up"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">无限制上传照片</view>
+              <view class="sub-tit">相册上传不限制</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="ui-cell">
+        <view class="ui-cell-row">
+          <view class="ui-cell-hd">
+            <i class="icon-menu-zs"></i>
+          </view>
+          <view class="ui-cell-bt">
+            <view class="pro-title">
+              <view class="title">8倍展示机会</view>
+              <view class="sub-tit">提高相亲成功率</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-wrap bot-btn">
+      <button bindtap="getIospay" class="vip-btn btn-default">立即开通</button>
+    </view>
+  </view>
+</template>
+<!--   footer-bar    -->
+<template name="footer-bar">
+  <view class="ui-footer">
+    <form bindsubmit="getLogUrl" data-url="/pages/index/index" reportSubmit="true">
+      <button class="form_button icon index {{curpage=='index'?'on':''}}" formType="submit">
+        <i class="i_sp"></i>
+        <span>推荐</span>
+      </button>
+    </form>
+    <navigator class="icon im {{curpage=='find'?'on':''}}" openType="reLaunch" url="/pages/find/index">
+      <i class="i_sp"></i>
+      <span>发现</span>
+    </navigator>
+    <navigator class="icon act {{curpage=='act'?'on':''}}" openType="reLaunch" url="/pages/activity/list">
+      <i class="i_sp"></i>
+      <span>活动</span>
+    </navigator>
+    <form bindsubmit="getLogUrl" data-url="/pages/u/index" reportSubmit="true">
+      <button class="form_button icon my {{curpage=='my'?'on':''}}" formType="submit">
+        <i class="i_sp">
+          <block wx:if="{{sp==1}}">
+            <em class="badge badge__type--dot"></em>
+          </block>
+        </i>
+        <span>我</span>
+      </button>
+    </form>
+  </view>
+</template>
+<!--   kefu    -->
+<template name="kefu">
+  <view bindtap="showKefuEvent" class="icon-plus-nav additional-icon webim">
+    <view class="webim-container">
+      <span class="webim-icon"></span>
+      <span class="webim-text">红娘</span>
+    </view>
+  </view>
+  <block wx:if="{{showKefuStatus}}">
+    <view class="dialog hint-dialog message-dialog">
+      <view class="weui-mask {{showKefuStatus==true?'weui-animate-fade-in':'weui-animate-fade-out'}}"></view>
+      <view class="dialog-cnt">
+        <view class="dialog-cnt-con tac">
+          <view class="text">回复
+            <em>'0'</em>关注公众号</view>
+          <view class="text">回复
+            <em>'1'</em>添加红娘微信</view>
+          <view class="text" bindtap='shower'>
+            <em>点开大图长按图片即可添加哦～</em>
+          </view>
+        </view>
+        <view class="dialog-cnt-ft">
+          <button bindtap="hideKefuEvent" class="dialog-btn" type="button">取消</button>
+          <button bindtap="hideKefuEvent" class="dialog-btn" openType="contact" type="button">找客服</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

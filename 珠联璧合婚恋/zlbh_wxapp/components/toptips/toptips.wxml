@@ -1,0 +1,2 @@
+<!--   toptips    -->
+<template name="toptips"><view class="weui-toptips {{icon?'weui-toptips_'+icon:'weui-toptips_cancel'}} {{animateCss}} {{className}}" hidden="{{!visible}}">\n		{{text}}\n<block wx:if="undefined"><icon class="weui-toptips_icon" color="#fff" size="24" type="{{icon}}"></icon></block></view></template>

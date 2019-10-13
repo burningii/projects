@@ -1,0 +1,2 @@
+<!--   toast    -->
+<template name="toast"><view class="weui-toast-wrapper {{animateCss}} {{className}}" hidden="{{!visible}}"><view class="weui-toast"><block wx:if="undefined"><icon class="weui-icon_toast" color="{{color}}" size="55" type="{{type}}"></icon></block><view class="weui-toast__content">{{text}}</view></view></view></template>

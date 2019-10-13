@@ -1,0 +1,14 @@
+page {background-color: #f8f8f8;color:#333;}
+.mod-hd{margin:0 30rpx;padding:30rpx 0;position: relative;}
+.mod-hd:before{ content: ''; position: absolute; left: 0; bottom: 0; background: #ebebeb; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.mod-hd .tit{display: -webkit-flex;display: flex;line-height:36rpx;}
+.mod-hd .tit wx-i{width:18rpx;height:12rpx;display: inline-block;height:36rpx;background-image: url('http://wq.xinxao.com/addons/ss48_match/images/guide_ico1.png?1'); background-repeat: no-repeat;background-size: 18rpx 12rpx;background-position:left center;margin-right:20rpx;}
+.mod-hd .tit wx-em{display: -webkit-flex;display: flex;-webkit-flex:1;flex:1;}
+.mod-bd{margin:0 30rpx;padding-bottom:40rpx;}
+.step-info:not(:nth-child(1)){margin-top:20rpx;}
+.step-info .tit{height:40rpx;line-height:40rpx;font-size:30rpx;padding:40rpx 0;font-weight: 700;}
+.step-info .tit wx-em{display:inline-block;width:40rpx;height:40rpx;background-color: #ff677d;border-radius: 5000rpx;text-align: center;color:#fff;font-size:24rpx;margin-right:20rpx;position: relative;top:-2rpx;font-weight: normal;}
+.step-info .info .copy-btn{background-image: -webkit-linear-gradient(top left, #eb4473, #f44545);}
+.step-info .info{margin:0;padding:0;font-size:0;}
+.step-info .img{width:100%;}
+.step-info .kefu{text-decoration: underline;color:#ff677d;padding:20rpx 0 10rpx;font-size:28rpx;text-align: center;}

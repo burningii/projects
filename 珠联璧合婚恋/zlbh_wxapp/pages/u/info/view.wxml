@@ -1,0 +1,114 @@
+<import  src="../../common/template"  />
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <view class="weui-tab">
+        <view class="weui-navbar">
+            <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==0?'weui-bar__item_on':''}}" data-id="0">
+                <view class="weui-navbar__title">谁看过我</view>
+            </view>
+            <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==1?'weui-bar__item_on':''}}" data-id="1">
+                <view class="weui-navbar__title">我看过谁</view>
+            </view>
+          </view>
+          <view class="weui-tab__panel">
+              <block wx:if="{{activeIndex == 0}}">
+                <view class="weui-tab__content">
+                  <block wx:if="{{1}}">
+                    <view class="viewme">
+                      <block wx:if="{{list == null}}" >
+                        <template is="huiyuan" />
+                      </block>
+                      <block wx:else>
+                        <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+                          <block wx:if="undefined">
+                            <view class="li">
+                              <navigator class="item" url="/pages/index/member?id={{item.uid}}">
+                                <view class="thumb">
+                                  <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                                </view>
+                                <view class="item-info">
+                                  <view class="label-wrap">
+                                    <view class="name">{{item.nickname}}
+                                      <span class="tag">
+                                        <block wx:if="{{item.zxhy==1}}">
+                                          <span class="zxhy"></span>
+                                        </block>
+                                        <block wx:if="{{item.xjhy==1}}">
+                                          <span class="xjhy"></span>
+                                        </block>
+                                      </span>
+                                    </view>
+                                  </view>
+                                  <view class="inner">
+                                    <span>{{item.year}}</span>|<span>{{item.heightString}}</span>|<span>{{item.workCityString}}</span>
+                                  </view>
+                                  <view class="mate ui-nowrap">
+                                    第{{item.viewNum}}次查看Ta的资料
+                                  </view>
+                                </view>
+                              </navigator>
+                            </view>
+                          </block>
+                        </block>
+                        <block wx:if="{{list == null}}">
+                          <view class="mod-blank">
+                            <image class="img" src="{{bg}}/interaction_visit_empty_image.png?1"></image>
+                            <view class="blank-info">还木有人看过你~</view>
+                          </view>
+                        </block>
+                      </block>
+                    </view>
+                  </block>
+               
+                  </view>
+                </block>
+                <block wx:if="{{activeIndex == 1}}">
+                  <view class="weui-tab__content">
+                    <block wx:if="undefined">
+                      <view class="viewme">
+                        <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+                          <block wx:if="undefined">
+                            <view class="li">
+                              <navigator class="item" url="/pages/index/member?id={{item.uid}}">
+                                <view class="thumb">
+                                  <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                                </view>
+                                <view class="item-info">
+                                  <view class="label-wrap">
+                                    <view class="name">
+                                      {{item.nickname}}
+                                      <span class="tag">
+                                        <block wx:if="{{item.zxhy == 1}}">
+                                          <span class="zxhy"></span>
+                                        </block>
+                                        <block wx:if="{{iten.xjhy == 1}}">
+                                          <span class="xjhy"></span>
+                                        </block>
+                                      </span>
+                                  </view>
+                                </view>
+                                <view class="inner">
+                                 <span>{{item.year}}</span>|<span>{{item.heightString}}</span>|<span>{{item.workCityString}}</span>
+                                </view>
+                                <view class="mate ui-nowrap">
+                                  第<em>{{item.viewNum}}</em>次查看你的资料
+                                </view>
+                                </view>
+                              </navigator>
+                            </view>
+                          </block>
+                        </block>
+                        <block wx:if="{{list == null}}">
+                          <view class="mod-blank">
+                            <image class="img" 
+                            src="https://wx-img.jhrx.cn/love/img/my/interaction_visit_empty_image.png">
+                            </image>
+                            <view class="blank-info">
+                              你还木有看过别人~
+                            </view>
+                          </view>
+                        </block>
+                      </view>
+                    </block>
+                    </view></block></view></view></view>

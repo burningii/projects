@@ -1,0 +1,152 @@
+<import  src="../common/template"  />
+  <block wx:if="undefined">
+      <view class="container">
+          <view class="p-info">
+              <block wx:if="{{user.err !='' && (showerr == 1)}}">
+                  <view class="person-tip">
+                      <i class="tip-ico"></i>
+                      <span bindtap="linkTip" class="link" data-status="1">{{user.err}}</span>
+                     请修改
+                      <i bindtap="linkTip" class="close-ico"></i>
+                  </view>
+              </block>
+              <view class="p-head">
+                  <view class="content-head">
+                      <view bindtap="uploadAvatar" class="item-thumb">
+                      <span class="item-cover" style="background-image:url('{{avatar}}')">
+                        <block wx:if="{{user.isauth==0}}">
+                          <span class="tips">未审核</span>
+                        </block>
+                        <block wx:if="{{user.isauth==1}}">
+                          <span class="tips">待审核</span>
+                        </block>
+                        <block>
+                          <span class="tips">上传头像</span>
+                        </block>
+                      </span>
+                  </view>
+                  <navigator class="item-info" hoverClass="none" url="/pages/u/edit/index">
+                      <view class="tit">
+                        <span class="name">{{user.nickname}}</span>
+                        <span class="user-author">
+                          <block wx:if="{{user.vip == 1}}">
+                            <span class="brand"></span>
+                          </block>
+                          <block wx:if="{{user.isauth == 2}}">
+                            <span class="auth"></span>
+                          </block>
+                          <block wx:if="{{user.vip == 1}}">
+                            <span class="top"></span>
+                          </block>
+                        </span>
+                      </view>
+                      <view class="info">
+                          <span class="idcode">交友ID：{{user.id}}</span>
+                      </view>
+                      <block wx:if="{{user.introduce}}">
+                          <view class="info">
+                              <em class="percent">{{user.introduce}}</em>
+                          </view>
+                      </block>
+                     
+                  </navigator>
+                  <navigator class="addinfo ui-arrowlink" hoverClass="none" url="/pages/u/edit/index">
+                    资料完整度
+                    <em class="percent">{{user.percent}}%</em>
+                  </navigator>
+                </view>
+                <view class="user-info more-weak" wx:if="{{ios == 0}}">
+                    <view class="weak">
+                        <block wx:if="{{user.vip}}">
+                            <span class="vip">{{user.viptime?user.viptime+'到期':'未开通'}}</span>
+                        </block>
+                        <block wx:if="{{!user.vip}}">
+                            <span class="vip">未开通</span>
+                        </block>
+                        <span class="gold">{{user.jbnums}}</span>
+                        <span class="key">{{user.imkey}}</span>
+                    </view>
+                    <view bindtap="getIospay" class="btn pay-btn">开通服务</view>
+                </view>
+              </view>
+            </view>
+            <view class="ui-panel">
+              <view bindtap="getViewmeUrl" class="ui-cell">
+                  <view class="ui-cell-row">
+                      <view class="ui-cell-hd">
+                        <i class="icon-menu-viewme"></i>
+                      </view>
+                    <view class="ui-cell-bt">
+                        谁看过我({{user.viewme_count}})
+                    </view>
+                    <view class="ui-cell-ft">
+                        <span class="icon-arrow"></span>
+                    </view>
+                </view>
+                <block wx:if="undefined">
+                    <view class="look-list">
+                        <block wx:for="{{user.viewme}}" wx:key="{{item}}" wx:for-item="item">
+                          <view class="item">
+                            <view class="thumb">
+                              <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                            </view>
+                            <view class="name ui-nowrap">{{item.nickname}}</view>
+                          </view>
+                        </block>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="ui-cell">
+                    <navigator class="ui-cell-row" hoverClass="none" url="/pages/u/info/follow">
+                      <view class="ui-cell-hd">
+                        <i class="icon-menu-followme"></i>
+                      </view>
+                      <view class="ui-cell-bt">谁关注我({{user.followme_count}})</view>
+                      <view class="ui-cell-ft">
+                        <span class="icon-arrow"></span>
+                      </view>
+                    </navigator>
+                  </view>
+                  <view class="ui-cell">
+                      <navigator class="ui-cell-row" hoverClass="none" url="/pages/u/info/follow?type_id=1">
+                          <view class="ui-cell-hd">
+                            <i class="icon-menu-myfollow"></i>
+                          </view>
+                          <view class="ui-cell-bt">我关注谁({{user.mefollow_count}})</view>
+                          <view class="ui-cell-ft">
+                            <span class="icon-arrow"></span>
+                          </view>
+                      </navigator>
+                    </view>
+                  </view>
+                  <view class="personal">
+                      <view class="person-bar">
+                          <view class="ui-panel navCont">
+                              <navigator class="item" hoverClass="none" url="/pages/u/info/gift">
+                                <em class="icon-menu-gift"></em>我的礼物
+                              </navigator>
+                              <navigator class="item" hoverClass="none" url="/pages/u/verify/index">
+                              <em class="bot icon-menu-renzheng"></em>我的认证</navigator>
+                              <navigator class="item" hoverClass="none" url="/pages/u/my/wallet" wx:if="{{ios == 0}}">
+                                <em class="bot icon-menu-qb"></em>我的钱包
+                              </navigator>
+                              <navigator view class="item" hoverClass="none" url="/pages/buy/vipment" wx:if="{{ios == 0}}">
+                                <em class="bot icon-menu-vip"></em>会员服务
+                              </navigator>
+                              <navigator view class="item" hoverClass="none" url="/pages/index/hnqx">
+                                <em class="bot icon-menu-hn"></em>人工红娘
+                              </navigator>
+                              <navigator view class="item" hoverClass="none" url="/pages/contents/contract">
+                                <em class="bot icon-menu-fw"></em>服务条款
+                              </navigator>
+                              <navigator view class="item" hoverClass="none" url="/pages/buy/payment?t=1" wx:if="{{ios == 0}}">
+                                <em class="bot icon-menu-vip1"></em>购买金币
+                              </navigator>
+                            </view>
+                          </view>
+                        </view>
+                        <template is="kefu"  data="{{showKefuStatus}}"/> 
+                      </view>
+                    </block>
+                  <template is="footer-bar" data="{{curpage}}"/>
+                  

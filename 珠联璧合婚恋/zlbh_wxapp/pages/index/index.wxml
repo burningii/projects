@@ -1,0 +1,109 @@
+<import src="../common/template" />
+<block wx:if="{{s1}}">
+  <view class="container">
+    <view class="page-main">
+      <view class="list-area">
+        <template is="item2" data="{{list}}" />
+      </view>
+    </view>
+  </view>
+</block>
+<view class="container">
+  <view class="filter-flex">
+    <view class="ui-tab-container">
+      <view bindtap="getTabList" class="ui-tab {{tabtype==0||tabtype==''?'ui-tab-active':''}}" data-type="0">人气</view>
+      <view bindtap="getTabList" class="ui-tab {{tabtype==1?'ui-tab-active':''}}" data-type="1">认证</view>
+      <view bindtap="getTabList" class="ui-tab {{tabtype==2?'ui-tab-active':''}}" data-type="2">魅力</view>
+    </view>
+    <view class="ui-searchBox">
+      <view class="search-txt">
+        <span>年龄:{{searchData.age||'不限'}}</span>
+        <span>身高:{{searchData.height||'不限'}}</span>
+      </view>
+      <block wx:if="{{!showFilter}}">
+        <view bindtap="setFilterPanel" class="search-btn">相亲条件</view>
+      </block>
+      <block wx:else>
+        <view bindtap="setFilterPanel" class="quxiao"></view>
+      </block>
+    </view>
+    <block wx:if="{{showFilter}}">
+      <view class="filter-content con_filter">
+        <view class="filter-panel">
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">年龄(岁)</view>
+            <view class="ui-cell-ft">
+              <input bindinput="inputTapMinAge" class="input min_price fl" maxlength="2" type="number" value="{{searchKey.minAge||''}}"></input>
+              <span class="fl"></span>
+              <input bindinput="inputTapMaxAge" class="input max_price fl" maxlength="2" type="number" value="{{searchKey.maxAge||''}}"></input>
+              <i class="icon-arrow"></i>
+            </view>
+          </view>
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">身高(厘米)</view>
+            <view class="ui-cell-ft">
+              <input bindinput="inputTapMinHeight" class="input min_price fl" maxlength="3" type="number" value="{{searchKey.minHeight||''}}"></input>
+              <span class="fl"></span>
+              <input bindinput="inputTapMaxHeight" class="input max_price fl" maxlength="3" type="number" value="{{searchKey.maxHeight||''}}"></input>
+              <i class="icon-arrow"></i>
+            </view>
+          </view>
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">学历</view>
+            <view class="ui-cell-ft">
+              <picker bindchange="onEdu" range="{{cate.eduArr}}" value="{{cate.eduActionIndex||0}}">
+                <view class="weui-select weui-select_in-select-after">
+                  {{searchKey.objectEducationString ? searchKey.objectEducationString : ''}}
+                  <i class="icon-arrow"></i>
+                </view>
+              </picker>
+            </view>
+          </view>
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">月收入</view>
+            <view class="ui-cell-ft">
+              <picker bindchange="onSalary" range="{{cate.salaryArr}}" value="{{cate.salaryActionIndex||0}}">
+                <view class="weui-select weui-select_in-select-after">
+                  {{searchKey.objectSalaryString ? searchKey.objectSalaryString : ''}}
+                  <i class="icon-arrow"></i>
+                </view>
+              </picker>
+            </view>
+          </view>
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">婚姻状况</view>
+            <view class="ui-cell-ft">
+              <picker bindchange="onMarriage" range="{{cate.marriageArr}}" value="{{cate.marriageActionIndex||0}}">
+                <view class="weui-select weui-select_in-select-after">
+                  {{searchKey.objectMarriageString ? searchKey.objectMarriageString : ''}}
+                  <i class="icon-arrow"></i>
+                </view>
+              </picker>
+            </view>
+          </view>
+          <view class="ui-btn-wrap">
+            <button bindtap="resetSearchValue" class="btn btn-reset">重置</button>
+
+            <button bindtap="confirmSearchValue" class="btn btn-default">搜索</button>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{serach}}">
+      <view bindtap="maskHideFilter" class="weui-mask {{animateCss}}"></view>
+    </block>
+  </view>
+</view>
+
+<view class="container-body" style='padding-top:30px'>
+  <view class="list-user">
+    <template is="item1" data="{{list}}" />
+  </view>
+</view>
+<template is="kefu" data="{{showKefuStatus}}" />
+<template is="footer-bar" data="{{curpage}}" />
+<view class='am-gotop am-gotop-fixed am-no-layout am-active' wx:if="{{backTopValue}}" bindtap='backTop'>
+  <view class='a'>
+    ↑
+  </view>
+</view>

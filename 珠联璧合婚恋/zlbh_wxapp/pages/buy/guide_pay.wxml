@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="mod-hd">
+    <view class="tit">
+      <i></i>
+      <em>由于平台限制，请联系红娘微信</em>
+    </view>
+  </view>
+  <view class="mod-bd">
+    <view class="step-info">
+      <view class="tit">
+        <em>1</em>点击下方的红娘微信号</view>
+      <view class="info">
+        <button bindtap="copyWechat" class="copy-btn btn-default">点击复制红娘微信号</button>
+      </view>
+    </view>
+    <view class="step-info">
+      <view class="tit">
+        <em>2</em>在微信中“添加好友”界面中添加红娘微信</view>
+      <view class="info">
+        <image class="img" mode="widthFix" src="http://wx-img.jhrx.cn/love/20180810/step1.jpg"></image>
+      </view>
+    </view>
+  </view>
+</view>

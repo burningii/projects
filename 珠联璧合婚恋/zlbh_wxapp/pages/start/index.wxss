@@ -1,0 +1,12 @@
+.start-wrap { height: 100%; }
+.start-wrap .bg{ width:100%; height:100%; background-size: cover; }
+.start-wrap wx-image { width: 100%; height: 100%; display: block; }
+.start-box{ position: absolute; bottom: 80rpx; left:0; width:100%; display: -webkit-flex; display: flex; -webkit-flex-direction:column; flex-direction:column; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.start-box .start-btn{ width:100%; box-sizing: border-box; padding: 0 100rpx; }
+.start-box .start-btn .btn-default{ height: 88rpx; line-height: 88rpx; margin-top: 30rpx; padding: 0 30rpx; background-color: #ff677d; background-image: -webkit-linear-gradient(top left, #ff8990, #fc4a6d); border: 0 none; border-radius: 44rpx; color: #fff; font-size: 32rpx; text-align: center; overflow: hidden; margin:20rpx 0; }
+.start-box .start-btn .btn-default:after{ display: none; }
+.start-box .start-txt{ color:#ff677d; }
+.start-txt-ico{ display:inline-block; margin-left:10rpx; width:40rpx; height:24rpx; 
+background-image: url('http://wq.xinxao.com/addons/ss48_match/images/arrow_r2.png?1'); background-size: 40rpx 24rpx; }
+.hint-dialog .dialog-cnt{ height: 580rpx; }
+.hint-dialog .dialog-cnt .dialog-cnt-con{ font-size: 24rpx; }

@@ -1,0 +1,256 @@
+
+<import  src="../common/template"  />
+<template is="toast" />
+ 
+  <block wx:if="undefined">
+    <view class="container">
+      <view class="p-person">
+        <view class="p-person-head swiper">
+          <swiper autoplay="{{autoplay}}" bindchange="intervalChange" current="{{interval}}" duration="500" 
+          indicatorActiveColor="{{indicatorActiveColor}}" indicatorColor="{{indicatorColor}}" 
+          indicatorDots="{{indicatorDots}}" interval="3000" vertical="{{vertical}}">
+          <block wx:for="{{user.photolist}}" wx:key="{{ item }}" wx:for-item="item">
+            <swiper-item class="swiper-item" wx:if="{{item != ''}}">
+              <view bindtap="previewImage" class="swiper-slide" data-index="{{index}}" 
+              style="background-image:url('{{item}}')">
+              </view>
+            </swiper-item> 
+          </block>
+        </swiper>
+        <view bindtap="backhome" class="back-home">返回首页</view>
+        <view class="pinfo">
+          {{interval+1}}/{{user.photolist.length-1 ? user.photolist.length-1 : 1}}
+        </view>
+      </view>
+      <view class="p-person-hd">
+        <view class="person-qlogo">
+          <span class="item-cover" style="background-image:url('{{user.avatar}}')"></span>
+      </view>
+      <view class="info">
+        <view class="name">{{user.nickname}}
+         
+        <block wx:if="{{user.vip == 1}}">
+          <span class="zxhy"></span>
+        </block>
+        <block wx:if="{{user.isauth == 2}}">
+          <span class="auth"></span>
+        </block>
+      </view>
+       <text style='font-size:12px;color:#fe8278;'> 距离 {{user.dis}}</text>
+      <view class="id">交友ID：{{user.id}}<em>·</em>魅力值：{{user.meili}}</view>
+      <view class="meta">
+        <span class="gender {{!personal.gender==1?'male':'female'}}">{{user.year}}</span>
+        <span class="city">{{user.workCityString}}</span>
+      </view>
+      <block wx:if="{{voice_times}}" >
+        <view class="voice">
+          <view bindtap="voicePlay" class="voice-btn">
+            <span class="times">{{voice_times}}"</span>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="zan-box">
+      <view bindtap="onFollow" class="zan-btn {{user.isFollowing==true?'active':''}}">
+        <em>{{user.isFollowing?'已关注':'关注'}}</em>
+      </view>
+      <block wx:if="undefined">
+        <span class="parentImg parentImg0">
+          <image class="img" src="../../images/ic_like_star.png?2"></image>
+        </span>
+        <span class="parentImg parentImg1">
+          <image class="img" src="../../images/ic_profile_liked.png?2"></image>
+        </span>
+        <span class="parentImg parentImg2">
+          <image class="img" src="../../images/ic_like_star.png?2"></image>
+        </span>
+      </block>
+    </view>
+  </view>
+  <view class="p-person-bd">
+    <view class="p-person-info">
+      <view class="p-m-title">兴趣爱好</view>
+      <view class="p-m-info">
+        <block wx:if="undefined">
+          <view class="content">
+            <text>Ta还没有添加标签</text>
+          </view>
+        </block>
+      <block wx:if="{{user.f_text}}">
+        <view class="ui-lable-list">
+          <block wx:for="{{user.f_text}}" wx:key="{{index}}" wx:for-item="label">
+            <view class="ui-label">{{label}}</view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+    <view class="p-person-info intro">
+      <view class="p-m-title">资料介绍</view>
+        <view class="p-m-info basic-info">
+          <block wx:if="{{user.wechat =='' && (user.qq =='') && (user.id == muid)}}">
+            <view class="ui-check-btn">
+              <button bindtap="getBasicCheck" class="check-btn">请先完善您的个人资料</button>
+            </view>
+          </block>
+          <block wx:if="{{muser.isviewvip == 1}}">
+            <view class="ui-check-btn">
+              <button bindtap="getVip" class="check-btn">用户设置仅限会员查看</button>
+            </view>
+          </block>
+          <block wx:if="{{muser.isviewvip == 0}}">
+            <view class="ui-lable-list">
+
+             <view class="label" wx:if="{{user.vehicleString}}">{{user.vehicleString}}</view>
+                <view class="label" wx:if="{{user.heightString}}">{{user.heightString}}</view>
+                <view class="label" wx:if="{{user.educationString}}">{{user.educationString}}</view>
+                <view class="label" wx:if="{{user.xinyang}}">{{user.xinyang}}</view> 
+           
+            </view>
+          </block>
+        </view>
+        <view class="p-m-info other-info">
+            <block wx:if="{{user.wechat =='' && (user.qq =='') && (user.id == muid)}}">
+                <view class="ui-check-btn">
+                    <button bindtap="getMoreCheck" class="check-btn">请先完善您的个人资料</button>
+                </view>
+            </block>
+            <block wx:if="{{muser.isviewvip == 1}}">
+              <view class="ui-check-btn">
+                <button bindtap="getVip" class="check-btn">用户设置仅限会员查看</button>
+              </view>
+            </block>
+            <block wx:if="{{muser.isviewvip == 0}}">
+              <view class="ui-lable-list">
+    
+                <view class="label" wx:if="{{user.salaryString}}">{{user.salaryString}}</view>
+                <view class="label" wx:if="{{user.workCityString}}">{{user.workCityString}}</view>
+                <view class="label" wx:if="{{user.houseString}}">{{user.houseString}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="p-person-info intro">
+          <view class="p-m-title">择偶标准</view>
+            <view class="p-m-info">
+               <block wx:if="{{user.wechat =='' && (user.qq =='') && (user.id == muid)}}">
+                <view class="ui-check-btn">
+                    <button bindtap="getMoreCheck" class="check-btn">请先完善您的个人资料</button>
+                </view>
+            </block>
+              <block wx:if="{{muser.isviewvip == 1}}">
+                <view class="ui-check-btn">
+                  <button bindtap="getVip" class="check-btn">用户设置仅限会员查看</button>
+                </view>
+              </block>
+              <block wx:if="{{muser.isviewvip == 0}}">
+                <view class="ui-lable-list">
+                 
+
+                  <view class="label" wx:if="{{user.objectIsSmokingString}}">{{user.objectIsSmokingString}}</view>
+                  <view class="label" wx:if="{{user.objectIsDrinkingString}}">{{user.objectIsDrinkingString}}</view>
+                  <view class="label" wx:if="{{user.marriageString}}">{{user.marriageString}}</view>
+                  <view class="label" wx:if="{{user.childrenString}}">有没有小孩{{user.childrenString}}</view>
+                  <view class="label" wx:if="{{user.wantChildrenString}}">是否要小孩{{user.wantChildrenString}}</view>
+                  <view class="label" wx:if="{{user.occupationString}}">{{user.occupationString}}</view> 
+                  
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="p-person-info gift">
+              <view class="p-m-title">送礼物（已收到{{personal.giftCount}}份礼物）</view>
+              <view class="p-m-info gift-bd">
+              <scroll-view class="gift-list" scrollX="true">
+                <view bindtap="getGift" class="item" wx:if="{{ios == 0}}">
+                  <view class="gifticon">
+                    <span class="thumb" 
+                    style="background-image:url('http://www.sho2o.top/addons/ss48_match/images/send_gift.png?2')">
+                    </span>
+                  </view>
+                  <view class="text" wx:if="{{ios == 0}}">送礼物</view>
+                </view>
+                <block wx:for="{{user.gift}}" wx:key="{{item}}" wx:for-item="item">
+                  <view class="item"><view class="gifticon">
+                    <span class="thumb" style="background-image:url('{{config.url}}{{item.giftIcon}}')">
+                    </span>
+                  </view>
+                  <view class="text">
+                    {{item.giftName}}{{item.nums}}个
+                  </view>
+                </view>
+              </block>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <template is="kefu" data="{{showKefuStatus}}"/>
+      <template is="button" />
+        <view class="ui-footer">
+         
+          <view bindtap="getContact" class="button lxfs-btn">联系方式</view>
+       
+         
+          <view bindtap="getGift" class="button gift-btn">送礼物</view>
+          <view bindtap="getHn" class="button hlqx-btn">红娘牵线</view>
+          <view bindtap="contact" class="button lxfs-btn">交流</view>
+        </view>
+      </view>
+    </block>
+     <block wx:if="{{sp1}}">
+        <view class="dialog hint-dialog">
+         <view class='weui-mask'></view>
+        <view class="dialog-cnt">
+          <view class="dialog-cnt-tit">
+            <em class="goutong-tit"></em>
+          </view>
+          <view class="dialog-cnt-con">
+            <view class="txt1">使用<em>{{config.viewlink}}</em>个 沟通次数 和TA沟通？</view>
+            <view class="txt2">(剩余沟通次数<em>{{muser.imkey||0}}</em>次)</view>
+            <view class="btn-wrap">
+              <button bindtap="getMessage" class="btn-default">立即沟通</button>
+              <view class="dialog-tip">
+                购买会员获取更多
+                  <navigator class="link lightcolor" hoverClass="none" url="/pages/buy/imkeyment">
+                  沟通次数
+                  </navigator>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view bindtap="maskHideFilter2" class="dialog-close" data-status="0"></view>
+        </view>
+      </block>
+      
+
+          <view class="dialog hint-dialog message-dialog" wx:if="{{showMemberContact == 1}}">
+              <view class='weui-mask'></view>
+              <view class="dialog-cnt">
+                <view class="dialog-cnt-con tac">
+                  <block wx:if="{{user.isinfo == 0}}" >
+                    <view class="text">
+                      对方未公开联系方式，请联系红娘
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <block wx:if="{{user.wechat}}">
+                      <view bindtap="copylink" class="text" data-state="0">
+                        wx：<em>{{user.wechat}}</em>
+                        <span class="copylink">点击复制</span>
+                      </view>
+                    </block>
+                    <block wx:if="{{user.qq}}">
+                      <view bindtap="copylink" class="text" data-state="1">
+                        qq：<em>{{user.qq}}</em>
+                          <span class="copylink">点击复制</span>
+                      </view>
+                    </block>
+                  </block>
+                </view>
+                <view class="dialog-cnt-ft">
+                  <button bindtap="hideContact" class="dialog-btn" type="button">确定</button>
+                  </view>
+                </view>
+              </view>
+  

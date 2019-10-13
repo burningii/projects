@@ -1,0 +1,64 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <form bindsubmit="submitForm">
+      <view class="weui-cells">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">微信</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="wechat" placeholder="请输入微信" placeholderClass="placeholder" type="text" 
+            value="{{user.wechat}}">
+            </input>
+          </view>
+          </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">QQ</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="qq" placeholder="请输入QQ号" placeholderClass="placeholder" type="number" 
+            value="{{user.qq}}"></input>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">我的描述</view>
+          </view>
+          <view class="weui-cell__bd">
+
+            <input class="weui-input" name="introduce" placeholder="请输個人描述" placeholderClass="placeholder" type="text" 
+            value="{{user.introduce}}"></input>
+          </view>
+        </view>
+       <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">
+          <view class="weui-label">公开联系方式</view>
+        </view>
+      <view class="weui-cell__ft">
+      <block wx:if="{{user.isinfo == 1}}">
+        <switch checked name="isinfo"></switch>
+      </block>
+      <block wx:if="{{user.isinfo == 0}}">
+        <switch name="isinfo"></switch>
+      </block>
+    </view>
+  </view>
+  <block wx:if="undefined">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">
+        <view class="weui-label">接受消息推送</view>
+      </view>
+      <view class="weui-cell__ft">
+        <block wx:if="{{user.is_closewxmsg == 1}}">
+          <switch checked name="is_closewxmsg"></switch>
+        </block>
+        <block wx:if="{{user.is_closewxmsg == 0}}">
+          <switch name="is_closewxmsg"></switch>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="weui-cells__title">开启公开信息后，所有用户都能看到你的基本信息；关闭后不对外公开联系方式。</view><view class="weui-btn-area"><button class="weui-btn" formType="submit" type="primary">保存</button></view></form></view>

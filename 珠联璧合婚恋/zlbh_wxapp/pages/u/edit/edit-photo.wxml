@@ -1,0 +1,36 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="photo-wrap">
+    <block wx:if="{{user.vip == 1 && (user.vip1 == 0)}}">
+      <view class="ui-panel">
+        <view class="ui-cell vip-tip">
+          <view class="ui-cell-row">
+            <view class="ui-cell-bt">
+              最多可以上传{{maxImageNum}}张照片,开通会员即可无限制上传
+            </view>
+            <view class="ui-cell-ft">
+              <button bindtap="getPayment" class="ui-btn btn-tovip">开通会员</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="weui-uploader">
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <view class="weui-uploader__input-box">
+            <view bindtap="chooseImage" class="weui-uploader__input"></view>
+            <view class="weui-uploader__text">上传照片</view>
+          </view>
+        <block wx:for="{{files}}" wx:key="{{ key }}" wx:for-item="item">
+          <block wx:if="{{item}}">
+            <view bindtap="deleteImage" class="weui-uploader__file" id="{{key}}">
+            <image class="weui-uploader__img" mode="aspectFill" src="{{item}}"></image>
+         
+      </view>
+       </block>
+    </block>
+  </view>
+  </view>
+  </view>
+</view>

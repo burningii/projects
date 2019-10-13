@@ -1,0 +1,21 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" />
+<block wx:if="undefined">
+  <view class="page-content">
+    <view class="weui-tab__content">
+     
+         <view class="logged" style='margin-top:30px;margin-bottom:30px'>
+    <image class="logged-icon" src="https://xjob.jhrx.cn/Public/xwx/img/iconfont-weixin.png"></image>
+    <view class="logged-text">您确认自动获取微信手机号</view>
+    <view class="logged-text">请您授权</view>
+  </view>
+        <view class="weui-btn-area">
+          <button class="btn-default"  bindgetphonenumber="getPhoneNumber" openType="getPhoneNumber">一键获取手机号</button>
+        </view>
+
+    </view>
+  </view>
+</block>
+<block wx:else>
+ 
+</block>

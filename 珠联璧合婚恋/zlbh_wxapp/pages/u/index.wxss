@@ -1,0 +1,122 @@
+wx-button.form_button{background-color:transparent;padding:0;margin:0;display:inline;position:static;border:0;padding-left:0;padding-right:0;border-radius:0;font-size:0rpx;color:transparent;}
+wx-button.form_button::after{content:'';width:0;height:0;-webkit-transform:scale(1);transform:scale(1);display:none;background-color:transparent;}
+.ui-footer{width:100%;background-color:#ffffff;display:-webkit-box;-webkit-box-sizing: border-box;box-sizing: border-box;height:108rpx;position:fixed; bottom:0;right: 0;z-index:999;}
+.ui-footer:after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; background: #dfdfdd; }
+.ui-footer .icon,.ui-footer wx-form{display:-webkit-box;width:100%;height:100%;-webkit-box-flex: 1;box-flex: 1;-webkit-box-orient:vertical;}
+.ui-footer .icon{text-align:center;}
+.ui-footer .icon wx-i{width:45rpx;height:45rpx;margin:9px auto 3px;display:block;background-image: url('http://wq.xinxao.com/addons/ss48_match/images/ft_ico.png?1');background-repeat: no-repeat;background-size: 45rpx 360rpx;position: relative;}
+.ui-footer .icon wx-span{content:'';font-size: 24rpx;line-height: 1;color: #353535;display:block}
+.ui-footer .icon.on wx-span{color:#ff677d;}
+.ui-footer .icon.index wx-i{background-position:0 0;}
+.ui-footer .icon.act wx-i{background-position:0 -90rpx;}
+.ui-footer .icon.im wx-i{background-position:0 -180rpx;}
+.ui-footer .icon.my wx-i{background-position:0 -270rpx;}
+.ui-footer .icon.index.on wx-i{background-position:0 -45rpx;}
+.ui-footer .icon.act.on wx-i{background-position:0 -135rpx;}
+.ui-footer .icon.im.on wx-i{background-position:0 -225rpx;}
+.ui-footer .icon.my.on wx-i{background-position:0 -315rpx;}
+.ui-footer .badge{ position: absolute; right: -10rpx; top: -4rpx; }
+.list-area .ui-label{ margin-right: 12rpx; }
+page { font-size: 28rpx; color: #666978; background-color: #f5f5f5; }
+.icon-menu-view{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/visited_me.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-follow{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/follow_me.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.navCont .item wx-em{ width:72rpx; height: 72rpx; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.navCont .item wx-em:after{ content:''; }
+.icon-menu-vip1:after{ display: inline-block; width: 45rpx; height: 45rpx; background: url('http://wq.xinxao.com/addons/ss48_match/images/icon_matchmaker.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-vip:after{ display: inline-block; width: 45rpx; height: 45rpx; background: url('http://wq.xinxao.com/addons/ss48_match/images/84.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-gift:after{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/4.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-renzheng:after{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/1.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-qb:after{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/2.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-hn:after{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/3.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-fw:after{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/5.png?1') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-viewme{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/look_me_icon.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-followme{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/like_me_icon.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-myfollow{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/mutual_like_icon.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.icon-menu-follows{ display: inline-block; width: 45rpx; height: 45rpx; background:url('http://wq.xinxao.com/addons/ss48_match/images/icon_service_matchmaker.png?2') no-repeat; background-size: 45rpx 45rpx; }
+.ui-panel{ background: #fff; border-radius: 4rpx; margin-bottom: 20rpx; padding: 0 20rpx; }
+.ui-btn{ color:#fff; background: transparent; margin: 0; padding: 0; font-size:24rpx; line-height: normal; border-radius: 0; }
+.ui-btn:after{ display: none; }
+.look-list{display: -webkit-flex;display: flex;padding-bottom:20rpx;}
+.look-list .item{width:20%;padding:0 10rpx;box-sizing:border-box;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;-webkit-align-items: center;align-items: center;}
+.look-list .item .thumb{width:80rpx;border-radius: 50%}
+.look-list .item .thumb .item-cover{border-radius: 50%}
+.look-list .item .name{font-size:22rpx;line-height:1.8;}
+.container{ padding-bottom: 108rpx; }
+.person-info{ background-color: #fff; display: -webkit-flex; display: flex; width: 100%; padding: 30rpx 0 110rpx 20rpx; box-sizing: border-box; margin-bottom:20rpx; box-shadow:0 4rpx 12rpx rgba(251, 221, 223, .8); }
+.person-info .head{ width: 148rpx; height: 148rpx; border-radius: 6rpx; margin-right: 20rpx; position: relative; background-color: #ebebeb; box-sizing: border-box; }
+.person-info .head .img{ width:100%; height:100%; border-radius: 6rpx; }
+.person-info .info{ color: #333; -webkit-flex: 1; flex: 1; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: left; align-items: left; position: relative; }
+.person-info .info .nick{ font-size:32rpx; }
+.person-bar{ margin: 20rpx 0; }
+.ui-cell{position: relative;}
+.ui-cell:not(:first-of-type):before{ content: ''; position: absolute; left: 0; right: 0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.ui-cell-row{ position: relative; width:100%; display: -webkit-flex; display: flex; padding: 30rpx 0; -webkit-align-items: center; align-items: center; }
+.ui-cell-hd{ height:44rpx; }
+.ui-cell-bt{ -webkit-flex-shrink: 0; flex-shrink: 0; -webkit-flex-grow: 1; flex-grow: 1; -webkit-flex-basis: auto; flex-basis: auto; max-width: 100%; width: 0; word-wrap: break-word; word-break: normal; padding-left: 20rpx; }
+.ui-cell-bt .badge{margin-left:10rpx;}
+.ui-cell-bt .respop{ display: inline-block; width:71rpx; height:30rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/icon_c_set_respop.png?v1'); background-repeat: no-repeat; background-size: 71rpx 30rpx; font-size:18rpx; text-align: center; line-height:30rpx; color:#fff; margin-left:10rpx; vertical-align: top; }
+.ui-cell-ft .icon-arrow{ display: inline-block; width: 12rpx; height: 21rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/arrow_right.png?1'); background-repeat: no-repeat; background-size: 12rpx 21rpx; }
+.ui-cell-ft .tip{ color: #a8acc0; font-size:24rpx; margin-right:20rpx; }
+.vip-tip .ui-cell-row{ padding: 24rpx 0; }
+.btn-tovip{ width: 164rpx; height: 78rpx; background: url('http://wq.xinxao.com/addons/ss48_match/images/tovip.png?1') no-repeat; background-position: 0 3rpx; background-size: 164rpx 78rpx; display: -webkit-flex; display: flex; box-sizing: border-box; padding: 0 0 0 52rpx; line-height: normal; -webkit-align-items: center; align-items: center; }
+.logout-btn .ui-cell-row{-webkit-justify-content: center;justify-content: center;}
+.login-wrap{padding-top:168rpx;}
+.login-wrap .img{ width:210rpx; height:210rpx; background-image:url('http://wq.xinxao.com/addons/ss48_match/images/fillzl.png?1'); background-size:210rpx 210rpx; background-repeat:no-repeat; }
+.login-wrap .txt{margin:30rpx 0 114rpx;}
+.person-info .profile{ padding: 10rpx 0 8rpx; }
+.person-info .status{ width: 100%; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; }
+.isbrand{ color:#fff; font-size:24rpx; }
+.label-wrap{ width: 100%; box-sizing: border-box; padding: 0 20rpx 0 0; display: -webkit-flex; display: flex; -webkit-align-content: center; align-content: center; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; }
+.user-author{display: inline-block;height:30rpx;font-size:0;position: relative;top:2rpx;}
+.user-author wx-span{ display: inline-block; width: 30rpx; height: 30rpx; background-repeat: no-repeat; background-size: 30rpx 30rpx; margin-left:12rpx;}
+.user-author .auth{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/icon_identification.png?1'); }
+.user-author .brand{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/mina/zxhy_icon.png?1'); }
+.user-author .top{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/top_icon.png?1'); }
+.lnks-box{display: -webkit-flex;display: flex;box-sizing: border-box;padding:12rpx 20rpx 20rpx;background-color:#fff;position: relative;}
+.lnks-box .item{-webkit-flex:1;flex:1;display:-webkit-flex;display:flex;-webkit-flex-direction: column;flex-direction: column;-webkit-align-items: center;align-items: center;-webkit-justify-content: flex-start;justify-content: flex-start;}
+.lnks-box .item .lnks_icon{width:64rpx;height:64rpx;}
+.lnks-box .item .icon{display:inline-block;width:64rpx;height:64rpx;background-repeat: no-repeat;background-size: 64rpx 64rpx;}
+.lnks-box .item .text{color:#42475c;}
+.lnks-box .item .state{height:20rpx;line-height:20rpx;font-size:20rpx;color:#a5a5a5}
+.guide_box { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; }
+.guide_con { position: absolute; z-index: 1001; top: 180rpx; right: 40rpx; width: 380rpx; height: 550rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/guide2.png?2'); background-repeat: no-repeat; background-size: 378rpx 550rpx; }
+.btn-close { position: absolute; z-index: 1001; bottom: 280rpx; left: 50%; margin-left: -120rpx; width: 240rpx; height: 83rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/btn-guide.png?2'); background-repeat: no-repeat; background-size: 240rpx 83rpx; }
+.person-tip{ height: 24rpx; padding: 16rpx 16rpx 16rpx 20rpx; display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; background-color: #ffd8a1; color:#e2994b; font-size: 24rpx; line-height: 48rpx; -webkit-align-items: center; align-items: center; }
+.person-tip .close-ico{ display: inline-block; width: 24rpx; height: 24rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/ic_del_mine_safe_tips.png?1'); background-repeat: no-repeat; background-size: 24rpx 24rpx; margin-left:10rpx; position: relative; top:0rpx; }
+.person-tip .link{ color:#e44d63; text-decoration: underline; }
+.p-info{ width:100%; overflow: hidden; box-sizing: border-box; margin-bottom:10px; }
+.p-info .p-head{ background:#fff; box-sizing:border-box; padding:30rpx 20rpx; }
+.p-info .content-head{ width:100%; height:120rpx; display:-webkit-flex; display:flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.p-info .item-thumb{ width:120rpx; height:120rpx; margin-right:20rpx; display:inline-block; position:relative; border-radius:6rpx; }
+.p-info .item-thumb .item-cover{ border-radius: 5000px; padding:0; width:120rpx; height:120rpx; background-position: 0 0; background-color: #f0f0f0; background-repeat: no-repeat; background-size: cover; overflow: hidden; position: relative; }
+.p-info .item-thumb .tips{ position: absolute; left: 0; bottom: 0; width:100%; height: 40rpx; line-height: 36rpx; background: rgba(0, 0, 0, .5); font-size:22rpx; color:#dfdfdf; text-align: center; }
+.p-info .item-info { -webkit-flex-grow:1; flex-grow:1; -webkit-flex-shrink:0; flex-shrink:0; -webkit-flex-basis:auto; flex-basis:auto; max-width:100%; width:0; word-wrap:break-word; word-break:normal; }
+.p-info .item-info .name { font-size:32rpx; color:#42475c; line-height:1; }
+.p-info .item-info .info{ color:#a8acc0; font-size:24rpx; margin:5rpx 0; }
+.p-info .item-info .inner{ height:50rpx; overflow: hidden; }
+.p-info .addinfo{ display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; height:100%; }
+.p-info .ui-label{ color: #ff677d; font-size:24rpx; padding: 0 12rpx; display: inline-block; border-radius: 20rpx; margin-right: 12rpx; margin-top: 12rpx; box-sizing: border-box; height: 38rpx; line-height: 38rpx; }
+.p-info .ui-label:before{ border-color: #f8a9b5; border-radius: 12rpx; }
+.p-info .ui-label:active{ background-color: inherit; }
+.ui-arrowlink{color:#999;position: relative;}
+.ui-arrowlink:after { margin-left:10rpx; content:''; display: inline-block; width: 10rpx; height: 18rpx; background: url(http://wq.xinxao.com/addons/ss48_match/images/icon_arrowlink_black.png?1) no-repeat; background-size: 10rpx 18rpx; position: relative; top:0; right: 0; }
+.photo-empty{display: -webkit-flex;display: flex;-webkit-align-items: center;align-items: center;color:#aaa;width:100%;font-size:28rpx;}
+.photo-empty .dian{display:inline-block;width:12rpx;height:12rpx;border-radius:5000%;background-color: #d5d5dc;margin-right:16rpx;}
+.p-info .content-text{display: -webkit-flex;display: flex;margin-top:14rpx;}
+.p-info .content-text .text-ico{width:40rpx;height:40rpx;margin-right:20rpx;display: inline-block;background: url('http://wq.xinxao.com/addons/ss48_match/images/heart_word_icon.png?1') no-repeat;background-size: 40rpx 40rpx;margin-top:6rpx;}
+.p-info .content-text .text{-webkit-flex:1;flex:1;font-size:28rpx;color:#666978;text-align:justify;text-justify:inter-ideograph}
+.p-info .change-tip{ position: absolute; left: 0; bottom: 0; width:100%; height: 36rpx; line-height: 36rpx; background: rgba(0, 0, 0, .5); font-size:24rpx; color:#dfdfdf; text-align: center; border-bottom-left-radius: 6rpx; border-bottom-right-radius: 6rpx; }
+.p-info .progress{color:#999;}
+.p-info .percent{color:#fc6e27;}
+.navCont{width:100%;box-sizing: border-box;padding:30rpx 10rpx 0;background: #fff;position: relative;overflow: hidden;}
+.navCont .item{float:left;width:25%;display: -webkit-flex;display: flex;-webkit-align-items: center;align-items: center;-webkit-flex-direction: column;flex-direction: column;margin-bottom:30rpx;}
+.more-weak{width:100%;font-size:24rpx;color:#a8acc0;margin:30rpx 0 0;padding-top:30rpx;display: -webkit-flex;display: flex;-webkit-align-items: center;align-items: center;position: relative;-webkit-justify-content: space-between;justify-content: space-between;}
+.more-weak:before{ content: ''; position: absolute; left: 0; right: 0; top:0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.more-weak .vip{background: url('https://wq.xinxao.com/addons/ss48_match/images/too_rich.png') no-repeat;}
+.more-weak .key{background: url('https://wq.xinxao.com/addons/ss48_match/images/ys.png') no-repeat;}
+.more-weak .gold{background: url('https://wq.xinxao.com/addons/ss48_match/images/jb.png') no-repeat;}
+.more-weak .vip,.more-weak .key,.more-weak .gold{display:inline-block;height:40rpx;line-height:40rpx;background-size: 40rpx 40rpx;padding-left:54rpx;margin-right:20rpx;}
+.more-weak .btn{background-color:#fff;color:#fd3d5b;font-size:28rpx;height:50rpx;line-height:1;margin:0;border-radius:27rpx;border:1px solid #fd3d5b;padding:0 20rpx;display: -webkit-flex;display: flex;-webkit-align-items: center;align-items: center;}
+.more-weak .btn:before{content:'';margin-right:10rpx;}
+.more-weak .btn.pay-btn:before{width:26rpx;height:26rpx;background:url(http://wq.xinxao.com/addons/ss48_match/images/person_first_charge_icon.png?1) no-repeat;background-size: 26rpx 26rpx;}
+.more-weak .btn:after{display: none;}

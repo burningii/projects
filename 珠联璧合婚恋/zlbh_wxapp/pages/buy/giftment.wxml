@@ -1,0 +1,43 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" />
+<view class="ui-wrapper">
+  <view class="main-hd">
+    <view class="ui-header ui-panel">
+      <view class="service_tit">您还剩余
+        <em class="orange">{{coin.coinBalance}}</em>个金币</view>
+      <view class="service_subtit">请选择充值金额</view>
+    </view>
+  </view>
+  <view class="main-bd">
+    <view class="ui-panel">
+      <block wx:for="{{coin.coins}}" wx:key="{{item}}" wx:for-item="item">
+        <block wx:if="undefined">
+          <view class="ui-cell">
+            <view bindtap="getService" class="ui-cell-row" data-state="{{index}}">
+              <view class="ui-cell-bt">
+                <view class="icon">
+                  <span class="coinico" style="background-image:url('{{item.coinIconURL}}')"></span>
+                </view>
+                <em class="strong">{{item.coinNumber}}</em>金币</view>
+              <view class="ui-cell-ft">
+                <span class="price {{actionItemIndex==index?'orange':''}}">￥{{item.coinPriceDesc}}</span>
+                <span class="icon {{actionItemIndex==index?'action':''}}"></span>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+      <view class="ui-cell buy-btn-wrap">
+        <view bindtap="getBuy" class="buy-btn">确认购买</view>
+      </view>
+    </view>
+    <block wx:if="undefined">
+      <view class="ui-panel pay_details">
+        <view class="ui-panel-hd g-tit">{{coin.instructions[0].title}}</view>
+        <view class="ui-panel-bd">
+          <text class="content">{{coin.instructions[0].contents}}\n</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+<import  src="../common/template"  />
+<view class="container">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==0?'weui-bar__item_on':''}}" data-id="0">
+        <view class="weui-navbar__title">进行中的活动</view>
+      </view>
+      <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==1?'weui-bar__item_on':''}}" data-id="1">
+        <view class="weui-navbar__title">往期活动</view>
+      </view>
+    </view>
+    <view class="weui-tab__panel">
+
+          <view class="act-empty"  wx:if="{{list.length == 0}}">
+          <image class="img" 
+          mode="widthFix" 
+          src="http://wx-img.jhrx.cn/love/20180801/act_empty.png"></image>
+          </view>
+
+        <view class="weui-tab__content">
+        
+          <block wx:if="{{list}}" >
+            <view class="act_list">
+              <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+               
+                  <view bindtap="getLogin" class="item" data-id="{{item.id}}">
+                    <view class="thumb">
+                      <image class="img" mode="widthFix" src="{{config.url}}{{item.cover_img}}"></image>
+                    </view>
+                    <view class="info">
+                      <view class="tit">{{item.title}}</view>
+                      <view class="label-wrap" wx:if="{{iso == 0}}">
+                   
+                        <view class="label">{{item.price<=0?'免费':'￥'+item.price}}</view>
+                  
+                     
+                        <view class="label vip">
+                          VIP {{item.vip_price<=0?'免费':'￥'+item.vip_price}} 
+                        </view>
+                    
+                      <block wx:if="{{type == 1}}">
+                        <view class="label">活动已结束</view>
+                      </block>                   
+                      {{item.starttime1}} -  {{item.endtime1}} 
+                    </view>
+                  </view>
+                </view>
+        
+            </block>
+          </view>
+        </block>
+     
+        </view>
+
+        </view>
+        </view>
+        </view>
+      <template is="kefu" data="{{showKefuStatus}}"/>
+      <template is="footer-bar" data="{{curpage}}"/>

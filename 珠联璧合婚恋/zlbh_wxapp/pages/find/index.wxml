@@ -1,0 +1,181 @@
+<import  src="../common/template"  />
+<view class="container">
+  <view class="peidui">
+    <view class="pdbox"> 
+      <view class="title">就在你身边，他们相爱啦！</view>
+      <view class="pdcon">
+        <swiper autoplay="true" circular="true" class="swiper_container" interval="3000" vertical="true">
+          <block wx:for="{{config.fidass}}" wx:key="{{ itemArr }}" wx:for-item="title">
+            <swiper-item catchtouchmove="catchTouchMove">
+            
+                <view class="item">
+                  <view class="info">
+                    <view class="txt">
+                      <em>{{title}}</em>
+                    </view>
+                  </view>
+                </view>
+        
+            </swiper-item>
+          </block>
+
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{ios == 0}}">
+  <navigator class="oy-row-cell" hoverClass="none" url="/pages/peidui/index">
+    <view class="oy-row-hd"></view>
+    <view class="oy-row-bd">
+      <view class="tit">偶遇</view>
+      <view class="subtit">随缘进入，Ta在等你</view>
+    </view>
+    <view class="oy-row-ft">
+      <view class="userbox">
+
+        <span class="item-cover" wx:for="{{user5}}" style="background-image:url('{{item.avatar}}')"></span>
+        
+      </view>
+    </view>
+  </navigator>
+
+  
+  </block>
+   <block wx:if="{{ios == 1}}">
+<navigator class="oy-row-cell">
+    <view class="oy-row-hd"></view>
+    <view class="oy-row-bd">
+      <view class="tit">偶遇</view>
+      <view class="subtit">随缘进入，Ta在等你</view>
+    </view>
+    <view class="oy-row-ft">
+      <view class="userbox">
+
+        <span class="item-cover" wx:for="{{user5}}" style="background-image:url('{{item.avatar}}')"></span>
+        
+      </view>
+    </view>
+ </navigator>
+
+  
+  </block>
+  <view class="user-rank">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==0?'weui-bar__item_on':''}}" data-id="0">
+          <view class="weui-navbar__title">
+            <view class="tit">交友推荐</view>
+          </view>
+        <view class="weui-navbar__slider"></view>
+      </view>
+      <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==1?'weui-bar__item_on':''}}" data-id="1">
+        <view class="weui-navbar__title">
+          <view class="tit">语音交友</view>
+        </view>
+        <view class="weui-navbar__slider"></view>
+      </view>
+    </view>
+    <view class="weui-tab__panel">
+ 
+        <view class="weui-tab__content">
+          <block wx:if="{{type == 0}}">
+            <view class="viewme">
+              <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+                <block wx:if="{{item}}">
+                  <view class="li">
+                    <navigator class="item" url="/pages/index/member?id={{item.id}}">
+                      <view class="thumb">
+                        <span class="item-cover" 
+                        style="background-image:url('{{item.avatar}}')">
+                        </span>
+                      </view>
+                      <view class="item-info">
+                        <view class="label-wrap">
+                          <view class="name">
+                          {{item.nickname}}  <text style='font-size:12px;color:#fe8278;'> 距离 {{item.dis}}</text>
+                            <span class="tag">
+                              <block wx:if="{{item.zxhy == 1}}">
+                                <span class="zxhy"></span>
+                              </block>
+                              <block wx:if="{{item.xjhy == 1}}">
+                                <span class="xjhy"></span>
+                              </block>
+                            </span>
+                          </view>
+                        </view>
+                        <view class="inner">
+                          <span>{{item.year}} 岁</span>|<span>{{item.heightString}}</span>|<span>{{item.workCityString}}</span>
+                        </view>
+                      </view>
+                    </navigator>
+                  </view>
+                </block>
+              </block>
+              <block wx:if="{{!list}}">
+                <view class="mod-blank">
+                  <view class="blank-info">暂时还木有推荐~</view>
+                </view>
+              </block>
+            </view>
+          </block>
+         
+        </view>
+    
+ 
+        <view class="weui-tab__content">
+          
+          <block wx:if="{{(type == 1)}}">
+            <view class="viewme">
+              <block wx:if="{{!user.voice_path}}" >
+                <view class="mod-blank">
+                  <view class="blank-info">您还没有上传语音，请先上传</view>
+                  <navigator class="blank-link" url="/pages/u/edit/index">快去创建语音吧</navigator>
+                </view>
+              </block>
+              <block wx:else>
+                <block wx:for="{{list}}" wx:key="{{key}}" wx:for-item="item">
+                  <block wx:if="{{item}}">
+                    <view class="li">
+                      <navigator class="item" url="/pages/index/member?id={{item.id}}">
+                        <view class="thumb">
+                          <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                        </view>
+                        <view class="item-info">
+                          <view class="label-wrap">
+                            <view class="name">{{item.nickname}} <text style='font-size:12px;color:#fe8278;'> 距离 {{item.dis}}</text>
+                              <span class="tag">
+                                <block wx:if="{{item.zxhy == 1}}">
+                                  <span class="zxhy"></span>
+                                </block>
+                                <block wx:if="{{item.xjhy == 1}}">
+                                  <span class="xjhy"></span>
+                                </block>
+                              </span>
+                            </view>
+                            <span class="time">{{item.voice_times}} s</span>
+                          </view>
+                          <view class="inner">
+                            <span>{{item.year}} 岁</span>|<span>{{item.heightString}}</span>|<span>{{item.workCityString}}</span>
+                          </view>
+                        </view>
+                      </navigator>
+                    </view>
+                  </block>
+                </block>
+                <block wx:if="{{!list}}">
+                  <view class="mod-blank">
+                    <view class="blank-info">暂时还木有语音用户</view>
+                    <navigator class="blank-link" url="/pages/u/edit/index">快去创建语音吧</navigator>
+                  </view>
+                </block>
+              </block>
+            </view>
+          </block>
+       
+        </view>
+   
+    </view>
+  </view>
+</view>
+</view>
+<template is="footer-bar" data="{{curpage}}"/>

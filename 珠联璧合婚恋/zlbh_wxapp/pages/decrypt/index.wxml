@@ -1,0 +1,6 @@
+<form bindsubmit='getFormId' report-submit='true'>
+<view class="container"><view class="decrypt-main"><view class="decrypt-image"></view><view class="decrypt-text"><view>需要授权才能使用</view><view>我们不会泄露您的任何信息</view></view><view class="decrypt-btn-wrap">
+<button bindgetuserinfo="bindGetUserInfo"
+ openType="getUserInfo" form-type='submit' class="decrypt-btn">允许授权</button></view></view></view>
+
+</form>

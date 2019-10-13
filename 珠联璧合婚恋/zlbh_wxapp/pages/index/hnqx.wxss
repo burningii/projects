@@ -1,0 +1,12 @@
+.page-content{ width:100vw; height:100vh; background: url('http://wq.xinxao.com/addons/ss48_match/images/guide_guanzhu.jpg?2') no-repeat; background-position: 0 -40px; background-size: 100% auto; }
+.process-box{ width:100%; position: absolute; top:60vh; left:0; }
+.process-list{ background-color: #fff; border-radius: 40rpx; margin:0 auto; width:600rpx; box-sizing: border-box; padding: 40rpx; margin-bottom:40rpx; }
+.process-list .item{display: -webkit-flex;display: flex;color:#9badbb;}
+.process-list .item+.item{margin-top:20rpx;}
+.step-tit{display:block;width:136rpx;font-size:28rpx;margin-top:6rpx;}
+.step-tit wx-i{display:inline-block;width:15rpx;height:12rpx;background: url('http://wq.xinxao.com/addons/ss48_match/images/xin_ico.png?1') no-repeat;background-size: 38rpx 12rpx;margin-right:10rpx;position: relative;top:-4rpx;}
+.step-txt{text-align:justify;text-justify:inter-ideograph;font-size:28rpx;line-height:1.8;-webkit-flex:1;flex:1;}
+.process-list .item .step-tit,.process-list .item .step-txt wx-em{color:#73b2ea;}
+.process-list .item:nth-of-type(even) .step-tit,.process-list .item:nth-of-type(even) .step-txt wx-em{color:#fa9cc0;}
+.process-list .item:nth-of-type(even) .step-tit wx-i{background-position: -22rpx 0;}
+.copy_btn{margin:0 auto;width:600rpx;height:86rpx;background: url('http://wq.xinxao.com/addons/ss48_match/images/copy_btn.png?3') no-repeat;background-size: 600rpx 86rpx;}

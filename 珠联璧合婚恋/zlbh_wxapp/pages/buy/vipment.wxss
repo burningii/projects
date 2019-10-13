@@ -1,0 +1,65 @@
+.ui-wrapper{padding-bottom: 128rpx;}
+.main-hd .tit{font-size:28rpx;color:#777;height:72rpx;line-height:72rpx;padding:0 20rpx;}
+.main-bd{ padding: 10px 0 0; }
+.ui-panel{ background: #fff; margin-bottom: 10px; }
+.ui-panel:last-of-type{ margin-bottom: 0; }
+.ui-cell{position: relative;}
+.ui-cell:not(:first-of-type):before{ content: ''; position: absolute; left: 0; right: 0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.ui-cell-row{ position: relative; width:100%; display: -webkit-flex; display: flex; padding: 32rpx 20rpx; box-sizing: border-box; font-size: 36rpx; line-height: normal; }
+.ui-cell-hd{ height:44rpx; }
+.ui-cell-bt{ -webkit-flex-shrink: 0; flex-shrink: 0; flex-grow: 1; -webkit-flex-grow: 1; flex-basis: auto; -webkit-flex-basis: auto; max-width: 100%; width: 0; word-wrap: break-word; word-break: normal; padding-left: 20rpx; -webkit-align-items: center; align-items: center; display: -webkit-flex; display: flex; }
+.ui-cell-bt .sub-tit{ font-size:22rpx;color:#aaa; margin-top:10rpx; }
+.ui-cell-ft{ display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; }
+.ui-cell-ft .icon-arrow{ display: inline-block; width: 12rpx; height: 21rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/arrow_right.png?1'); background-repeat: no-repeat; background-size: 12rpx 21rpx; }
+.ui-cell-ft .price{ margin-right:40rpx; line-height: normal; }
+.ui-cell-ft .icon{ display: inline-block; width: 60rpx; height: 60rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/success.png?1'); background-repeat: no-repeat; background-size: 60rpx 60rpx; }
+.ui-cell-ft .icon.action{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/success_color.png?1'); }
+.buy-btn-wrap{ position: fixed; left:0; bottom:0; width:100%; margin:0; box-sizing: border-box; background-color: rgba(255,255,255,1); }
+.buy-btn { position: relative; display: block; margin-left: auto; margin-right: auto; padding-left: 14px; padding-right: 14px; box-sizing: border-box; font-size: 18px; text-align: center; text-decoration: none; color: #FFFFFF; height:108rpx; line-height: 108rpx; border-radius: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); overflow: hidden; margin: 0; background-image: -webkit-linear-gradient(top left, #eb4473, #f44545); }
+.buy-btn:after { display: none; }
+.buy-btn:active{ background-color: #1cb8a4; }
+.ui-panel .g-tit { -webkit-box-flex: 1; color: #42475c; font-size: 32rpx; overflow: hidden; width:100%; line-height: 80rpx; border-bottom:1px solid #ececec; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; box-sizing: border-box; padding: 0 12rpx; }
+.ui-panel-hd{padding: 0 24rpx;}
+.ui-panel-hd{display: -webkit-flex;display: flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;height:88rpx;}
+.ui-panel-hd .tit{font-size:32rpx;color:#333;}
+.ui-panel-hd .help{height:50rpx;padding-left:54rpx;line-height:50rpx;color:#999;display: inline-block;background: url('http://wq.xinxao.com/addons/ss48_match/images/main_me_icon_help.png?1') no-repeat;background-size: 50rpx 50rpx;}
+.ui-panel-bd{ color:#42475c; padding: 20rpx; }
+.ui-panel-bd .content{ font-size: 28rpx; line-height:48rpx; }
+.pay_details .ui-panel-bd{ color:#666978; padding: 20rpx 30rpx; }
+.pro-price .price{text-align: right;}
+.pro-price .oldprice{font-size:28rpx;color:#999;text-decoration: line-through;}
+.label{ display: inline-block; border-radius:2rpx; background:#ff758f; color:#fff; font-size:20rpx; height:26rpx; line-height: 26rpx; margin-left:10rpx; padding: 0 10rpx; box-sizing: border-box; vertical-align: top; position: relative; top:12rpx; }
+.orderindex{display: -webkit-flex;display: flex;background: #fff;padding:20rpx 0 30rpx 0;}
+.orderindex .item{ -webkit-flex:1; flex:1; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; position: relative; }
+.orderindex .item:not(:last-child):after{ content: ''; position: absolute; top:0; right: 0; background: #eee; width: 1px; height: 100%; -webkit-transform: scaleX(.5); transform: scaleX(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.orderindex .item .name{color:#777;padding-bottom:20rpx;}
+.orderindex .item .name::after{content: '';display: inline-block;width:28rpx;height:28rpx;background-repeat: no-repeat;background-size: 28rpx 28rpx;position: relative;top:2px;}
+.orderindex .item .name::after{background-image: url('http://wq.xinxao.com/addons/ss48_match/images/icon_welfare_coin.png?1');}
+.orderindex .item .name::after{background-image: url('http://wq.xinxao.com/addons/ss48_match/images/icon_welfare_coin.png?1');}
+.orderindex .item .val{color:#000000;font-size:72rpx;font-family: Arial, Helvetica, sans-serif;font-weight: bold;line-height:1;}
+.mod-header{}
+.personal-bg_cover{ width: 100%; position: relative; }
+.personal-bg_cover .img { display: inline-block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: url('http://wq.xinxao.com/addons/ss48_match/images/profile_default_bg.png?1'); background-repeat: no-repeat; background-position:50% 30%; background-size: cover; overflow: hidden; }
+.personal-item{ padding:80rpx 60rpx; width: 100%; display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; box-sizing: border-box; }
+.personal-qlogo .vip-head{ position: absolute; top:18rpx; left:50%; margin-left:-102rpx; width:100rpx; height:81rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/w.png?1'); background-repeat: no-repeat; background-size: 100rpx 81rpx; z-index:1; }
+.personal-qlogo-content{width:120rpx;height:120rpx;border-radius:90rpx;z-index:100;box-sizing:border-box;overflow:hidden;position: relative;z-index:0;margin-right:20rpx;}
+.personal-qlogo-content .img{ display: inline-block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image:url('http://wq.xinxao.com/addons/ss48_match/images/default_profile.png?1'); background-repeat: no-repeat; -webkit-background-size: 100% auto; background-size: 100% auto; overflow: hidden; z-index:0; }
+.personal-info{width:100%;position: relative;z-index:1;display: -webkit-flex;display: flex;-webkit-flex-direction: column;flex-direction: column;-webkit-justify-content: center;justify-content: center;}
+.personal-info-name{color:#fff;font-size:32rpx;}
+.personal-info-vip{color:rgba(255,255,255,.8);}
+.ui-cell-hd wx-i{ display: inline-block; width: 80rpx; height: 80rpx; background-repeat:no-repeat; background-size: 80rpx 80rpx; }
+.icon-menu-vip{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/default_icon_my_service.png?1'); }
+.icon-menu-act{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/icon_matchmaker.png?1'); }
+.icon-menu-fk{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/default_icon_relation_people.png?1'); }
+.icon-menu-zs{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/defualt_icon_people_credit.png?1'); }
+.icon-menu-gift{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/default_icon_national_day.png?1'); }
+.icon-menu-up{ background-image:url('http://wq.xinxao.com/addons/ss48_match/images/default_icon_wedding.png?1'); }
+.mod-box{background-color: #fff;}
+.mod-box .mod-tit{ display:-webkit-flex; display:flex; -webkit-justify-content:space-between; justify-content:space-between; -webkit-align-items:center; align-items:center; height:88rpx; padding: 0 24rpx; position: relative; }
+.mod-box .mod-tit:after{ content: ''; position: absolute; left: 0; right: 0; bottom:0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.mod-box .mod-tit wx-em { font-size:32rpx; color:#333; }
+.vip-top{display: -webkit-flex;display: flex;padding:30rpx;}
+.vip-top .top-tit{width:160rpx;height:50rpx;line-height:50rpx;}
+.vip-top .top-info{ -webkit-flex:1; flex:1; width:100%; color:#fff; }
+.vip-top .top-info .jdt1{ width:30%; height:50rpx; line-height:50rpx; padding:0 10rpx; box-sizing: border-box; background-color: #d0d0d0; }
+.vip-top .top-info .jdt2{ width:100%; height:50rpx; line-height:50rpx; padding:0 10rpx; box-sizing: border-box; background-image: -webkit-linear-gradient(top left, #eb4473, #f44545); }

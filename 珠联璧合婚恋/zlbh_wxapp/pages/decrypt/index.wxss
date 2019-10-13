@@ -1,0 +1,8 @@
+page { background: #fff; }
+.container{ width:100%; height:100vh; display: -webkit-flex; display: flex; -webkit-flex-wrap:wrap; flex-wrap:wrap; -webkit-align-items:flex-start; align-items:flex-start; -webkit-justify-content:center; justify-content:center; }
+.decrypt-main{ display: -webkit-flex; display: flex; -webkit-flex-direction:column; flex-direction:column; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center; text-align: center; margin-top:140rpx; }
+.decrypt-main .decrypt-image{ width: 554rpx; height: 216rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/authorize.png?1'); background-size: 554rpx 216rpx; }
+.decrypt-main .decrypt-text{ font-size:26rpx; margin: 140rpx 0 32rpx; }
+.decrypt-btn-wrap{ width:100%; box-sizing: border-box; }
+.decrypt-btn-wrap .decrypt-btn{ height: 88rpx; line-height: 88rpx; margin-top: 30rpx; padding: 0 30rpx; background-color: #ff677d; border: 0 none; border-radius: 44rpx; color: #fff; font-size: 32rpx; text-align: center; overflow: hidden; margin:20rpx 0; }
+.decrypt-btn-wrap .decrypt-btn:after{ display: none; }

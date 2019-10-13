@@ -1,0 +1,34 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <view class="mod-hd">
+      <view class="tit">设置兴趣爱好</view>
+    </view>
+    <view class="mod-bd">
+      <view class="edit_title">选择兴趣爱好关键词<em>(最多选择{{chooseTotalCount}}个标签)</em></view>
+      <view class="edit_index">
+        <view class="edit_box">
+          <block wx:for="{{enjoy}}" wx:key="{{itm}}" wx:for-item="itm">
+            <view class="item edit-enjoy">
+              <view class="edit_name">
+                <p class="title">{{itm.name}}</p>
+              </view>
+            <view class="edit_content">
+              <view class="item-list">
+                <block wx:for="{{itm.l2}}" wx:key="{{item}}" wx:for-item="item">
+                  <view class="li">
+                    <view bindtap="changeTab" class="ui-label {{item.checked?'active':''}}" data-checked="{{item.checked}}" 
+                    data-fid="{{itm.id+','+item.id}}" data-name="{{item.name}}">{{item.name}}</view>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button bindtap="getEnjoyData" class="weui-btn">保存</button>
+    </view>
+  </view>
+</view>

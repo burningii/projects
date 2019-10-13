@@ -1,0 +1,27 @@
+<view class="container">
+
+  <view class="page-bd">
+    <view bindtap="recording" class="animate record-btn">
+      <view class="circle w1"></view>
+      <view class="circle w2"></view>
+      <view class="circle w3"></view>
+      <span class="w0"></span>
+    </view>
+    <view class="record-txt" bindtap="recording" style='color:red' wx:if="{{no == 0}}">开始录音</view>
+    <view class="record-txt" bindtap="voicetouchend" style='color:red' wx:if="{{no == 1}}">结束录音</view>
+  </view>
+  <view class="page-hd">
+    <view class="tips">设置我的音频</view>
+  </view>
+  <view class="page-bd">
+    <view class="record-end__box">
+      <view bindtap="recordReset" class="reset-btn s-btn" wx:if="{{voiceStatus}}">重录</view>
+      <view bindtap="recordSave" class="save-btn" wx:if="{{voiceStatus}}">提交</view>
+      <view bindtap="audioPlay" class="test-btn s-btn {{playType=='停止'?'stop-btn':''}}" wx:if="{{voiceStatus}}">
+        {{playType=='停止'?playTimes+'"':'试听'}}
+      </view>
+    </view>
+  </view>
+
+
+</view>

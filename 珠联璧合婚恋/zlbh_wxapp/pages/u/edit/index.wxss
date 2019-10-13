@@ -1,0 +1,77 @@
+page { font-size: 28rpx; background-color: #fff; }
+.personal-bg_cover{ width: 100%; padding-top:68%; position: relative; }
+.personal-bg_cover .share-btn{ border:0; margin:0; padding:0; width:72rpx; height:72rpx; background: url('http://wq.xinxao.com/addons/ss48_match/images/icon_share.png?2') no-repeat; background-size: 72rpx 72rpx; position: absolute; top: 10rpx; right: 10rpx; z-index:1; }
+.personal-bg_cover .share-btn:before,.personal-bg_cover .share-btn:after{display: none;}
+.personal-bg_cover .img { display: inline-block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: url('http://wq.xinxao.com/addons/ss48_match/images/profile_default_bg.png?1'); background-repeat: no-repeat; background-position:50% 50%; background-size: cover; overflow: hidden; }
+.personal-cover-mask { width: 100%; height: 100%; top: 0px; left: 0px; position: absolute; background: url('http://wq.xinxao.com/addons/ss48_match/images/personal-info-bg.png?1') repeat-x bottom; background-size: 100% auto; }
+.personal-bg_cover .dr{ position:absolute;right:0;top:138rpx;z-index:1;display:inline-block;padding:0 20rpx 0 30rpx;height:64rpx;line-height:64rpx;font-size:30rpx;color:#fff;background:rgba(0, 0, 0, .3);border-radius: 32rpx;border-top-right-radius: 0;border-bottom-right-radius: 0;}
+.personal-item{ position: absolute; left: 0; top: 0; width: 100%; height:100%; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.personal-qlogo .vip-head{ position: absolute; top:-10rpx; left:50%; margin-left:-57rpx; width:120rpx; height:72rpx; background-image: url('http://wq.xinxao.com/addons/ss48_match/images/hg.png?1'); background-repeat: no-repeat; background-size: 120rpx 72rpx; z-index:1; }
+.personal-qlogo{margin-top:-36rpx;}
+.personal-qlogo-content{width:192rpx;height:212rpx;position: relative;overflow: hidden;margin:0 auto;}
+.personal-qlogo-content .item-cover{ border-radius: 5000px; padding:0; width:180rpx; height:180rpx; background-position: 0 0; background-color: #f0f0f0; background-repeat: no-repeat; background-size: cover; margin:26rpx auto 0; overflow: hidden; position: relative; }
+.personal-qlogo-content .icon{width:192rpx;height:212rpx;background: url('http://wq.xinxao.com/addons/ss48_match/images/bg_live_video_gift_score_rank_0.png?1') no-repeat;position: absolute; top: 0; left: 0; background-repeat: no-repeat; background-size: 192rpx 232rpx;}
+.personal-qlogo-content .tips{ position: absolute; left: 0; bottom: 0; width:100%; height: 40rpx; line-height: 36rpx; background: rgba(0, 0, 0, .5); font-size:22rpx; color:#dfdfdf; text-align: center; }
+.personal-info{width:100%;margin-top: 8rpx;text-align: center;}
+.personal-info-name{color:#fff;font-size:32rpx;}
+.personal-info-name{overflow: hidden;margin:5rpx 0 0;}
+.personal-info-name wx-span{ display: inline-block; width: 36rpx; height: 36rpx; background-repeat: no-repeat; background-size: 36rpx 36rpx; vertical-align: top; position: relative; margin-left:10rpx; top:6rpx; }
+.personal-info-name .zxhy{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/zxhy_icon.png?1'); background-size: 36rpx 36rpx; }
+.personal-info-name .auth{ background-image: url('http://wq.xinxao.com/addons/ss48_match/images/icon_identification.png?2'); background-size: 36rpx 36rpx; }
+.personal-info-progress{color:#fff;}
+.personal-info-wf .btn{display:inline-block;color:#fff;height:50rpx;border-radius:30rpx;line-height:50rpx;width:160rpx;border:1px solid #fff}
+.personal-info-wf .btn:before{content:'';display:inline-block;vertical-align: top;margin-top:10rpx;margin-right:10rpx;}
+.personal-info-wf .btn.message{margin-right:30rpx;}
+.personal-info-wf .btn.message:before{width:33rpx;height:34rpx;background:url(http://wq.xinxao.com/addons/ss48_match/images/msg-btn.png?1) no-repeat;background-size: 33rpx 34rpx;}
+.personal-info-wf .like:before{width:30rpx;height:26rpx;margin-top:14rpx;background:url(http://wq.xinxao.com/addons/ss48_match/images/xin-btn.png?2) no-repeat;background-size: 30rpx 26rpx;}
+.personal-info-wf .like.on{border:1px solid #ff4b5a;color:#ff4b5a;}
+.personal-info-wf .like.on:before{width:32rpx;height:26rpx;margin-top:14rpx;background:url(http://wq.xinxao.com/addons/ss48_match/images/xin2-btn.png?1) no-repeat;background-size: 30rpx 26rpx;}
+.personal-info-contact{margin:30rpx 40rpx 0;}
+.personal-info-contact .btn{display:inline-block;color:#333;border-radius:30rpx;line-height:1.5;padding:8rpx 30rpx;box-sizing: border-box;background:#fff;border:1px solid transparent;}
+.personal-info-contact .btn:before{content:'';display:inline-block;width:32rpx;height:32rpx;background-image: url('http://wq.xinxao.com/addons/ss48_match/images/ic_user_center_edit_text.png?1');background-repeat: no-repeat;background-position: 0 0;background-size: 32rpx 32rpx;vertical-align: middle;margin-right:10rpx;position: relative;top:0;}
+.personal-info-contact .btn.showcontact{border:1px solid #ff4b5a;background: #ff4b5a;color:#fff;}
+.edit_index{overflow: hidden;background-color: #fff;padding:30rpx;padding-top:0;position: relative;}
+.edit_box .item{position: relative;margin-top:20px;}
+.edit_box .item:before { content: ""; display: block; position: absolute; left: 12px; top: -50%; bottom: -50%; width: 1px; background: #ddd; -webkit-transform: scale(0.5); transform: scale(0.5); }
+.edit_box .edit_name { margin: 0 0 10px; overflow: hidden; position: relative; display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; line-height:45px; padding-bottom:10px; }
+.edit_box .edit_name .title{ margin-left: 30px; font-size:18px; height:45px; }
+.edit_btn{font-size:30rpx;}
+.edit_box .edit_name:before { content: ""; width: 25px; height: 25px; display: block; position: absolute; top: 0; left: 0; background-color: #fff; background-repeat: no-repeat; background-size: 25px 25px; padding: 10px 0 20px; background-position: 0 10px; }
+.edit_box .item.edit-enjoy .edit_name:before {background-image: url(http://wq.xinxao.com/addons/ss48_match/images/profile_introduce.png?1);}
+.edit_box .item.edit-zeou .edit_name:before {background-image: url(http://wq.xinxao.com/addons/ss48_match/images/profile_mate_criteria.png?1);}
+.edit_box .item.edit-info .edit_name:before {background-image: url(http://wq.xinxao.com/addons/ss48_match/images/profile_basics_info.png?1);}
+.edit_box .edit_content { margin-left: 32px; }
+.empty-text{ color:#f2394a; text-align: center; padding:30rpx 0 40rpx; }
+.info_item{ position: relative; line-height: 36px; width: 100%; margin: auto; overflow: hidden; color:#666; }
+.info_item wx-span:first-child { position: relative; display: inline-block; width: 110px; z-index: 9; }
+.info_item wx-span:nth-child(2) { position: absolute; left: 0; top: 0; display: inline-block; text-align: left; color: #000; width: 100%; margin-left: 120px; }
+.bg-deco { position: absolute; width: 100%; height: 38px; bottom: 0; left: 0; display: inline-block; overflow: hidden; z-index: 2; }
+.bg-deco:after { content: ''; display: inline-block; position: absolute; width: 130px; height: 100px; border-radius: 100px; background-color: #fff; left: 50%; margin-left: -65px; -webkit-transform: scale(6); -webkit-transform-origin: top; top: 0; }
+.item-list{width:100%;padding:0 0 5px 0;overflow: hidden;}
+.item-list .li{float: left;padding-right:10px;padding-bottom:10px;}
+.item-list .li .ui-label{display: block;text-align: center;font-size:28rpx;color:#666;height: 54rpx;line-height:54rpx;border-radius:54rpx;padding:0 20rpx;}
+.item-list .li .ui-label:before{border-radius:54rpx;}
+.item-list .li .ui-label.active:before{border:1px solid #ff677d;}
+.item-list .li .ui-label.active{color:#fff;}
+.item-list .li .ui-label.active{background-color: #ff677d;}
+.mod-box{position: relative;}
+.mod-box:not(:first-of-type):before{ content: ''; position: absolute; left: 0; right: 0; top:0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.mod-box .mod-tit{padding:40rpx 30rpx 0 30rpx;display: -webkit-flex;display: flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;line-height:32rpx;}
+.mod-box .mod-tit .tit{font-size:32rpx;color:#333;}
+.mod-box .mod-tit .tit wx-i{color:#ff677d;}
+.mod-box .mod-tit .edit_btn{color:#ff677d;}
+.mod-box .mod-tit .edit_btn .icon{width:32rpx;height:32rpx;background: url('http://wq.xinxao.com/addons/ss48_match/images/hobby_icon_edit.png?1') no-repeat;background-size: 32rpx 32rpx;margin-right:8rpx;position: relative;top:-2rpx;}
+.mod-box .mod-bd{padding:30rpx;padding-right:10rpx;}
+.photoview{ display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; margin:0 0 20rpx; }
+.photolist{ -webkit-flex-grow:1; flex-grow:1; -webkit-flex-shrink:0; flex-shrink:0; -webkit-flex-basis:auto; flex-basis:auto; -webkit-flex:1; flex:1; display: -webkit-flex; display: flex; height:124rpx; }
+.photolist .photo-item{ width:124rpx; height:124rpx; position: relative; border-radius:6rpx; }
+.photolist .photo-item+.photo-item{margin-left:12rpx;}
+.photolist .photo-item .item-cover{border-radius:6rpx;}
+.uploader{ border:1px dashed #f7a7c0; position: relative; }
+.uploader:before,.uploader:after{ content: " "; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #f7a7c0; }
+.uploader:before{ width:2rpx; height:40rpx; }
+.uploader:after{ width:40rpx; height:2rpx; }
+.voice{display: -webkit-flex;display: flex;font-size:28rpx;color:#aaa;-webkit-align-items: center;align-items: center;}
+.voice-btn{width:300rpx;height:74rpx;background: url('http://wq.xinxao.com/addons/ss48_match/images/ic_user_skill_voice.png?1') no-repeat;background-size: 300rpx 74rpx;position: relative;}
+.voice-btn .times{font-size:32rpx;color:#ff574d;position: absolute;top:28rpx;left:32rpx;line-height:32rpx;}
+.voice-txt{margin:14rpx 0 0 20rpx;}

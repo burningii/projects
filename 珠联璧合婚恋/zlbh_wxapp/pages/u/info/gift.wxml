@@ -1,0 +1,89 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==0?'weui-bar__item_on':''}}" data-id="0">
+          <view class="weui-navbar__title">收到的礼物</view>
+        </view>
+        <view bindtap="onTabClick" class="weui-navbar__item {{activeIndex==1?'weui-bar__item_on':''}}" data-id="1">
+          <view class="weui-navbar__title">发出的礼物</view>
+        </view>
+      </view>
+      <view class="weui-tab__panel">
+        <block wx:if="{{activeIndex == 0}}">
+          <view class="weui-tab__content">
+            <block wx:if="undefined">
+              <view class="viewme">
+                <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+                  <block wx:if="undefined">
+                    <view class="li">
+                      <navigator class="item" url="/pages/index/member?id={{item.uid}}">
+                        <view class="thumb">
+                          <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                        </view>
+                        <view class="item-info">
+                          <view class="title">
+                            <span class="title-name">{{item.nickname}}</span>
+                          </view>
+                          <view class="inner gray ui-nowrap">
+                            赠送<em>{{item.price}}金币</em>的{{item.giftName}}
+                          </view>
+                          <view class="mate ui-nowrap">
+                            {{item.giftDate}}
+                          </view>
+                        </view>
+                        <span class="gift-icon" style="background-image:url('{{item.giftIcon}}');"></span>
+                      </navigator>
+                    </view>
+                  </block>
+                </block>
+                <block wx:if="{{list == null}}">
+                  <view class="mod-blank">
+                    <image class="img" src="https://wx-img.jhrx.cn/love/img/my/interaction_gift_empty_image.png"></image>
+                    <view class="blank-info">暂时还没有收到过礼物~</view>
+                  </view>
+                </block>
+              </view>
+            </block>
+           </view>
+          </block>
+          <block wx:if="{{activeIndex == 1}}">
+            <view class="weui-tab__content">
+              <block wx:if="undefined">
+                <view class="viewme">
+                  <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+                    <block wx:if="undefined">
+                      <view class="li">
+                        <navigator class="item" url="/pages/index/member?id={{item.uid}}">
+                          <view class="thumb">
+                            <span class="item-cover" style="background-image:url('{{item.avatar}}')"></span>
+                          </view>
+                        <view class="item-info">
+                          <view class="title">
+                            <span class="title-name">{{item.nickname}}</span>
+                          </view>
+                          <view class="inner gray ui-nowrap">
+                            赠送 {{sexDataType[item.gender]}}<em>{{item.price}}金币</em>的{{item.giftName}}
+                          </view>
+                          <view class="mate ui-nowrap">{{item.giftDate}}</view>
+                        </view>
+                        <span class="gift-icon" 
+                        style="background-image:url('{{item.giftIcon}}');"></span>
+                      </navigator>
+                    </view>
+                  </block>
+                </block>
+              <block wx:if="{{list == null}}">
+                <view class="mod-blank">
+                  <image class="img" src="https://wx-img.jhrx.cn/love/img/my/interaction_gift_empty_image.png"></image>
+                    <view class="blank-info">还未赠送过礼物~</view>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,2 @@
+<import  src="../../wxParse/wxParse.wxml"  />
+<view class="container"><view class="main-bd"><block wx:if="undefined"><view class="ui-panel pay_details"><view class="ui-panel-hd g-tit">{{pro.instructions[0].title}}</view><view class="ui-panel-bd"><view class="content"><template is="wxParse" /></view></view></view></block><block wx:if="undefined"><view class="ui-panel pay_details"><view class="ui-panel-hd g-tit">{{pro.instructions[1].title}}</view><view class="ui-panel-bd"><view class="content"><template is="wxParse" /></view></view></view></block></view></view>

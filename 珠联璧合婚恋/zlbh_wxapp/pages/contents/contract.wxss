@@ -1,0 +1,2 @@
+.content{ color:#696969; font-size:28rpx; padding:30rpx; line-height:48rpx; }
+.content wx-image{ display: block; width: auto; max-width: 100%!important; max-height: 100%!important; margin: 10rpx auto; }

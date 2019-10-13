@@ -1,0 +1,21 @@
+<!-- 1551726713@qq.com  仅供学习交流，切勿用于商业用途，否则后果自负   time:2018-10-30 19:53:38 -->
+<view class="contains">
+	<view class="cose-chat">
+		<block wx:for="{{list}}" wx:key="clist" wx:for-item="chat" wx:for-index="cdx" >
+			<navigator url="chat?uid={{chat.uid}}&card_id={{chat.card_id}}&t_uid={{chat.t_uid}}&t_card_id={{chat.t_card_id}}&from=list">
+				<view class="cose-act">
+					<view class="act-left-info">
+						<image class="act-left-img" src="{{chat.avatar}}"></image>
+					</view>
+					<view class="act-centre">
+						<view class="act-centre-top">
+							<view class="act-centre-name">{{chat.name}}</view>
+							<view class="act-right">{{chat.time_str}}</view>
+						</view>
+						<view class="act-centre-say">{{chat.msg=='::sayHi::'?'Ta向您打了招呼':chat.msg}}</view>
+					</view>
+				</view>
+			</navigator>
+		</block>
+	</view>
+</view>

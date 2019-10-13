@@ -1,0 +1,135 @@
+page image {
+    width: 100%;
+}
+.adver {
+    width: 100%;
+    height: 300rpx;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+}
+
+page .wx-swiper-dots.wx-swiper-dots-horizontal {
+    bottom: 0;
+}
+
+.top-title {
+    width: 600rpx;
+    margin: 40rpx auto;
+}
+
+.top-title .title {
+    line-height: 70rpx;
+    border-radius: 6rpx;
+}
+
+.top-title .title:first-child {
+    border-radius: 6rpx;
+}
+
+.top-title .title:last-child {
+    border-radius: 6rpx;
+}
+
+.screen-bar {
+    background: #fff;
+    line-height: 88rpx;
+}
+
+.label-box {
+    padding: 0 20rpx;
+    min-width: 50%;
+}
+
+.label {
+    padding: 6rpx 8rpx;
+}
+
+.label:last-child {
+    border-right: none;
+}
+
+.people .list {
+    padding: 30rpx;
+}
+
+.people .list .title {
+    padding-bottom: 30rpx;
+}
+
+.people .list-detail {
+    line-height: 48rpx;
+    word-break: break-all;
+}
+
+.list .yue {
+    padding: 0 40rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-radius: 6rpx;
+}
+
+.qi-shi {
+    line-height: 1.5;
+    padding: 30rpx;
+}
+
+.car .list .bottom {
+    line-height: 92rpx;
+    border-top: 4rpx dashed #fff;
+}
+
+.aside-float {
+    position: fixed;
+    right: 20rpx;
+    bottom: 40rpx;
+    width: 92rpx;
+}
+
+.float-btn {
+    height: 92rpx;
+    line-height: 92rpx;
+    border-radius: 50%;
+    font-size: 24px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.float-btn:nth-child(n+2) {
+    margin-top: 10rpx;
+}
+
+.btn-icon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.company {
+    background: #fff;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+.wxParse-p {
+    margin: 30rpx;
+}
+
+.wxParse-img {
+}
+
+.ui-cells {
+    background: #fff;
+}
+
+.ui-cell {
+    padding: 20rpx 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ui-cell.gridXb:last-child::before {
+    display: none;
+}

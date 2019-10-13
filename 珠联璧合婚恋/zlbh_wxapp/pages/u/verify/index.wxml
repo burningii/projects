@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="mod-content">
+    <view class="mod-auth">
+      <view class="sec-title">
+        <i class="auth-ico"></i>实名认证
+        <block wx:if="{{user.isauth == 2}}">
+          <span class="hd-userid">(认证成功)</span>
+        </block>
+        <block wx:if="{{user.isauth == 1}}">
+          <span class="hd-userid">(待审核)</span>
+        </block>
+        <block wx:if="{{user.isauth == 3}}">
+          <span class="hd-userid">(认证失败)</span>
+        </block>
+      </view>
+      <view class="sec-info">
+        <view class="item">姓名：{{user.uname}}</view>
+        <view class="item">身份证号：{{user.cert}}</view>
+        <view class="item">绑定手机：{{user.mobile}}</view>
+        <view class="item"><span class="txt">认证照片：</span>
+        <image mode="widthFix" src="{{user.verify_photo}}"></image>
+      </view>
+        <block wx:if="{{user.isauth == 3}}">
+          <view class="item warn">{{user.fail_reason}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  
+    <view class="weui-btn-area">
+      <button bindtap="resubmit" class="weui-btn" type="primary">重新提交资料</button>
+    </view>
+
+</view>

@@ -1,0 +1,33 @@
+<import  src="../../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="container">
+    <view class="auth_tit">
+      对一下信息进行验证，请确保信息真实有效
+    </view>
+    <view class="auth_con">
+      <view class="weui-cells__title">
+        请确认个人信息真实性<em>（如信息有误请返回修改）</em>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">真实姓名</view>
+          <view class="weui-cell__ft">{{user.uname}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">身份证号</view>
+          <view class="weui-cell__ft">
+            {{user.cert}}
+          </view>
+        </view>
+        <view class="weui-cell" style="height:auto;padding:15px;">
+          <view class="weui-cell__bd">形象照</view>
+          <view class="weui-cell__ft">
+            <view class="iden-img">
+              <image class="img" mode="widthFix" src="{{user.verify_photo}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button bindtap="getBuy" class="weui-btn" type="primary">提交</button>
+        </view><view class="weui-tips gray">\n        信息正确提交\n</view></view></view>

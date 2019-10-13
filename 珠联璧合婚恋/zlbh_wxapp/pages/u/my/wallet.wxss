@@ -1,0 +1,21 @@
+.wallet-tit{ font-size:28rpx; height: 72rpx; line-height:72rpx; padding:0 30rpx; color:#999; }
+.my-wallet .item{ display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; position: relative; padding: 40rpx 30rpx 40rpx 40rpx; background-color: #fff; }
+.my-wallet .item:before{ content: ''; position: absolute; left: 0; right: 0; bottom:0; background: #eee; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.my-wallet .item:last-of-type{ margin-bottom:0; }
+.gold-item{ background-repeat: no-repeat; background-size: 100% 100%; }
+.vip-item{ background-repeat: no-repeat; background-size: 100% 100%; }
+.my-wallet .item .ui-list-thumb{ width:80rpx; height:80rpx; margin-right:15rpx; }
+.my-wallet .item .ui-list-thumb .icon{ width:80rpx; height:80rpx; background-repeat: no-repeat; background-size: 80rpx 80rpx; }
+.ui-list-info{ -webkit-flex: 1; flex: 1; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-justify-content: center; justify-content: center; padding-right:192rpx; }
+.ui-list-info .tit{ font-size:28rpx;color:#666; }
+.ui-list-info .count{font-size:28rpx;color:#1d1d1d;margin-top:10rpx;}
+.ui-list-info .count wx-em{margin-top:10rpx;line-height:1;color:#1d1d1d;font-size:48rpx;font-family: Arial, Helvetica, sans-serif;}
+.ui-list-info .count.lightcolor{color:#ff677d}
+.ui-btn-wrap{ position: absolute; right:30rpx; top:50%; margin-top:-45rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; }
+.ui-btn-s {position: relative; text-align: center; background-color: #fff; vertical-align: top; color: #ff6262; box-sizing: border-box; background-clip: padding-box; border: 1px solid #ff5d5d; }
+.ui-btn-s { width: 60px; height: 30px; line-height: 30px; font-size: 14px; border-radius: 4rpx; padding: 0; white-space: nowrap; }
+.weui-btn-area{ width:100%; padding:30rpx; margin:0; box-sizing: border-box; background-color: #fff; }
+.weui-btn{ width:80%; margin:0 auto; background-image: -webkit-linear-gradient(top left, #eb4473, #f44545); height:88rpx; line-height:88rpx; border-radius:44rpx; }
+wx-button:after{ display: none; }
+wx-button,wx-button[type="primary"] { color:#FFFFFF; background-color:#ff677d; }
+.button-hover,.button-hover[type="primary"] { color: #FFFFFF; background-color: #e96175; }

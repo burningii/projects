@@ -1,0 +1,21 @@
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" />
+<view class="page-content" style='background:url("{{config.url}}{{config.bg1}}") no-repeat; background-position: 0 -40px;background-size:100% auto;'>
+  <view class="process-box">
+    <view class="process-list">
+      <view class="item">
+        <label class="step-tit">
+          <i></i>步骤一</label>
+        <view class="step-txt">轻触下方“
+          <em>点击复制红娘微信号</em>”得到复制来的红娘微信号</view>
+      </view>
+      <view class="item">
+        <label class="step-tit">
+          <i></i>步骤二</label>
+        <view class="step-txt">添加红娘微信后，发送“
+          <em>红娘牵线</em>”给红娘</view>
+      </view>
+    </view>
+    <view bindtap="copyWechat" class="copy_btn"></view>
+  </view>
+</view>

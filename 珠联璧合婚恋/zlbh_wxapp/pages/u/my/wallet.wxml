@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="wallet-tit">我的钱包</view>
+  <view class="my-wallet">
+    <view class="item gold-item">
+      <view class="ui-list-thumb">
+      <span class="icon" style="background-image:url('http://wx-img.jhrx.cn/love/img/my/wallet_zhenai_coin_icon.png')"></span>
+      </view>
+      <view class="ui-list-info">
+        <view class="tit">金币余额</view>
+        <view class="count"><em>{{user.jbnums}}</em></view></view></view><view class="item gold-item"><view class="ui-list-thumb"><span class="icon" style="background-image:url('http://wx-img.jhrx.cn/love/img/icon_has_followed.png?2')"></span></view><view class="ui-list-info"><view class="tit">钥匙数量</view><view class="count"><em>{{user.imkey}}</em></view></view></view><view class="item vip-item"><view class="ui-list-thumb"><span class="icon" style="background-image:url('http://wx-img.jhrx.cn/love/img/my/wallet_zhenxin_member_icon.png')"></span></view><view class="ui-list-info">
+        <view class="tit">会员</view><block wx:if="{{user.vip == 0}}"><view class="count lightcolor">未开通</view></block>
+        <block wx:if="{{user.vip == 1}}"><span class="count lightcolor">
+        {{user.viptime?user.viptime+'到期':'未开通'}}</span></block></view></view></view><view class="weui-btn-area"><button bindtap="getIospay" class="weui-btn">开通服务</button></view></view>

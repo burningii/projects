@@ -1,0 +1,14 @@
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:if="undefined">
+  <view class="start-wrap">
+    <view class="bg" style="background-image:url('{{config.url}}{{config.startimg}}');"></view>
+    <view class="start-box">
+      <view class="start-btn"> 
+        <button bindtap="bindPage" class="btn-default">开启缘分</button>
+      </view>
+      <navigator class="start-txt" openType="redirectTo" url="/pages/index/index">先逛逛吧
+        <i class="start-txt-ico"></i>
+      </navigator>
+    </view>
+  </view>
+</block>

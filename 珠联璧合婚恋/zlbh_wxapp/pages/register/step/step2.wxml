@@ -1,0 +1,80 @@
+<template is="toast" />
+    <template is="picker" />
+        <template is="picker" />
+            <template is="picker-city" />
+                <view class="container">
+                    <view class="mod-hd">
+                        <view class="tit">择偶标准</view>
+                        <view class="progress step2"></view>
+                    </view>
+                    <view class="mod-bd">
+                    <form bindsubmit="submitForm" reportSubmit="true">
+                        <view class="profile-box">
+                           
+                        
+                          <view class="form-line">
+                      <view class="item {{form.marriageString?'active':''}}">
+                        <picker bindchange="onMarriage" range="{{cate.objectMarriageArr}}" 
+                        value="{{cate.objectMarriageActionIndex||1}}">
+                          <view class="tit">婚姻状况</view>
+                            <view class="select">           
+                              {{form.objectMarriageString ? form.objectMarriageString : '请选择'}}
+                            </view>
+                        </picker>
+                      </view>
+                      <view class="item {{form.childrenString?'active':''}}">
+                          <picker bindchange="onChildren" range="{{cate.objectChildrenArr}}" value="{{cate.childrenActionIndex||1}}">
+                              <view class="tit">有没有小孩</view>
+                              <view class="select">           
+                                {{form.objectChildrenString ? form.objectChildrenString : '请选择'}}
+                              </view>
+                          </picker>
+                      </view>
+                    </view>
+                    <view class="form-line">
+                        <view class="item {{form.occupationString?'active':''}}">
+                            <picker bindchange="onOccupation" range="{{cate.occupationArr}}" 
+                              value="{{cate.occupationActionIndex||0}}">
+                                <view class="tit">职业</view>
+                                <view class="select">            
+                                   {{form.occupationString ? form.occupationString : '请选择'}}
+                                </view>
+                            </picker>
+                        </view>
+                        <view class="item {{form.wantChildrenString ?'active':''}}">
+                            <picker bindchange="onWantchildren" range="{{cate.objectWantchildrenArr}}" 
+                            value="{{cate.wantchildrenActionIndex||0}}">
+                                <view class="tit">是否想要小孩</view>
+                                <view class="select">           
+                                   {{form.objectWantChildrenString ? form.objectWantChildrenString : '请选择'}}
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                      <view class="form-line">
+                          <view class="item {{form.objectIsSmokingString?'active':''}}">
+                            <picker bindchange="onSmoking" range="{{cate.smokingArr}}" value="{{cate.smokingActionIndex||0}}">
+                                <view class="tit">是否吸烟</view>
+                                <view class="select"> 
+                                 
+                                   {{form.objectIsSmokingString ? form.objectIsSmokingString : '请选择'}}
+                                </view>
+                            </picker>
+                          </view>
+                          <view class="item {{form.objectIsDrinkingString?'active':''}}">
+                              <picker bindchange="onDrinking" range="{{cate.drinkingArr}}" 
+                              value="{{cate.drinkingActionIndex||0}}">
+                                <view class="tit">是否喝酒</view>
+                                  <view class="select">
+                                    {{form.objectIsDrinkingString ? form.objectIsDrinkingString : '请选择'}}
+                                  </view>
+                              </picker>
+                          </view>
+                      </view>
+                  </view>
+                  <view class="weui-btn-area">
+                      <button class="weui-btn" formType="submit" type="primary">下一步(2/3)</button>
+                  </view>
+              </form>
+            </view>
+        </view>

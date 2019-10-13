@@ -1,0 +1,82 @@
+<import  src="../common/template"  />
+<import  src="../../wxParse/wxParse.wxml"  />
+<template is="toast" />
+
+    <view class="container">
+      <view class="ui-header">
+        <view class="thumb">
+          <span class="img" style="background-image:url('{{config.url}}{{act.cover_img}}');"></span>
+        </view>
+        <view class="act_title">
+          <view class="tit">{{act.title}}</view>
+          <view class="label-wrap">
+            <view class="label" wx:if="{{iso == 0}}">{{act.price<=0?'免费':'￥'+act.price}}</view>
+            <view class="label vip">
+              <text wx:if="{{iso == 0}}">VIP {{act.vip_price<=0?'免费':'￥'+act.vip_price}} </text>
+              {{act.act_nums>0?'剩余'+act.act_nums+'次机会':''}}
+            </view>
+          </view>
+        </view>
+        <view bindtap="backhome" class="back-home">返回首页</view>
+      </view>
+      <view class="ui-panel act_info">
+        <view class="sign_content">
+          <view class="sign_count">
+            <em>{{act.nums}}</em>
+            <view class="txt">人报名</view>
+          </view>
+          <block wx:if="{{act.users}}">
+            <navigator class="sign_userlist" hoverClass="none" url="/pages/activity/userlist?id={{act.id}}">
+              <block wx:for="{{act.users}}" wx:key="{{key}}" wx:for-item="item">
+                <view class="thumb">
+                  <span class="img" 
+                  style="background-image:url('{{item.avatar}}');"></span>
+                </view>
+              </block>
+          </navigator>
+        </block>
+      </view>
+      <view class="act_detail">
+        <view class="item_wrap">
+          <view class="item">
+            <i class="icon date"></i>
+              活动时间：{{act.starttime1}} -  {{act.endtime1}}
+          </view>
+          <view class="item" data-title="{{act.address}}">
+            <i class="icon address"></i>
+            活动地点：{{act.address}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="ui-panel">
+   
+        <view class="ui-panel-hd">活动详情</view>
+     
+      
+      <view class="ui-info act_content">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+      </view>
+    </view>
+    <block wx:if="{{act.state == 2}}" >
+      <view class="sign_box_wrap is_apply">
+        <i class="sign_icon"></i>活动已结束
+      </view>
+    </block>
+     
+        <block wx:if="{{act.join == 0}}">
+          <view bindtap="getSignup" class="sign_box_wrap">
+            <i class="sign_icon"></i>我要报名
+          </view>
+        </block>
+        <block wx:if="{{act.join == 1}}">
+          <view class="sign_box_wrap is_apply">
+            <i class="sign_icon"></i>已报名
+          </view>
+        </block>
+     
+   
+    <template is="button" />
+  </view>
+
+<template is="kefu" data="{{showKefuStatus}}"/>

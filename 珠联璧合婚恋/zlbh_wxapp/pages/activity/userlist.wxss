@@ -1,0 +1,7 @@
+.user_list .item{ display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; padding: 0 20rpx 0 30rpx; }
+.user_list .item .avatar{ width: 72rpx; height: 72rpx; margin: 12px 12px 12px 0; background-size: cover; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAA8FBMV…kNGTH+WBmV3nc/fdi+b+9m1S2VuqvZM6lZlmVZlmVZvwEAnS9LHbI74gAAAABJRU5ErkJggg==); border-radius: 5000px; overflow: hidden; }
+.user_list .item .avatar .img{ display: block; width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover; position: relative; }
+.user_list .item .label_wrap{ height:72rpx; padding: 12px 0; -webkit-flex:1; flex:1; -webkit-flex-grow: 1; flex-grow: 1; -webkit-flex-shrink: 0; flex-shrink: 0; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; position: relative; }
+.user_list .item .label_wrap:after{ content: ''; position: absolute; left: 0; bottom: 0; background: #ddd; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+.user_list .item .label_wrap .nick_name{ color:#222; font-size:32rpx; }
+.user_list .item .label_wrap .add_time{ color:#666 }

@@ -1,0 +1,226 @@
+<import  src="../../../components/toast/toast.wxml"  /> 
+<template is="toast" />
+    <template is="actionsheet" />
+    <block wx:if="undefined">
+    <view class="container">
+      <view class="page-main">
+        <view class="personal-bg_cover">
+          <button class="share-btn" openType="share"></button>
+          <span class="img" style="background-image:url('{{bg}}/bg_user_center_default.png?2')"></span>
+          <view class="personal-item">
+            <view class="personal-qlogo">
+              <view bindtap="uploadAvatar" class="personal-qlogo-content">
+                <span class="item-cover" style="background-image:url('{{avatar}}')">
+                <block wx:if="{{user.isauth == 0}}">
+                  <span class="tips">未审核</span>
+                </block>
+                <block wx:if="{{user.isauth == 1}}">
+                  <span class="tips">待审核</span>
+                </block>
+                 <block wx:if="{{user.isauth == 2}}">
+                  <span class="tips">已审核</span>
+                </block>
+              
+                  <span class="tips">上传头像</span>
+               
+              </span>
+            </view>
+          </view>
+          <view class="personal-info">
+            <view class="personal-info-name">
+              {{user.nickname||'未填写'}}
+              <block wx:if="{{user.zxhy == 1}}">
+                <span class="zxhy"></span>
+              </block>
+              <block wx:if="{{user.isauth == 2}}">
+                <span class="auth"></span>
+              </block>
+            </view>
+            <view class="personal-info-progress">
+              资料完善度：{{user.percent}}%
+            </view>
+            <view class="personal-info-contact">
+              <navigator class="btn contact" hoverClass="none" url="/pages/u/settings/index">编辑联系方式</navigator>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="mod-box">
+        <navigator class="mod-tit" hoverClass="none" url="/pages/u/edit/edit-record">
+          <em class="tit">语音介绍<i></i></em>
+          <span class="edit_btn">
+            <i class="icon"></i>上传
+          </span>
+        </navigator>
+        <view class="mod-bd">
+          <block wx:if="{{user.voice_times !=''}}" >
+            <view class="voice">
+              <view bindtap="voicePlay" class="voice-btn">
+                <span class="times">{{user.voice_times}}"
+              </span>
+            </view>
+            <view class="voice-txt">点击试听您的语音</view>
+          </view>
+        </block>
+        <block wx:else>
+        <navigator class="edit_content" hoverClass="none" url="/pages/u/edit/edit-record">
+          <view class="empty-text">哪怕一句简单的介绍，也能让成功率提高到80%</view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="mod-box">
+      <navigator class="mod-tit" hoverClass="none" url="/pages/u/edit/edit-photo">
+        <em class="tit">相册</em>
+        <span class="edit_btn">
+          <i class="icon"></i>上传
+        </span>
+      </navigator>
+      <view class="mod-bd">
+        <navigator class="photoview" hoverClass="none" url="/pages/u/edit/edit-photo">
+          <view class="photolist">
+            <view class="photo-item uploader"></view>
+            <block wx:for="{{user.photolist}}" wx:key="{{item}}" wx:for-item="item" >
+              <view class="photo-item" wx:if="{{item != ''}}">
+                <span class="item-cover" 
+                style="background-image:url('{{item}}')"></span>
+              </view>
+            </block>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="mod-box">
+        <view bindtap="onEditenjoy" class="mod-tit">
+          <em class="tit">兴趣爱好</em>
+          <span class="edit_btn">
+            <i class="icon"></i>编辑</span>
+        </view>
+        <view bindtap="onEditenjoy" class="mod-bd">
+          <block wx:if="{{user.f_text.length == 0}}">
+            <view class="edit_content">
+              <view class="empty-text">添加兴趣爱好标签，找到相同爱好的Ta</view>
+            </view>
+          </block>
+          <block wx:if="{{user.f_text.length > 0}}">
+            <view class="edit_content item-list">
+              <block wx:for="{{user.f_text}}" wx:key="{{index}}" wx:for-item="item">
+                <view class="li">
+                  <view class="ui-label">{{item}}</view>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="mod-box">
+        <navigator class="mod-tit" hoverClass="none" url="/pages/u/edit/edit-info?t=1">
+          <em class="tit">择偶标准</em>
+          <span class="edit_btn">
+            <i class="icon"></i>编辑
+          </span>
+        </navigator>
+        <view class="mod-bd">
+          <view class="edit_content">
+            <view class="info_item">
+              <span>年龄</span>
+              <span>{{user.year+'岁'||'23岁以上'}}</span>
+            </view>
+            <view class="info_item">
+              <span>身高</span>
+              <span>{{user.heightString||'未填写'}}</span>
+            </view>
+            <view class="info_item">
+              <span>月收入</span>
+              <span>{{user.salaryString||'不限'}}</span>
+            </view>
+            <view class="info_item">
+              <span>学历</span>
+              <span>{{user.educationString||'不限'}}</span>
+            </view>
+            <view class="info_item">
+              <span>婚姻状况</span>
+              <span>{{user.marriageString||'不限'}}</span>
+            </view>
+            </view>
+          </view>
+        </view>
+        <view class="mod-box">
+          <navigator class="mod-tit" hoverClass="none" url="/pages/u/edit/edit-info?t=2">
+            <em class="tit">基本资料</em>
+            <span class="edit_btn">
+              <i class="icon"></i>编辑
+            </span>
+          </navigator>
+          <view class="mod-bd">
+            <view class="edit_content">
+              <view class="info_item">
+                <span>昵称</span>
+                <span>{{user.nickname||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>性别</span>
+                <span>{{user.gender == 1 ? '男' : '女'}}</span>
+              </view>
+              <view class="info_item">
+                <span>生日</span>
+                <span>{{user.birth||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>身高</span>
+                <span>{{user.heightString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>月收入</span>
+                <span>{{user.salaryString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>工作地区</span>
+                <span>{{user.workCityString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>学历</span>
+                <span>{{user.educationString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>婚姻状况</span>
+                <span>{{user.marriageString ||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>宗教信仰</span>
+                <span>{{user.xinyang ||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>有没有小孩</span>
+                <span>{{user.childrenString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>是否想要小孩</span>
+                <span>{{user.wantChildrenString||'未填写'}}</span>
+              </view>
+               <view class="info_item">
+                <span>是否吸烟</span>
+                <span>{{user.objectIsSmokingString||'未填写'}}</span>
+              </view>
+               <view class="info_item">
+                <span>是否喝酒</span>
+                <span>{{user.objectIsDrinkingString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>职业</span>
+                <span>{{user.occupationString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>买车情况</span>
+                <span>{{user.vehicleString||'未填写'}}</span>
+              </view>
+              <view class="info_item">
+                <span>买房情况</span>
+                <span>{{user.houseString||'未填写'}}</span>
+              </view>
+            </view>
+            </view>
+            </view>
+            </view>
+            </view>
+            </block>

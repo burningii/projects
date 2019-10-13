@@ -1,0 +1,62 @@
+<scroll-view class="contains" id="j_page" scrollTop="{{scrollTopVal}}" scrollY="false" style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 0px;">
+	<view class="content-time">
+		<view>{{config.first_time}}</view>
+	</view>
+  <view class="act-l">
+				<image class="l-img" src="{{card.avatar}}"></image>
+				<view class="l-content">
+					<text class="jt iconfont icon-caret-right-copy-copy"></text>
+				
+						<view class="l-case">
+							<text class="l-case-top" style='font-size:13px'>您好！ 我是{{card.nickname}}欢迎和我聊天，有什么可以帮到您的吗？您可以在这里跟我实时沟通。</text>
+							
+						
+						</view>
+				
+				</view>
+			</view>
+	<block wx:for="{{msgList}}" wx:key="msgl" wx:for-item="msg" wx:for-index="mdx" >
+		<block wx:if="{{msg.c_uid==card_id}}" >
+			<block wx:if="{{msg.msg=='::sayHi::'}}" >
+				<view class="content-time">
+					<view>您向TA打了招呼</view>
+				</view>
+			</block>
+			<block wx:else>
+				<view class="act-r">
+					<view class="r-content">
+						<text class="word">{{msg.msg}}</text>
+						<text class="jt iconfont icon-caret-right-copy-copy"></text>
+					</view>
+					<image class="r-img" src="{{msg.avatar}}"></image>
+				</view>
+			</block>
+		</block>
+		<block wx:else>
+		  <view class="act-l">
+				<image class="l-img" src="{{msg.avatar}}"></image>
+				<view class="l-content">
+					<text class="jt iconfont icon-caret-right-copy-copy"></text>
+				
+						<view class="l-case">
+							<text class="l-case-top" style='font-size:13px'>{{msg.msg}}</text>
+							
+						
+						</view>
+				
+				</view>
+			</view>	
+		</block>
+	</block>
+	<view class="blank"></view>
+</scroll-view>
+<view class="news-bot">
+
+	<view class="bot-in">
+		<input adjustPosition="true" style='font-size:13px' bindconfirm="sendMsg" bindinput="setMsgContent" class="bot-l" placeholder="和他(她)说点什么吧" value="{{msgContent}}"></input>
+		<view bindtap="sendMsg" class="bot-r">
+			<text class="iconfont icon-icenter"></text>
+		</view>
+	</view>
+</view>
+<canvas canvasId="shareCanvas" style="width:414px;height:736px;opacity:0;position:fixed;left:-10000px;top:-10000px;"></canvas>

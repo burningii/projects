@@ -1,0 +1,133 @@
+<import src="../../wxParse/wxParse.wxml" />
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" />
+<block wx:if="undefined">
+  <view class="ui-wrapper">
+    <view class="mod-header">
+      <view class="personal-bg_cover">
+        <span class="img" style="background-image:url('http://wx-img.jhrx.cn/love/20180801/sv_cover_default_male.png')"></span>
+        <view class="personal-item">
+          <view class="personal-qlogo">
+            <view bindtap="previewImage_avatar" class="personal-qlogo-content">
+              <span class="img" style="background-image:url('{{user.avatar}}')"></span>
+            </view>
+          </view>
+          <view class="personal-info">
+            <view class="personal-info-name">{{user.nickname}}</view>
+            <block wx:if="{{user.vip == 1}}">
+              <view class="personal-info-vip">
+                {{user.viptime?user.viptime+'到期':'未开通'}}
+              </view>
+            </block>
+            <block wx:if="{{user.vip == 0}}">
+              <view class="personal-info-vip">暂未开通会员</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="mod-box">
+      <view class="mod-tit">
+        <em>升级VIP 更快找到另一半</em>
+      </view>
+      <view class="mod-info">
+        <view class="vip-top">
+          <view class="top-tit">相亲成功率</view>
+          <view class="top-info">
+            <view class="jdt1" wx:if="{{user.vip == 1 && (user.zxhy==0)}}">普通用户</view>
+            <view class="jdt1" wx:if="{{user.vip == 1 && (user.zxhy==1)}}">高级会员</view>
+            <view class="jdt2">高级VIP 提升300%</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="main-bd">
+      <view class="ui-panel">
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-vip"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">会员身份标识</view>
+                <view class="sub-tit">专属身份标识,彰显身份地位</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-act"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">活动免费报名</view>
+                <view class="sub-tit">线下活动免费参加</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-gift"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">免费送金币与钥匙</view>
+                <view class="sub-tit">提高对方好感度</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-fk"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">查看访客</view>
+                <view class="sub-tit">谁对你感兴趣一看便知</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-up"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">无限制上传照片</view>
+                <view class="sub-tit">相册上传不限制</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="ui-cell">
+          <view class="ui-cell-row">
+            <view class="ui-cell-hd">
+              <i class="icon-menu-zs"></i>
+            </view>
+            <view class="ui-cell-bt">
+              <view class="pro-title">
+                <view class="title">8倍展示机会</view>
+                <view class="sub-tit">提高相亲成功率</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <import  src="../common/template"  />
+    <template is="kefu"  data="{{showKefuStatus}}"/> 
+    <view class="ui-cell buy-btn-wrap">
+      <button bindtap="getIospay" class="buy-btn">开通服务</button>
+    </view>
+  </view>
+ 
+</block>

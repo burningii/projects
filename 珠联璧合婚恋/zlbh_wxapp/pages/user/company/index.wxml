@@ -1,0 +1,35 @@
+<block>
+    <view class="contenter">
+    <swiper autoplay="{{is_autoPlay}}" class="adver" duration="{{duration}}" indicatorDots="{{is_indicatorDots}}" interval="{{interval}}">
+        <swiper-item data-url="" wx:for="{{picdata}}" wx:key="*this">
+            <image class="slide-image" mode="aspectFill" src="{{config.url}}{{item.img}}" bindtap='tourl' data-appid='{{item.appid}}'
+           data-path='{{item.path}}' data-stype='{{item.stype}}'></image>
+        </swiper-item>
+    </swiper>
+</view>
+    <import src="../../../wxParse/wxParse.wxml"></import>
+    <view class="mb10 company">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+    </view>
+    <view class="ui-cells f16">
+        <view catchtap="onCallPhoneTap" class="ui-cell gridXb">
+            <view>咨询热线</view>
+            <view class="grey f14">{{config.tel}}</view>
+        </view>
+        <view catchtap="onCopyTap" class="ui-cell gridXb" data-value="{{config.wx_service}}">
+            <view>微信客服</view>
+            <view class="grey f14">{{config.wx_service}}</view>
+        </view>
+        <view catchtap="onCopyTap" class="ui-cell gridXb" data-value="{{config.url1}}">
+            <view>官方网站</view>
+            <view class="grey f14">{{config.url1}}</view>
+        </view>
+        <view catchtap="onCopyTap" class="ui-cell gridXb" data-value="{{config.wx_account}}">
+            <view>公众号</view>
+            <view class="grey f14">{{config.wx_account}}</view>
+        </view>
+    </view>
+</block>
+<view style='text-align: center;line-height: 35px;font-size:23rpx;color:{{config.color}};'>
+     <text>{{config.cop}}</text>
+</view>

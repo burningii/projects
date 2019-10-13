@@ -1,0 +1,42 @@
+<import  src="../../components/toast/toast.wxml"  />
+<template is="toast" />
+  <view class="ui-wrapper">
+    <view class="main-hd">
+      <view class="ui-header ui-panel">
+        <view class="service_tit">
+          <span class="text">剩余沟通次数</span>
+          <span class="num"><em class="orange">{{user.imkey}}</em>次</span>
+        </view>
+      </view>
+    </view>
+    <view class="main-bd">
+      <view class="ui-panel">
+        <block wx:for="{{config.coins}}" wx:key="{{item}}" wx:for-item="item">
+          <block wx:if="undefined">
+            <view class="ui-cell">
+              <view bindtap="getService" class="ui-cell-row" data-state="{{index}}">
+                <view class="ui-cell-bt">
+                  <view class="icon">
+                    <span class="coinico" 
+                    style="background-image:url('http://wx-img.jhrx.cn/love/20180507/resources-icon-pic.png')">
+                    </span>
+                  </view>
+                  <em class="strong">{{item.coinNumber}}</em>次
+                </view>
+                <view class="ui-cell-ft">
+                  <span class="price {{actionItemIndex==index?'orange':''}}">
+                    ￥{{item.coinPriceDesc}}.00
+                  </span>
+                  <span class="icon {{actionItemIndex==index?'action':''}}"></span>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <view class="ui-cell buy-btn-wrap">
+          <view bindtap="getBuy" class="buy-btn">确认购买</view>
+        </view>
+      </view>
+      
+    </view>
+  </view>

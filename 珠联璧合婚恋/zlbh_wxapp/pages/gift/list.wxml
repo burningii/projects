@@ -1,0 +1,63 @@
+<import  src="../../components/toast/toast.wxml"  />
+<template is="toast" />
+<block wx:if="{{!showModalStatus}}">
+  <view class="m-gifts">
+    <view class="gifts-list clearfix">
+      <block wx:for="{{list}}" wx:key="{{item}}" wx:for-item="item">
+        <view bindtap="getGift" class="item" data-gifticon="{{config.url}}{{item.giftIcon}}" data-giftid="{{item.id}}" 
+        data-giftname="{{item.giftName}}" data-giftprice="{{item.price}}">
+          <image mode="widthFix" src="{{config.url}}{{item.giftIcon}}"></image>
+          <view class="text">{{item.giftName}}</view>
+          <view class="price">{{item.price}}金币</view>
+      </view>
+    </block>
+    </view>
+  </view>
+</block>
+<block wx:if="{{showModalStatus}}">
+    <view class="dialog hint-dialog">
+        <view class="weui-mask {{showModalStatus==true?'weui-animate-fade-in':'weui-animate-fade-out'}}"></view>
+        <view class="dialog-cnt">
+          <view class="dialog-cnt-tit">
+            <view class="tit-bt"></view>
+          </view>
+          <view class="dialog-cnt-con">
+              <view class="buy-tit">赠送给{{muser.nickname||'NULL'}}</view>
+              <view class="buy-entry">
+              <view class="ui-gift-box">
+                <view class="thumb">
+                    <image mode="widthFix" src="{{postData.gifticon}}"></image>
+                </view>
+                <view class="info">
+                  <view class="tit">                 
+                    {{postData.giftname||'NULL'}}
+                    <em class="lightcolor">（{{postData.num||0}}）</em>个
+                  </view>
+                <view class="txt">
+                  {{postData.totalprice||postData.giftprice}}金币
+                </view>
+              </view>
+            </view>
+            <view class="ui-info">
+                <view class="ui-duration">
+                    <view bindtap="minusNum" class="number reduce {{number<=minNum?'is-disable':''}}">
+                      <span>-</span>
+                    </view>
+                    <view class="dur-ipt">
+                        <input bindinput="bindNumber" maxlength="3" type="number" value="{{number}}"></input>
+                    </view>
+                    <view bindtap="addNum" class="number increase {{number>=maxNum?'is-disable':''}}">
+                        <span>+</span>
+                    </view>
+                </view>
+                <view class="ui-btn-wrap">
+                    <button bindtap="onGivGift" class="btn-default">确认赠送</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view bindtap="maskHideFilter" class="dialog-close" data-status="1"></view>
+      </view>
+    </block>
+

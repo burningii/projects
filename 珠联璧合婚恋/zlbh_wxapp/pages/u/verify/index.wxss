@@ -1,0 +1,16 @@
+.mod-content{ padding:20rpx; }
+.mod-auth{ background: #fff; box-shadow:0 0 12rpx rgba(251, 221, 223, .8); }
+.mod-auth .sec-title{ height:88rpx; font-size: 32rpx; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; position: relative; padding:0 0 0 20rpx; overflow: hidden; }
+.mod-auth .sec-title:after{ content: ""; position: absolute; left: 20rpx; bottom: 0; width: 100%; height: 1px; -webkit-transform: scaleY(.5); transform: scaleY(.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; background: #dfdfdd; }
+.mod-auth .sec-title .auth-ico{ display: inline-block; width: 60rpx; height: 62rpx; background-image:url('http://wq.xinxao.com/addons/ss48_match/images/identification_ic_name_round.png?1'); background-repeat: no-repeat; background-size: 60rpx 62rpx; margin-right:10rpx; }
+.sec-info{ padding:20rpx; color:#888; line-height:1; }
+.sec-info .item{ margin-bottom:30rpx; }
+.sec-info .warn{ color:#ff0000; }
+.sec-info wx-image{ width:200rpx; }
+.sec-info .txt{ vertical-align: top; }
+.weui-btn-area{ margin: 60rpx 40rpx 20rpx; }
+.weui-btn { position: relative; display: block; margin-left: auto; margin-right: auto; padding-left: 14px; padding-right: 14px; box-sizing: border-box; font-size: 18px; text-align: center; text-decoration: none; color: #FFFFFF; line-height: 88rpx; border-radius: 8rpx; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); overflow: hidden; margin: 0; background-color: #1ec7b1; box-shadow: 0 0 6rpx #b4e9da; }
+.weui-btn:after { content: " "; width: 200%; height: 200%; position: absolute; top: 0; left: 0; border: 1px solid rgba(0, 0, 0, 0.2); -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; box-sizing: border-box; border-radius: 10px; }
+.weui-btn:active{ background-color: #1cb8a4; }
+wx-button,wx-button[type="primary"] { color:#FFFFFF; background-color:#1ec7b1; }
+.button-hover,.button-hover[type="primary"] { color: #FFFFFF; background-color: #1cb8a4; }

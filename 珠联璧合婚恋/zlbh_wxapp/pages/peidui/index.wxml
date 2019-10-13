@@ -1,0 +1,56 @@
+<import  src="../../components/toast/toast.wxml"  />
+<template is="toast" />
+
+    <view class="ui-wrapper">
+      <view class="peidui-wrap" style='background:url("{{bg}}/peidui_bg.png?2")'> 
+        <view class="peidui-tit">
+          <view class="tit">每日配对</view>
+          <view class="sub-tit">还没对象？快来试试每日匹配！</view>
+        </view>
+        <view class="peidui-btn" style="width:540rpx;height:540rpx;background: url('{{bg}}/peidui_btn.png?2') no-repeat;background-size: 540rpx 540rpx;position: relative;display: -webkit-flex;display: flex;-webkit-align-items: center;align-items: center;-webkit-justify-content: center;justify-content: center;">
+          <block wx:if="{{show == 0}}">
+            <view class="circle">
+              <view class="c-circle">
+                <block wx:for="{{user.peilist}}" wx:key="{{item}}" wx:for-item="item">
+                  <navigator class="img" hoverClass="none" style="background-image:url('{{item.avatar}}')" 
+                  url="/pages/index/member?id={{item.id}}">
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </block>
+        <view bindtap="getPeidui" class="round-center image">
+          <em class="btn-txt">开始匹配</em>
+        </view>
+      </view>
+      <view class="profile-box">
+        <navigator class="link" url="/pages/u/edit/index">
+          <view class="txt">完善资料，提高匹配质量</view>
+          <view class="num">{{user.percent}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+ 
+<block wx:if="{{show}}">
+  <view class="dialog hint-dialog">
+    <view class="weui-mask {{showModalStatus[1]==true?'weui-animate-fade-in':'weui-animate-fade-out'}}"></view>
+    <view class="dialog-cnt">
+      <view class="dialog-cnt-tit">
+        <em class="goutong-tit"></em>
+      </view>
+      <view class="dialog-cnt-con">
+        <view class="txt1">使用<em>1</em>个 钥匙 匹配对象？
+      </view>
+      <view class="txt2">(剩余钥匙<em>{{user.imkey||0}}</em>个)</view>
+      <view class="btn-wrap">
+      <button bindtap="getShowMessage" class="btn-default">立即查看</button>
+      <view class="dialog-tip">获取更多
+        <view bindtap="getIospay" class="link lightcolor">钥匙</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view bindtap="maskHideFilter" class="dialog-close" data-status="1"></view>
+</view>
+</block>

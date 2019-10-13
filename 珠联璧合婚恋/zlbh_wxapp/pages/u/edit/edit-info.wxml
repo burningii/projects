@@ -1,0 +1,202 @@
+<view class="page-content">
+  <form bindsubmit="submitForm" reportSubmit="true">
+    <view class="weui-cells weui-cells_after-title">
+     
+      <block wx:if="{{t==1}}">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">
+              <em>*</em>年龄</view> 
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="onBirth" mode="date" value="{{form.birth||'2001-01-01'}}">
+              <view class="weui-select weui-select_in-select-after">{{form.birth||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+     
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>身高</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onHeight" range="{{cate.heightArr}}" value="{{cate.heightActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n {{form.heightString ? form.heightString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+      
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>月收入</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onSalary" range="{{cate.salaryArr}}" value="{{cate.salaryActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n  {{form.salaryString ? form.salaryString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+       <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>最低学历</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onEdu" range="{{cate.eduArr}}" value="{{cate.eduActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n {{form.educationString ? form.educationString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+
+       <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>婚姻状况</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onMarriage" range="{{cate.marriageArr}}" value="{{cate.marriageActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n  {{form.marriageString ? form.marriageString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      </block>
+      <block wx:if="{{t==2}}">
+       <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <em>*</em>昵称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-txt">{{form.nickname}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">
+              <em>*</em>性别</view>
+          </view>
+          <view bindtap="onSex" class="weui-cell__bd">
+            <view class="weui-select">{{form.gender == 1 ? '男' : '女'}}</view>
+          </view>
+        </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>工作地区</view>
+        </view>
+        
+        <view  class="weui-cell__bd">
+          <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" id="city" mode="multiSelector" range="{{city}}" rangeKey="{{'name'}}" value="{{multiIndex}}">
+          <view class="weui-select weui-select_in-select-after">{{form.workCityString||'请选择'}}</view>
+          </picker> 
+        </view>
+      
+
+      </view>
+     
+     
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>有没有小孩</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onChildren" range="{{cate.childrenArr}}" value="{{cate.childrenActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n {{form.childrenString ? form.childrenString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>是否想要小孩</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onWantchildren" range="{{cate.wantchildrenArr}}" value="{{cate.wantchildrenActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">
+            \n {{form.wantChildrenString ? form.wantChildrenString : '请选择'}}\n </view>
+          </picker>
+        </view>
+      </view>
+       <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>宗教信仰</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onXin6yang" range="{{xinyang}}" value="{{cate.xinyangIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">
+            \n {{form.xinyang ? form.xinyang : '请选择'}}\n </view>
+          </picker>
+        </view>
+      </view>
+    
+      
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label"><em>*</em>是否吸烟</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onSmoking" range="{{cate.smokingArr}}" value="{{cate.smokingActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n {{form.objectIsSmokingString ? form.objectIsSmokingString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label"><em>*</em>是否喝酒</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onDrinking" range="{{cate.drinkingArr}}" value="{{cate.drinkingActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n {{form.objectIsDrinkingString ? form.objectIsDrinkingString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>职业</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onOccupation" range="{{cate.occupationArr}}" value="{{cate.occupationActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">
+            \n {{form.occupationString ? form.occupationString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>买车情况</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onVehicle" range="{{cate.vehicleArr}}" value="{{cate.vehicleActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">\n  
+            {{form.vehicleString ? form.vehicleString : '请选择'}}\n</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <em>*</em>买房情况</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="onHouse" range="{{cate.houseArr}}" value="{{cate.houseActionIndex||0}}">
+            <view class="weui-select weui-select_in-select-after">
+             {{form.houseString ? form.houseString : '请选择'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+       </block>
+    </view>
+ 
+    <view class="weui-btn-area">
+      <button class="weui-btn" formType="submit" type="primary">保存</button>
+    </view>
+  </form>
+</view>
