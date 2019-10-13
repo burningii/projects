@@ -1,0 +1,71 @@
+<import src="/components/diy/diy.wxml"/>
+<include src="/components/common/common"></include>
+<view class="container">
+    <view class="store-seat-info-wrapper">
+        <view class="store-seat-info-title">
+            <text>{{storeInfo.title}}</text>
+        </view>
+        <view class="store-seat-status-wrapper">
+            <view class="store-seat-status-img">
+                <image src="../../images/store-seat-status.jpg"/>
+            </view>
+        </view>
+    </view>
+    <view class="location-img">
+        <movable-area scale-area="true" class="defaultArea" style="height: 950rpx; width: 750rpx;">
+            <movable-view style="height: 950rpx; width: 750rpx;" out-of-bounds="true" direction="all" scale="true" scale-max="2" scale-min="0.3">
+                <view class="seatList-wrapper">
+                    <scroll-view scroll-x="true">
+                        <template wx:if="{{storeInfo.id=='1'}}" is="show-apartment-1"
+                                  data="{{storeInfo, apartmen1}}" />
+                        <template wx:if="{{storeInfo.id=='2'}}" is="show-apartment-2"
+                                  data="{{storeInfo,apartmen2}}" />
+                        <template wx:if="{{storeInfo.id=='3'}}" is="show-apartment-3"
+                                  data="{{storeInfo,apartmen3}}" />
+                    </scroll-view>
+                </view>
+            </movable-view>
+        </movable-area>
+    </view>
+</view>
+
+<view class="posi-seat-info">
+    <view class="posi-seat-info-select"><text class="seat-info-text" wx:if="{{currentSeat}}">{{currentSeat.seat_name}}</text>
+<!--        <view bind:tap="showPicker" wx:if="{{currentSeat.seat_name}}" class="seat-info-select-right-selectDate">-->
+<!--            <block wx:if="{{current_order_time}}">预约日期: <text>{{current_order_time}}</text></block>-->
+<!--            <block wx:else>请选择预约日期</block>-->
+<!--        </view>-->
+<!--        <view bind:tap="showPickerTime" wx:if="{{currentSeat.seat_name}}" class="seat-info-select-right-selectDate">-->
+<!--            <block wx:if="{{current_order_time && current_order_time_flag}}">预约时间: <text>{{current_time}}</text></block>-->
+<!--            <block wx:if="{{current_order_time_flag && !current_order_time}}">请选择预约时间</block>-->
+<!--            <blcok wx:if="{{!current_order_time_flag}}">当前无法选择时间</blcok>-->
+<!--        </view>-->
+    </view>
+    <button bind:tap="orderNow" class="posi-seat-info-btn">立即预约</button>
+</view>
+<van-popup show="{{ showPickerVisible }}" bind:close="onClose1"  position="bottom">
+    <van-datetime-picker
+            type="date"
+            value="{{ currentDate }}"
+            bind:input="onInput"
+            min-date="{{ minDate }}"
+            max-date="{{maxDate}}"
+            confirm-button-text=""
+            cancel-button-text=""
+    />
+</van-popup>
+
+<van-popup show="{{ showPickerTimeVisible }}" bind:close="onClose2"  position="bottom">
+    <van-datetime-picker
+            type="time"
+            value="{{ currentTime }}"
+            min-hour="{{ minHour }}"
+            max-hour="{{ maxHour }}"
+            min-minute="{{minMinute}}"
+            max-minute="{{maxMinute}}"
+            bind:input="onInputTime"
+            confirm-button-text=""
+            cancel-button-text=""
+    />
+</van-popup>
+

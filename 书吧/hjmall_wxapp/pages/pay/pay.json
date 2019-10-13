@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "充值服务",
+  "usingComponents": {
+    "van-submit-bar": "../../vant/submit-bar/index",
+    "i-input-number": "../../iviewUi/input-number/index",
+    "van-dialog": "../../vant/dialog/index",
+    "van-button": "../../vant/button/index"
+  }
+}

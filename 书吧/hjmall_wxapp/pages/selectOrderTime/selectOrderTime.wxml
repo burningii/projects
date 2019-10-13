@@ -1,0 +1,101 @@
+<view class="order-time-page-container">
+    <view class="order-time-store-wrapper">
+        <view class="order-time-store-wrapper-left">
+            <view class="order-time-store-img"><image src="{{storeImg}}" style="width: 60rpx;height: 60rpx;border-radius: 50%;"/></view>
+            <view class="order-time-store-title">{{storeName}}</view>
+        </view>
+        <view bind:tap="showNotice" class="order-time-store-wrapper-right">
+            <view class="store-wrapper-right-icon"><van-icon size="18px" color="#E60012" name="warning" /></view>
+            <view class="store-wrapper-right-text"><text>预订说明</text></view>
+        </view>
+    </view>
+    <van-dialog
+            use-slot
+            title="温馨提醒"
+            show="{{ showNoticeVisible }}"
+    >
+        <view class="zb-notice-wrapper">
+            <view>1. 每日预约时段分为：</view>
+            <view><text>上午（08：30--12：00）</text></view>
+            <view><text>下午（12：01-18：00）</text></view>
+            <view><text>晚上（18：01-22：30）</text></view>
+            <view><text>全天（08：30-22：30）</text></view>
+            <view>2. 每次预约保留一个小时，到时未到店核销，将取消预约 ，需要重新预约</view>
+            <view>3. 光华中心会议室仅支持线下预约</view>
+            <view>4. 预约全天座位到店核销后，空座90分钟，后台会取消预约 </view>
+        </view>
+    </van-dialog>
+    <view class="order-time-bottom-wrapper">
+        <view class="order-time-seat">预约位置:
+            <text>{{seatName}}</text>
+        </view>
+        <view class="order-time-info">
+            <view bind:tap="showPicker" wx:if="{{seatName}}" class="seat-info-select-right-selectDate">
+                <view>
+                    <block wx:if="{{current_order_time}}">预约日期:
+                        <text>{{current_order_time}}</text>
+                    </block>
+                    <block wx:else>点击选择预约日期</block>
+                </view>
+                <view>
+                    <van-button style="float: right" round size="small" type="default">修改</van-button>
+                </view>
+            </view>
+            <view bind:tap="showPickerTime" wx:if="{{seatName}}" class="seat-info-select-right-selectDate">
+                <view>
+                    <block wx:if="{{current_time}}">预约时间:
+                        <text>{{current_time}}</text>
+                    </block>
+                    <block wx:if="{{!current_time}}">点击选择预约时间</block>
+                </view>
+                <view>
+                    <van-button style="margin-right: 15rpx;" catchtap="fullDay" round size="small" type="{{fullDayVisible}}">全天</van-button>
+                    <van-button style="" catchtap="checkTimeBetween" round size="small" type="{{timeCheckVisible}}">修改</van-button>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</view>
+<view class="order-now-wrapper">
+    <van-button color="#E60012" round bind:click="orderNow" size="large" type="primary">立即预约</van-button>
+</view>
+<van-dialog
+        use-slot
+        title="成功"
+        show="{{ showSuccessVisible }}"
+        bind:confirm="successNav"
+>
+    <view class="zb-success-wrapper">
+        <view>位置：{{seatName}}</view>
+        <view>时间: {{showTimeTemp}}</view>
+        <view>可至“我”—”个人中心“—“我的预约”查看</view>
+    </view>
+</van-dialog>
+<van-popup show="{{ showPickerVisible }}" bind:close="onClose1" position="bottom">
+    <van-datetime-picker
+            type="date"
+            value="{{ currentDate }}"
+            bind:input="onInput"
+            bind:confirm="onClose1"
+            min-date="{{ minDate }}"
+            max-date="{{maxDate}}"
+            confirm-button-text="确定"
+            cancel-button-text=""
+    />
+</van-popup>
+
+<van-popup show="{{ showPickerTimeVisible }}" bind:close="onClose2" position="bottom">
+    <van-datetime-picker
+            type="time"
+            value="{{ currentTime }}"
+            min-hour="{{ minHour }}"
+            max-hour="{{ maxHour }}"
+            min-minute="{{minMinute}}"
+            max-minute="{{maxMinute}}"
+            bind:input="onInputTime"
+            bind:confirm="onClose2"
+            confirm-button-text="确定"
+            cancel-button-text=""
+    />
+</van-popup>

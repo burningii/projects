@@ -1,0 +1,60 @@
+page {
+    height: inherit;
+    background-color: #fff;
+}
+.pay-main-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-card {
+    width: 90%;
+    padding: 35rpx;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    background-color: #fff;
+    /*text-align: center;*/
+    margin-top: 18rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-card .item-card-price {
+    color: #ff4040;
+}
+
+.item-card .item-card-price text {
+    font-size: 35rpx;
+    font-weight: bold;
+}
+
+.active-click-item {
+    border-color: #ff4040;
+}
+
+.first-container {
+    margin-top: 200rpx;
+}
+
+.first-container .first-pay-content{
+    text-align: center;
+    width: 100%;
+    line-height: 65rpx;
+}
+
+.first-container .first-pay-content .first-money {
+    color: red;
+    font-size: 45rpx;
+    margin-top: 15rpx;
+}
+
+.first-container .first-pay-content .first-money text {
+    font-size: 65rpx;
+}
+
+.first-container .first-pay-content .pay-now-btn {
+    margin-top: 55rpx;
+}

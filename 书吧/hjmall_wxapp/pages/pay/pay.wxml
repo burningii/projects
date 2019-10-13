@@ -1,0 +1,38 @@
+<view class="pay-container">
+    <block wx:if="{{flag==1}}">
+        <view class="pay-main">
+            <view class="pay-main-list" wx:for="{{pay_card_list}}" wx:key="index">
+                <view class="item-card {{activeIndex==index?'active-click-item':''}}" bind:tap="clickCard" id="{{index}}" data-bid="{{item.id}}">
+                    <view class="item-card-title">{{item.name}}</view>
+                    <view wx:if="{{item.id==5}}">x{{inputCount}}小时</view>
+                    <view class="item-card-price">¥
+                        <text>{{item.price}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <van-submit-bar
+                price="{{ totalPrice }}"
+                loading="{{submitLoading}}"
+                button-text="提交订单"
+                bind:submit="onSubmit"
+        />
+        <van-dialog
+                use-slot
+                title="选择时间(小时)"
+                show="{{ selectTimeVisible }}"
+                close-on-click-overlay="true"
+        >
+            <view style="text-align: center;margin: 25rpx;"><i-input-number value="{{ inputCount }}" min="1" max="100" bindchange="onChangeStepper" /></view>
+        </van-dialog>
+    </block>
+    <block wx:elif="{{flag==0}}">
+        <view class="first-container">
+            <view class="first-pay-content">
+                <view><text>欢迎您, 新用户</text></view>
+                <view class="first-money">¥<text>9.9</text></view>
+                <view class="pay-now-btn"><van-button loading="{{payBtnStatus}}" size="large" bind:click="pay_now" type="primary">立即支付</van-button></view>
+            </view>
+        </view>
+    </block>
+</view>

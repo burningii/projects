@@ -1,0 +1,27 @@
+<block wx:if="{{signFlag}}">
+    <view class="sign-status-container">
+        <view class="status-top-wrapper">
+            <view class="status-userinfo">当前用户:
+                <text>{{userInfo.nickname}}</text>
+            </view>
+            <view class="status-user-seat">位置信息:
+                <text>{{userInfo.seat_name}}</text>
+            </view>
+            <view class="status-user-signtime">预约时间:
+                <text>{{userInfo.pre_sign_time}}</text>
+            </view>
+            <view class="status-user-signstatus">预约状态:<text>{{userInfo.status=='1'?'正常':userInfo.status=='2'?'该预约正在使用中':userInfo.status=='3'?'该预约已经核销':userInfo.status=='0'?'该预约已超时':'未知'}}</text>
+            </view>
+        </view>
+        <view class="check-status-btn-group">
+            <van-button color="#E60012" wx:if="{{userInfo.status=='1'}}" bind:click="signNow" type="primary">确定核销</van-button>
+            <van-button color="#E60012" wx:if="{{userInfo.status=='2'}}" bind:click="signNow" type="primary">确定签退</van-button>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <view class="hei-xiao-wrapper">
+        <view><icon type="success" size="{{sizeIcon}}"/></view>
+        <view><text>核销成功</text></view>
+    </view>
+</block>

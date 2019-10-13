@@ -1,0 +1,909 @@
+<template name="topic-1">
+    <scroll-view class="diy-cat-0 flex-grow-0" scrollIntoView="cat-{{param.cat_index>=2?param.cat_index-2:0}}"
+                 scrollWithAnimation="true" scrollX="true" style="margin-bottom: 10rpx;height: 104rpx;"
+                 wx:if="{{param.list.length>1}}">
+        <view class="flex-row">
+            <form bindsubmit="_formIdSubmit" class="flex-grow-0" data-bind="catBind" data-index="{{index}}"
+                  data-template="{{template_index}}" id="cat-{{index}}" reportSubmit="true" wx:for="{{param.list}}"
+                  wx:key="{{item.id}}">
+                <button formType="submit" id="_formIdSubmit">
+                    <view bindtap="catBind"
+                          class="diy-cat-one-0 {{index==param.cat_index?'active':''}} flex-y-center flex-x-center">
+                        <view class="text-more">{{item.name}}</view>
+                    </view>
+                </button>
+            </form>
+        </view>
+    </scroll-view>
+    <view class="topic-list">
+        <form bindsubmit="_formIdSubmit" data-type="navigate" data-url="{{item.page_url}}" reportSubmit="true"
+              wx:for="{{param.list[param.cat_index].goods_list}}" wx:key="{{item.id}}">
+            <button formType="submit" id="_formIdSubmit">
+                <view class="topic-one layout-{{item.layout}}">
+                    <view class="flex-row" wx:if="{{item.layout==0}}">
+                        <view class="flex-grow-1 flex-col">
+                            <view class="flex-grow-1">
+                                <view class="topic-title text-more-2">{{item.title}}</view>
+                            </view>
+                            <view class="flex-grow-0 font-minor fs-sm">{{item.read_count}}人浏览</view>
+                        </view>
+                        <view class="flex-grow-0">
+                            <image class="topic-cover-pic" mode="aspectFill" src="{{item.cover_pic}}"></image>
+                        </view>
+                    </view>
+                    <block wx:else>
+                        <view class="topic-title" style="font-weight: 600">
+                            <view class="text-more-2">{{item.title}}</view>
+                        </view>
+                        <image class="topic-cover-pic" mode="aspectFill" src="{{item.cover_pic}}"></image>
+                        <view class="flex-row">
+                            <view class="flex-grow-1 font-minor fs-sm">{{item.read_count}}人浏览</view>
+                        </view>
+                    </block>
+                </view>
+            </button>
+        </form>
+    </view>
+    <view class="text-center" style="padding-top:100rpx;" wx:if="{{param.list[param.cat_index].goods_list.length==0}}">
+        暂无内容
+    </view>
+</template>
+<template name="mch-1">
+    <view class="zb-index-container-wrapper">
+        <view class="mch-list">
+            <view class="zb-mch-list-title">
+                <text>全部门店</text>
+            </view>
+            <view class="mch-item" wx:for="{{mch_list}}" wx:key="{{item.id}}">
+                <view class="flex flex-row bob p-24 zb-bob">
+                    <view class="flex-grow-0">
+                        <image class="bi" src="{{item.logo}}"
+                               style="width:100rpx;height:100rpx;display:block;border-radius: 50%;"></image>
+                    </view>
+                    <view class="flex-grow-1" style="padding: 0 24rpx">
+                        <view class="text-more zb-text-more"
+                              style="padding-top:2rpx;margin-bottom: 8rpx;margin-top: 28rpx;">{{item.name}}
+                        </view>
+                    </view>
+                    <view class="flex-grow-0 flex-y-center">
+                        <form bindsubmit="_formIdSubmit" data-type="navigate"
+                              data-url="/pages/storeInfo/index?storeid={{item.id}}" reportSubmit="true">
+                            <button formType="submit" id="_formIdSubmit">
+                                <view class="mch-btn zb-mch-btn-wrapper">进入门店
+                                    <image style="width: 12rpx;height: 22rpx;margin-left: 7rpx;position: relative;top: 1rpx;"
+                                           src="https://api1.qibuluo.net/addons/zjhj_mall/core/web/statics/wxapp/images/icon-jiantou-r.png"/>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+                <view class="mch-goods-list">
+                    <scroll-view scrollX style="width:100%;white-space: nowrap;"
+                                 wx:if="{{item.goods_list&&item.goods_list.length}}">
+                        <navigator class="mch-goods-item" url="{{value.page_url}}" wx:for="{{item.goods_list}}"
+                                   wx:for-index="key" wx:for-item="value" wx:key="{{value.id}}">
+                            <image src="{{value.cover_pic}}" style="width: 220rpx;height: 220rpx;"></image>
+                            <view class="text-more fs-sm" wx:if="{{param.price==1}}">￥{{value.price}}</view>
+                        </navigator>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="shop">
+    <view class="shop-list w-100">
+        <view bindtap="go" class="shop-one flex-row" data-index="{{index}}" data-template="{{template_index}}"
+              wx:for="{{param?param.list:list}}" wx:key="{{index}}">
+            <view class="flex-grow-0 flex-y-center">
+                <form bindsubmit="_formIdSubmit" data-type="{{param.open_type}}"
+                      data-url="/pages/shop-detail/shop-detail?shop_id={{param.id}}" reportSubmit="true">
+                    <button formType="submit" id="_formIdSubmit">
+                        <image src="{{item.pic_url}}" style="width:150rpx;height:150rpx;border-radius:150rpx;"></image>
+                    </button>
+                </form>
+            </view>
+            <view class="w-100 flex-grow-1" style="margin:0 20rpx;">
+                <view class="text-more" style="color:#353535;" wx:if="{{!param||param.name==1}}">{{item.name}}</view>
+                <view class="fs-sm flex-row mt-20" wx:if="{{!param||param.score==1}}">
+                    <view class="flex-grow-0" style="margin-right:12rpx;">评分：</view>
+                    <view class="flex-grow-1">
+                        <image src="{{__wxapp_img.shop.love.url}}" style="margin-right:4rpx;width:20rpx;height:18rpx;"
+                               wx:if="{{idx<=item.score-1}}" wx:for="{{item.score}}" wx:for-index="idx"
+                               wx:for-item="itemn" wx:key="{{index}}"></image>
+                    </view>
+                </view>
+                <view class="fs-sm mt-20" wx:if="{{!param||param.mobile==1}}">电话：{{item.mobile}}</view>
+                <view class="fs-sm mt-20" wx:if="{{item.distance}}">距离：{{item.distance==-1?'无':item.distance}}</view>
+            </view>
+            <view class="flex-grow-0 flex-y-center">
+                <view catchtap="goto" data-index="{{index}}" data-template="{{template_index}}">
+                    <view class="flex-row flex-x-center">
+                        <image src="{{__wxapp_img.shop.nav_one.url}}"
+                               style="width:50rpx;height:50rpx;margin-bottom:16rpx;"></image>
+                    </view>
+                    <view class="fs-sm flex-x-center">一键导航</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="time">
+    <view class="user-block">
+        <form bindsubmit="_formIdSubmit" data-type="{{param.open_type}}" data-url="{{param.url}}" reportSubmit="true">
+            <button formType="submit" id="_formIdSubmit">
+                <view class="w-100" wx:if="{{param.pic_url}}">
+                    <image class="w-100" mode="widthFix" src="{{param.pic_url}}" style="display:block"></image>
+                </view>
+                <view class="time-block">
+                    <view wx:if="{{time_all['time_'+template_index].param.start_time>0}}">距离活动开始还有</view>
+                    <view wx:elif="{{time_all['time_'+template_index].param.end_time>0}}">距离活动结束还有</view>
+                    <view wx:else>活动已结束</view>
+                    <view>{{time_all['time_'+template_index].param.time_list.content}}</view>
+                    <image mode="aspectFill" src="{{param.pic_url_1}}"></image>
+                </view>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="goods-modal">
+    <view catchtouchmove="true" class="new-modal" wx:if="{{show_attr_picker&&goods}}">
+        <view class="new-modal-content">
+            <image bindtap="modalCloseGoods" src="{{__wxapp_img.store.close3.url}}"
+                   style="position:absolute;right:0;top:0;width:72rpx;height:72rpx;"></image>
+            <view class="new-modal-header text-more">{{goods.name}}</view>
+            <view class="new-modal-body mb-24" style="min-height:0;padding:0 32rpx;">
+                <block wx:for="{{attr_group_list}}" wx:key="{{item.id}}">
+                    <view class="font-minor mb-20">{{item.attr_group_name}}</view>
+                    <view class="flex-row" style="flex-wrap:wrap">
+                        <view bindtap="storeAttrClick"
+                              class="flex-grow-0 attr-item {{value.checked?'active':''}} {{value.attr_num_0?'attr_num_0':''}}"
+                              data-group-id="{{item.attr_group_id}}" data-id="{{value.attr_id}}"
+                              wx:for="{{item.attr_list}}" wx:for-index="key" wx:for-item="value" wx:key="{{value.id}}">
+                            {{value.attr_name}}
+                        </view>
+                    </view>
+                </block>
+                <view class="flex-row flex-y-center bit pt-20">
+                    <view class="flex-grow-1">购买数量</view>
+                    <view class="flex-grow-0 attr-picker">
+                        <view class="flex-row number-input-box">
+                            <view bindtap="numberSub"
+                                  class="flex-grow-0 flex-x-center flex-y-center number-btn number-sub {{form.number<=1?'disabled':''}}"
+                                  style="margin-right:0.01rem;">-
+                            </view>
+                            <view class="flex-grow-0">
+                                <input bindblur="numberBlur" class="flex-grow-1 number-input" min="1" step="1"
+                                       style="padding:0" type="number" value="{{form.number}}"></input>
+                            </view>
+                            <view bindtap="numberAdd"
+                                  class="flex-grow-0 flex-x-center flex-y-center number-btn number-add">+
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="new-modal-footer flex-row">
+                <view class="flex-y-center flex-grow-1 pl-20 red">￥{{goods.price}}</view>
+                <view bindtap="modalConfirmGoods" class="flex-grow-0 flex-y-center pr-20">
+                    <view class="goods-modal-btn">加入购物车</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="cat-position-0">
+    <scroll-view scrollX="{{param.list_style!=4?'false':'true'}}">
+        <view class="flex-row diy-goods-list-0 flex-grow-0"
+              style="{{param.list_style!=4?'flex-wrap:wrap':'overflow:auto'}};">
+            <view class="flex-grow-0 diy-goods-one diy-goods-one-{{param.list_style}} flex-row diy-goods-border diy-goods-border-{{param.style}}"
+                  wx:for="{{param.list[param.cat_index].goods_list}}" wx:for-index="key" wx:for-item="value"
+                  wx:key="{{value.id}}">
+                <view class="flex-grow-0 diy-goods-img-{{param.list_style}}"
+                      style="position:relative;{{param.list_style==0&&param.per==1?'height: 466rpx;':''}}">
+                    <form bindsubmit="_formIdSubmit" data-type="navigate" data-url="{{value.page_url}}"
+                          reportSubmit="true">
+                        <button formType="submit" id="_formIdSubmit">
+                            <image class="diy-goods-img-{{param.list_style}}" lazyLoad="true"
+                                   mode="{{param.fill==1?'aspectFill':'aspectFit'}}" src="{{value.pic_url}}"
+                                   style="{{param.list_style==0&&param.per==1?'height: 466rpx;':''}}"></image>
+                        </button>
+                    </form>
+                    <image class="diy-goods-mark" lazyLoad="true" src="{{param.mark_url}}"
+                           wx:if="{{param.mark==1}}"></image>
+                    <view class="miaosha-time flex-row flex-y-center flex-x-center miaosha-time-{{param.list_style}}"
+                          wx:if="{{param.list_style!=1&&(type=='miaosha'||type=='bargain'||type=='lottery')&&param.time==1}}">
+                        <view class="fs-b flex-grow-1" style="text-align:left" wx:if="{{param.list_style==0}}">
+                            {{param.type_name}}
+                        </view>
+                        <view class="fs-sm">
+                            {{time_all[type+'_'+template_index].param.list[param.cat_index].goods_list[key].time_content}}{{time_all[type+'_'+template_index].param.list[param.cat_index].goods_list[key].time_list.content_ms}}
+                        </view>
+                    </view>
+                </view>
+                <view class="flex-row flex-grow-0 diy-goods-content diy-goods-content-{{param.list_style}}">
+                    <block wx:if="{{param.list_style==1&&(type=='miaosha'||type=='bargain'||type=='lottery')&&param.time==1}}">
+                        <navigator class="w-100" hoverClass="none" style="text-align:left" url="{{value.page_url}}">
+                            <view class="pt-24 text-more {{param.style>=2&&param.list_style!=1?'text-center':''}}"
+                                  style="width:100%;height:auto;" wx:if="{{param.name==1}}">{{value.name}}
+                            </view>
+                        </navigator>
+                        <view class="flex-row flex-y-center w-100 miaosha-time-{{param.list_style}}">
+                            <view class="fs-b flex-grow-0" style="text-align:left">
+                                <image src="{{__wxapp_img.lottery.time.url}}"
+                                       style="width:24rpx;height:24rpx;margin-right:12rpx;"></image>
+                            </view>
+                            <view class="fs-sm flex-grow-0">
+                                {{time_all[type+'_'+template_index].param.list[param.cat_index].goods_list[key].time_content}}
+                                <text class="red">
+                                    {{time_all[type+'_'+template_index].param.list[param.cat_index].goods_list[key].time_list.content_ms}}
+                                </text>
+                            </view>
+                        </view>
+                    </block>
+                    <navigator class="w-100" hoverClass="none" style="text-align:left" url="{{value.page_url}}" wx:else>
+                        <view style="height: 3.6em">
+                            <view class="pt-24 {{param.list_style==0?'text-more':'text-more-2'}} {{param.style>=2&&param.list_style!=1?'text-center':''}}"
+                                  style="width:{{param.price==0&&param.buy==1&&param.list_style==0?'calc(100% - 50rpx)':'100%'}};"
+                                  wx:if="{{param.name==1}}">{{value.name}}
+                            </view>
+                        </view>
+                    </navigator>
+                    <navigator class="flex-grow-1" hoverClass="none" url="{{value.page_url}}"
+                               wx:if="{{param.price==1}}">
+                        <view class="pt-24 diy-goods-price flex-grow-1 flex-y-bottom {{param.style>=2?'flex-x-center':''}}"
+                              wx:if="{{type=='goods'||type=='book'}}">{{value.price_content}}
+                        </view>
+                        <block wx:elif="{{type=='lottery'}}">
+                            <view class="pt-24 diy-goods-price flex-grow-1 flex-y-bottom flex-row fs-sm {{param.style>=2?'flex-x-center':''}}"
+                                  wx:if="{{param.list_style==0}}">
+                                <view class="fs-b">免费</view>
+                                <view class="font-default fs-sm" style="text-decoration: line-through"
+                                      wx:if="{{param.style<2}}">￥{{value.original_price}}
+                                </view>
+                            </view>
+                            <block wx:if="{{param.list_style==1}}">
+                                <view class="diy-goods-price flex-grow-1 flex-y-bottom flex-row fs-sm"
+                                      style="width:100%;">
+                                    <view class="fs-b">免费</view>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom flex-grow-1">
+                                    {{value.original_price_content}}￥{{value.original_price}}
+                                </view>
+                            </block>
+                            <block wx:if="{{param.list_style==2}}">
+                                <view class="diy-goods-price flex-y-bottom flex-row fs-sm {{param.style>=2?'flex-x-center':''}}"
+                                      style="width:100%;">
+                                    <view class="fs-b">免费</view>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom {{param.style>=2?'flex-x-center':''}}"
+                                      style="width:100%;">{{value.original_price_content}}￥{{value.original_price}}
+                                </view>
+                            </block>
+                        </block>
+                        <block wx:elif="{{type=='integral'}}">
+                            <view class="pt-24 diy-goods-price flex-grow-1 flex-y-bottom flex-row {{param.style>=2?'flex-x-center':''}}"
+                                  wx:if="{{param.list_style==0}}">
+                                <view style="font-size:11pt;">{{value.integral_content}}</view>
+                            </view>
+                            <block wx:if="{{param.list_style==1}}">
+                                <view class="diy-goods-price flex-grow-1 flex-y-bottom flex-row" style="width:100%;">
+                                    <view style="font-size:11pt;">{{value.integral_content}}</view>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom flex-grow-1">
+                                    {{value.original_price_content}}
+                                </view>
+                            </block>
+                            <block wx:if="{{param.list_style==2}}">
+                                <view class="diy-goods-price flex-y-bottom flex-row" style="width:100%;">
+                                    <view class="" style="font-size:11pt;">{{value.integral_content}}</view>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom" style="width:100%;">
+                                    {{value.original_price_content}}
+                                </view>
+                            </block>
+                        </block>
+                        <block wx:else>
+                            <view class="pt-24 diy-goods-price flex-grow-1 flex-y-bottom flex-row fs-sm {{param.style>=2?'flex-x-center':''}}"
+                                  wx:if="{{param.list_style==0}}">
+                                <view>{{value.price_content}}￥
+                                    <text class="fs-b">{{value.price}}</text>
+                                </view>
+                                <view class="font-default fs-sm" style="text-decoration: line-through"
+                                      wx:if="{{param.style<2}}">￥{{value.original_price}}
+                                </view>
+                            </view>
+                            <block wx:if="{{param.list_style==1}}">
+                                <view class="diy-goods-price flex-grow-1 flex-y-bottom flex-row fs-sm"
+                                      style="width:100%;">{{value.price_content}}￥
+                                    <text class="fs-b">{{value.price}}</text>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom flex-grow-1">
+                                    {{value.original_price_content}}￥{{value.original_price}}
+                                </view>
+                            </block>
+                            <block wx:if="{{param.list_style==2}}">
+                                <view class="diy-goods-price flex-y-bottom flex-row fs-sm {{param.style>=2?'flex-x-center':''}}"
+                                      style="width:100%;">{{value.price_content}}￥
+                                    <text class="fs-b">{{value.price}}</text>
+                                </view>
+                                <view class="font-default fs-sm flex-y-bottom {{param.style>=2?'flex-x-center':''}}"
+                                      style="width:100%;">{{value.original_price_content}}￥{{value.original_price}}
+                                </view>
+                            </block>
+                        </block>
+                    </navigator>
+                    <form bindsubmit="_formIdSubmit" class="flex-y-bottom" data-bind="modalShowGoods"
+                          data-cat="{{param.cat_index}}" data-goods="{{key}}" data-template="{{template_index}}"
+                          reportSubmit="true"
+                          wx:if="{{(param.list_style!=2||type=='goods'||type=='book')&&value.is_negotiable==0&&param.buy==1&&param.list_style<3&&(param.style<2||param.list_style==1)}}">
+                        <button formType="submit" id="_formIdSubmit">
+                            <view class="flex-grow-0 flex"
+                                  style="justify-content: flex-end;width:{{param.price==0&&(param.list_style==1||param.list_style==2)?'100%':'auto'}}">
+                                <view class="text-more buy-btn-cat buy-btn-{{param.buy_list}}"
+                                      wx:if="{{param.buy_list>=2}}">{{param.buy_content?param.buy_content:'购买'}}
+                                </view>
+                                <image lazyLoad="true" mode="aspectFill" src="{{param.buy_content}}"
+                                       style="width:50rpx;height:50rpx;" wx:else></image>
+                            </view>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<template name="cat-position-1">
+    <scroll-view scrollIntoView="cat-{{param.cat_index}}" scrollY="true"
+                 style="width:550rpx;max-height:{{WindowHeight}}px;">
+        <view class="diy-goods-list-1">
+            <block wx:for="{{param.list}}" wx:key="{{item.id}}">
+                <view class="diy-cat-name" id="cat-{{index}}">
+                    <view class="text-more" style="width:170rpx;">{{item.name}}</view>
+                </view>
+                <view class="diy-goods-1 flex-row" wx:for="{{item.goods_list}}" wx:for-index="key" wx:for-item="value"
+                      wx:key="{{value.id}}">
+                    <view class="flex-grow-1">
+                        <form bindsubmit="_formIdSubmit" data-type="navigate"
+                              data-url="/pages/goods/goods?id={{value.goods_id}}" reportSubmit="true">
+                            <button formType="submit" id="_formIdSubmit">
+                                <view class="flex-row">
+                                    <view class="flex-grow-0 diy-goods-img">
+                                        <image lazyLoad="true" mode="aspectFill" src="{{value.pic_url}}"></image>
+                                        <image class="diy-goods-mark" lazyLoad="true" mode="aspectFill"
+                                               src="{{param.mark_url}}" wx:if="{{param.mark==1}}"></image>
+                                    </view>
+                                    <view class="flex-grow-1 ml-24 flex-col" style="justify-content:space-between;">
+                                        <view class="text-more-2" wx:if="{{param.name==1}}">{{value.name}}</view>
+                                        <view class="red" style="margin-top:10rpx;" wx:if="{{param.price==1}}">
+                                            ￥{{value.price}}
+                                        </view>
+                                    </view>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                    <view class="flex-grow-0 flex-y-bottom">
+                        <form bindsubmit="_formIdSubmit" data-bind="modalShowGoods" data-cat="{{index}}"
+                              data-goods="{{key}}" data-template="{{template_index}}" reportSubmit="true">
+                            <button formType="submit" id="_formIdSubmit">
+                                <view class="buy-btn" wx:if="{{param.buy==1}}">
+                                    <view class="text-more buy-btn-{{param.buy_list}}" wx:if="{{param.buy_list>=2}}">
+                                        {{param.buy_content?param.buy_content:'购买'}}
+                                    </view>
+                                    <image lazyLoad="true" mode="aspectFill" src="{{param.buy_content}}"
+                                           wx:else></image>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</template>
+<template name="diy-cat">
+    <scroll-view class="diy-cat-{{param.cat_position}} flex-grow-0"
+                 scrollIntoView="cat-{{param.cat_index>=2?param.cat_index-2:0}}" scrollWithAnimation="true"
+                 scrollX="param.cat_position == 0" scrollY="param.cat_position == 1"
+                 wx:if="{{param.list.length>1||param.cat_position==1}}">
+        <view class="{{param.cat_position==0?'flex-row':''}}">
+            <form bindsubmit="_formIdSubmit" class="flex-grow-0" data-bind="catBind" data-index="{{index}}"
+                  data-template="{{template_index}}" id="cat-{{index}}" reportSubmit="true" wx:for="{{param.list}}"
+                  wx:key="{{item.id}}">
+                <button formType="submit" id="_formIdSubmit">
+                    <view bindtap="catBind"
+                          class="diy-cat-one-{{param.cat_position==1?2:param.cat_style}} {{index==param.cat_index?'active':''}} flex-y-center flex-x-center">
+                        <view class="text-more text-center">{{item.name}}</view>
+                    </view>
+                </button>
+            </form>
+        </view>
+    </scroll-view>
+</template>
+<template name="rubik">
+    <view class="user-block m-0 rubik-list"
+          style="min-height:{{param.style==0?0:param.n_minHeight?param.n_minHeight:param.new_minHeight-param.space+'rpx'}};margin:-{{param.space}}rpx;width:calc(100% + {{param.space}}rpx);height:calc(100% + {{param.space}}rpx);">
+        <view class="rubik-one"
+              style="width:{{item.n_width?item.n_width:item.new_width+'rpx'}};{{param.style==0?'height:auto;position:relative;':'height:'+(item.n_height?item.n_height:item.new_height+'rpx')}};left:{{item.n_left?item.n_left:item.new_left+'rpx'}};top:{{item.n_top?item.n_top:item.new_top+'rpx'}};"
+              wx:for="{{param.list}}" wx:key="{{item.id}}">
+            <form bindsubmit="_formIdSubmit" data-type="{{item.open_type=='wxapp'?'':'navigate'}}"
+                  data-url="{{item.page_url}}" reportSubmit="true">
+                <button formType="submit" id="_formIdSubmit">
+                    <navigator appId="{{item.appId}}" bindtap="navigatorClick" class="fs-0" data-url="{{item.url}}"
+                               hoverClass="none" openType="navigate" path="{{item.path}}"
+                               style="display:block;width: 100%;z-index:9;position:relative;{{param.style==0?'height:auto;':'height:'+(item.n_height?item.n_height:item.new_height+'rpx')}};"
+                               target="{{item.open_type=='wxapp'?'miniProgram':''}}" url="{{item.url}}">
+                        <image lazyLoad="true" mode="{{param.style==0?'widthFix':'aspectFill'}}" src="{{item.pic_url}}"
+                               style="width:100%;height:100%;display:block"></image>
+                    </navigator>
+                </button>
+            </form>
+        </view>
+    </view>
+</template>
+<template name="diy-nav">
+    <scroll-view scrollX="{{param.is_slide=='true'?'true':'false'}}">
+        <view class="nav-icon-list flex-row"
+              style="overflow:{{param.is_slide=='true'?'auto':'hidden'}};background-color:{{param.backgroundColor}}"
+              wx:if="{{param.nav_list&&param.nav_list.length>0}}">
+            <view class="flex-row flex-grow-0" style="flex-wrap:{{param.col>1?'wrap':''}};width:auto;max-width:100%;"
+                  wx:for="{{param.nav_list}}" wx:for-index="key" wx:for-item="value" wx:key="{{value.id}}">
+                <view class="flex-grow-0 nav-icon nav-icon-{{param.count>=5?5:param.count}}" wx:for="{{value}}"
+                      wx:key="{{item.id}}">
+                    <form bindsubmit="_formIdSubmit" data-bind="navigatorClick" data-type="navigate"
+                          data-url="{{item.open_type=='wxapp'?'':item.url}}" reportSubmit="true">
+                        <button formType="submit" id="_formIdSubmit">
+                            <navigator appId="{{item.appId}}" data-open_type="{{item.open_type}}"
+                                       data-url="{{item.url}}" hoverClass="none"
+                                       openType="{{item.open_type=='wxapp'?'navigate':item.param.open_type}}"
+                                       path="{{item.path}}" target="{{item.open_type=='wxapp'?'miniProgram':''}}">
+                                <image lazyLoad="true" mode="aspectFill" src="{{item.pic_url}}"></image>
+                                <view>{{item.name}}</view>
+                            </navigator>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<template name="link">
+    <form bindsubmit="_formIdSubmit" data-bind="navigatorClick" data-type="navigate"
+          data-url="{{param.open_type=='wxapp'?'':param.url}}" reportSubmit="true">
+        <button formType="submit" id="_formIdSubmit">
+            <navigator appId="{{param.appId}}" data-open_type="{{param.open_type}}" data-url="{{param.url}}"
+                       hoverClass="none" openType="{{param.open_type=='wxapp'?'navigate':param.open_type}}"
+                       path="{{param.path}}" style="z-index:9;position:relative;margin-top: 20rpx;"
+                       target="{{param.open_type=='wxapp'?'miniProgram':''}}">
+                <view class="link flex-row flex-y-center"
+                      style="background-color:{{param.backgroundColor}};color:{{param.color}}">
+                    <view class="flex-row flex-grow-0 link-img flex-y-center"
+                          style="background-image:url({{param.is_icon==1?param.icon:''}});background-position:{{param.position}}rpx;">
+                        <view class="text-more flex-grow-1 link-text" style="padding-left:{{param.left}}rpx;">
+                            {{param.name}}
+                        </view>
+                        <image class="flex-y-center flex-grow-0 img" lazyLoad="true"
+                               src="{{__wxapp_img.store.jiantou_r.url}}" wx:if="{{param.is_jiantou==1}}"></image>
+                    </view>
+                </view>
+            </navigator>
+        </button>
+    </form>
+</template>
+<template name="ad">
+    <ad unitId="{{param.id}}"></ad>
+</template>
+<template name="line">
+    <view style="width:100%;height:{{param.height*2}}rpx;background-color:{{param.backgroundColor}}"></view>
+</template>
+<template name="diy-video">
+    <view bindtap="play" class="user-block" data-index="{{param.id}}">
+        <view wx:if="{{play==param.id}}">
+            <video autoplay="true" bindfullscreenchange="fullscreenchange" class="video" controls="true" direction=""
+                   loop="true" src="{{param.url}}" style="width:750rpx;height:400rpx;"></video>
+        </view>
+        <view style="position:relative;" wx:else>
+            <image lazyLoad="true" mode="aspectFill" src="{{param.pic_url}}"
+                   style="width:750rpx;height:400rpx;display:block"></image>
+            <image class="video-play" lazyLoad="true" src="{{__wxapp_img.store.video_play.url}}"></image>
+        </view>
+    </view>
+</template>
+<template name="check-modal">
+    <view catchtouchmove="true" class="new-modal" wx:if="{{showModal}}">
+        <view class="new-modal-content">
+            <image bindtap="modalclose"
+                   src="https://api3.qibuluo.net/addons/zjhj_mall/core/web/statics/wxapp/images/icon-close3.png"
+                   style="position:absolute;right:0;top:0;width:72rpx;height:72rpx;"></image>
+            <view class="new-modal-content-title">请选择:</view>
+            <view class="content-item-title">时间段:</view>
+            <view class="time-check">
+                <block wx:if="{{timeList}}" wx:for="{{timeList}}" wx:key="index">
+                    <view bind:tap="showTimeActive"
+                          class="item-view {{activeTimeCheckIndex==index?'item-view-active':''}}" id="{{index}}">
+                        {{item.title}}
+                    </view>
+                </block>
+            </view>
+            <!--            loading="true" disabled="true"-->
+            <button bind:tap="orderNow" class="subscribe-btn">立即预约</button>
+        </view>
+    </view>
+</template>
+<template name="show-apartment-1">
+    <view class="apartment-main">
+        <!--        户型牛市口1-->
+        <view class="apart-1">
+            <view class="apart-1-image">
+                <image style="width: 450px;height: 210px" src="{{apartmen1}}"/>
+                <view class="apart-1-posi-left">
+                    <view class="apart-1-posi-left-for">
+                        <view bind:tap="clickSeat" data-index="{{index}}" data-area="p1Data"
+                              class="apart-1-posi-left-list {{seatImgTransform1.marginTop(index)}}"
+                              wx:for="{{storeInfo.seatList.p1Data}}" wx:key="index">
+                            <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                            <view class="align-center" style="font-size: 12rpx;">{{item.seat_name}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="apart-1-posi-right">
+                    <view class="apart-1-posi-right-for">
+                        <view bind:tap="clickSeat" data-index="{{index}}" data-area="p2Data"
+                              wx:for="{{storeInfo.seatList.p2Data}}" wx:key="index" class="apart-1-posi-right-list">
+                            <image class="{{seatImgTransform1.transform(index)}}" style="width: 15.5px;height: 15.5px;"
+                                   src="{{item.nowSrc}}"/>
+                            <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                                {{item.seat_name}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="apart-1-posi-border-1">
+
+                </view>
+
+                <view class="apart-1-posi-border-2">
+
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="show-apartment-2">
+    <!--        户型2光华中心-->
+    <view class="apart-2">
+        <view class="apart-2-image">
+            <image style="width: 520px;height: 365px" src="{{apartmen2}}"/>
+            <view class="apart-2-posi-data1">
+                <view class="apart-2-posi-data1-for">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p1Data" class="apart-2-posi-data1-list"
+                          wx:for="{{storeInfo.seatList.p1Data}}" wx:key="index">
+                        <image class="{{seatImgTransform2.transform(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data2">
+                <view class="apart-2-posi-data2-for">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p2Data" class="apart-2-posi-data2-list"
+                          wx:for="{{storeInfo.seatList.p2Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data3">
+                <view class="apart-2-posi-data3-for">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p3Data" class="apart-2-posi-data3-list"
+                          wx:for="{{storeInfo.seatList.p3Data}}" wx:key="index">
+                        <image class="{{seatImgTransform2.transform2(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data4">
+                <view class="apart-2-posi-data4-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p4Data" class="apart-2-posi-data4-list"
+                          wx:for="{{storeInfo.seatList.p4Data}}" wx:key="index">
+                        <image class="{{seatImgTransform2.transform3(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data5">
+                <view class="apart-2-posi-data5-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p5Data" class="apart-2-posi-data5-list"
+                          wx:for="{{storeInfo.seatList.p5Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data6">
+                <view class="apart-2-posi-data6-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p6Data" class="apart-2-posi-data6-list"
+                          wx:for="{{storeInfo.seatList.p6Data}}" wx:key="index">
+                        <image class="{{seatImgTransform2.transform4(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data7">
+                <view class="apart-2-posi-data7-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p7Data" class="apart-2-posi-data7-list"
+                          wx:for="{{storeInfo.seatList.p7Data}}" wx:key="index">
+                        <image class="{{seatImgTransform2.transform7(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data8">
+                <view class="apart-2-posi-data8-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p8Data" class="apart-2-posi-data8-list"
+                          wx:for="{{storeInfo.seatList.p8Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data9">
+                <view class="apart-2-posi-data9-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p9Data" class="apart-2-posi-data9-list"
+                          wx:for="{{storeInfo.seatList.p9Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data10">
+                <view class="apart-2-posi-data10-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p10Data"
+                          class="apart-2-posi-data10-list" wx:for="{{storeInfo.seatList.p10Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data11">
+                <view class="apart-2-posi-data11-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p11Data"
+                          class="apart-2-posi-data11-list" wx:for="{{storeInfo.seatList.p11Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data12">
+                <view class="apart-2-posi-data12-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p12Data"
+                          class="apart-2-posi-data12-list" wx:for="{{storeInfo.seatList.p12Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="apart-2-posi-data13">
+                <view class="apart-2-posi-data13-for flex-posi">
+                    <view data-index="{{index}}" data-area="p13Data"
+                          class="apart-2-posi-data13-list" wx:for="{{storeInfo.seatList.p13Data}}" wx:key="index">
+                        <view style="font-size: 10rpx;">{{item.seat_name}}</view>
+                        <image class="align-center" style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data14">
+                <view class="apart-2-posi-data14-for flex-posi">
+                    <view data-index="{{index}}" data-area="p14Data"
+                          class="apart-2-posi-data14-list" wx:for="{{storeInfo.seatList.p14Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="apart-2-posi-data15">
+                <view class="apart-2-posi-data15-for flex-posi">
+                    <view data-index="{{index}}" data-area="p15Data"
+                          class="apart-2-posi-data15-list" wx:for="{{storeInfo.seatList.p15Data}}" wx:key="index">
+                        <image style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;">{{item.seat_name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="show-apartment-3">
+    <!-- 户型3(红牌楼) -->
+    <view class="apart-3">
+        <view class="apart-3-image">
+            <image mode="aspectFit" style="width: 520px;height: 275px" src="{{apartmen3}}"/>
+            <view class="apart-3-posi-data1">
+                <view class="apart-3-posi-data1-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p1Data"
+                          wx:for="{{storeInfo.seatList.p1Data}}" wx:key="index" class="apart-3-posi-data1-for-list">
+                        <image class="{{seatImgTransform2.transform5(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="apart-3-posi-data2">
+                <view class="apart-3-posi-data2-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p2Data"
+                          wx:for="{{storeInfo.seatList.p2Data}}" wx:key="index" class="apart-3-posi-data2-for-list">
+                        <image class="{{seatImgTransform2.transform6(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="apart-3-posi-data3">
+                <view class="apart-3-posi-data2-for flex-posi">
+                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p3Data"
+                          wx:for="{{storeInfo.seatList.p3Data}}" wx:key="index" class="apart-3-posi-data3-for-list">
+                        <image class="{{seatImgTransform2.transform5(index)}}" style="width: 12.5px;height: 12.5px;"
+                               src="{{item.nowSrc}}"/>
+                        <view class="align-center" style="font-size: 10rpx;position: relative;top: -4px;">
+                            {{item.seat_name}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!--            <view class="apart-3-posi-data4">-->
+            <!--                <view class="apart-3-posi-data4-for">-->
+            <!--                    <view bind:tap="clickSeat" data-index="{{index}}" data-area="p4Data" wx:for="{{storeInfo.seatList.p4Data}}" wx:key="index" class="apart-3-posi-data4-for-list">-->
+            <!--                        <view style="font-size: 10rpx;">{{item.seat_name}}</view>-->
+            <!--                        <image class="align-center" style="width: 12.5px;height: 12.5px;" src="{{item.nowSrc}}"/>-->
+            <!--                    </view>-->
+            <!--                </view>-->
+            <!--            </view>-->
+        </view>
+    </view>
+</template>
+<wxs module="seatImgTransform1">
+    var marginTop = function(index){
+        if(index==0 || index==1){
+            return 'apart-1-posi-margiTop'
+        }else if(index==4 || index==5){
+            return 'apart-1-posi-margiBottom'
+        }else if(index==2||index==3){
+           return 'apart-1-posi-margiBottom-2'
+        }
+    }
+    var transform = function(index){
+        var one=[0,2,4,6,8,9,11,13,15,17,18,20,22,24,26,27,29,31,33,35,36,38,40,42,44,45,47,49,51,53];
+        var one2=[1,3,5,7,10,12,14,16,19,21,23,25,28,30,32,34,37,39,41,43,46,48,50,52];
+    for(var i=0;i<one.length ;i++){
+    if(index==one[i]){
+        return 'zb-transform-left'
+    }else{
+            for(var j=0;j<one2.length ;j++){
+                if(index==one2[j]) return 'zb-transform-right'
+            }
+        }
+        }
+    }
+    module.exports = {
+        transform: transform,
+        marginTop:marginTop
+    }
+</wxs>
+<wxs module="seatImgTransform2">
+    var transform = function(index){
+    if(index%2==0){
+    return 'zb-transform-right'
+    }else{
+    return 'zb-transform-left'
+    }
+    }
+    var transform2 = function(index){
+    var one=[0,2,4,5,7,9,10,12,14,15,17,19,20,22,24]
+    var one2=[1,3,6,8,11,13,16,18,21,23]
+    for(var i=0;i
+    <one.length
+    ;i++){
+    if(index==one[i]){
+    return 'zb-transform-left'
+    }else{
+    for(var j=0;j
+    <one2.length
+    ;j++){
+    if(index==one2[j])return 'zb-transform-right'
+    }
+    }
+    }
+    }
+    var transform3 = function(index){
+    var one=[0,1,2,3,8,9,10,11]
+    var one2=[4,5,6,7]
+    for(var i=0;i
+    <one.length
+    ;i++){
+    if(index==one[i]){
+    return 'zb-transform--180'
+    }else{
+    for(var j=0;j
+    <one2.length
+    ;j++){
+    if(index==one2[j])return ''
+    }
+    }
+    }
+    }
+
+    var transform4 = function(index){
+    var one=[0,1,2,3,4]
+    for(var i=0;i
+    <one.length
+    ;i++){
+    if(index==one[i]){
+    return 'zb-transform-180'
+    }
+    }
+    }
+
+    var transform5 = function(index){
+    if(index%2==0){
+    return 'zb-transform-right'
+    }else{
+    return 'zb-transform-left'
+    }
+    }
+    var transform6 = function(index){
+    var one=[0,1,4,5]
+    for(var i=0;i
+    <one.length
+    ;i++){
+    if(index==one[i]){
+    return 'zb-transform-180'
+    }
+    }
+    }
+    var transform7 = function(index){
+    var one=[0,1,2]
+    for(var i=0;i
+    <one.length
+    ;i++){
+    if(index==one[i]){
+    return 'zb-transform-180'
+    }
+    }
+    }
+    module.exports = {
+    transform: transform
+    transform2: transform2
+    transform3: transform3
+    transform4: transform4
+    transform5: transform5
+    transform6: transform6
+    transform7: transform7
+    }
+</wxs>

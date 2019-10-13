@@ -1,0 +1,50 @@
+<include src="/components/common/common"></include>
+<view class="container">
+    <view class="input-veficode">
+        <van-cell-group>
+            <van-field
+                    value="{{ phoneNumber }}"
+                    center
+                    clearable
+                    label="手机号"
+                    placeholder="请输入手机号"
+                    maxlength="11"
+                    border="{{ false }}"
+                    type="number"
+                    bind:input="phoneEvent"
+                    use-button-slot
+            >
+                <van-button round bind:click="getCode" color="#E60012" disabled="{{verfiBtnDisable}}" slot="button" size="small"
+                            type="primary">{{verfiTxt}}
+                </van-button>
+            </van-field>
+            <van-field
+                    value="{{ verifyCode }}"
+                    center
+                    custom-style="margin-top: 25rpx;"
+                    clearable
+                    label="验证码"
+                    placeholder="请输入验证码"
+                    border="{{ false }}"
+                    bind:input="vericyCodeEvent"
+            />
+        </van-cell-group>
+        <view class="sure-btn">
+            <van-button round color="#E60012" size="large" bind:click="checkCode" type="primary">确定</van-button>
+<!--            <button  class="sure-btn-button">确定</button>-->
+        </view>
+        <!--        <i-panel title="手机号">-->
+        <!--            <input class="input-class" placeholder="请输入手机号" bindinput="phoneEvent" maxlength="11" type="number" value="{{phoneNumber}}" />-->
+        <!--        </i-panel>-->
+        <!--        <view bindtap="getCode"  class="verfi-btn">-->
+        <!--            <button disabled="{{verfiBtnDisable}}" plain="true" class="verfi-btn-button">{{verfiTxt}}</button>-->
+        <!--        </view>-->
+        <!--        <i-panel title="验证码">-->
+        <!--&lt;!&ndash;            <i-input value="{{ verifyCode }}" placeholder="请输入验证码" />&ndash;&gt;-->
+        <!--            <input class="input-class" placeholder="请输入验证码" bindinput="vericyCodeEvent" type="number" value="{{verifyCode}}" />-->
+        <!--        </i-panel>-->
+        <!--        <view class="sure-btn">-->
+        <!--            <button bindtap="checkCode"  class="sure-btn-button">确定</button>-->
+        <!--        </view>-->
+    </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="zb-store-container">
+    <view class="zb-store-top" style="background-image: url('{{storeInfo.logo}}')">
+        <view class="zb-store-top-modal">
+            <view class="zb-store-top-info">
+                <view class="zb-store-top-modal-avator">
+                    <image src="{{storeInfo.logo}}"/>
+                </view>
+                <view class="zb-store-top-modal-title">
+                    <text>{{storeInfo.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="zb-store-detail">
+        <view class="zb-store-detail-buinnes-time store-margin">
+            <i-icon color="#ff334b" size="25" type="homepage_fill" />
+            营业时间: {{storeInfo.business_time}}
+        </view>
+        <view class="zb-store-detail-location store-margin">
+            <view>
+                <i-icon color="#ff334b" size="25"  type="coordinates_fill" />
+                {{storeInfo.address}}
+            </view>
+            <view bind:tap="GoTo">
+                 <van-icon size="25px" color="#ff334b" name="location-o" />
+<!--                 <i-icon color="#ff334b" size="25" type="mobilephone_fill" />-->
+            </view>
+        </view>
+    </view>
+    <view class="zb-store-detail-info">
+        <view class="detail-info-title">
+            <text>门店详情</text>
+        </view>
+        <view class="detail-info-txtImg">
+            <import src="../../wxParse/wxParse.wxml"></import>
+            <template is="wxParse" data="{{wxParseData:detail.nodes}}" />
+<!--            <text>{{storeInfo.detailsInfo}}</text>-->
+        </view>
+    </view>
+</view>
+<view class="posi-btn-group">
+    <view class="posi-btn">
+        <button bindtap="showSelectLocation" id="{{storeInfo.id}}" class="order-zb-btn">立即预约</button>
+    </view>
+</view>
+

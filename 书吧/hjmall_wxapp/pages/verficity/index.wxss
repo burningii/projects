@@ -1,0 +1,52 @@
+
+.container {
+    width: 100%;
+    height: 80rpx;
+}
+
+.zb-vant-input {
+    margin-top: 25rpx;
+}
+
+.phone-number {
+    /*position: relative;*/
+}
+
+.input-class {
+    height: 85rpx;
+    padding: 25rpx;
+    font-size: 25rpx;
+}
+
+.input-veficode .phone-input {
+
+}
+
+.verfi-btn{
+    position: absolute;
+    right: 0;
+    top: 94rpx;
+    border-left: 1px solid #ccc;
+    z-index: 99;
+}
+
+.verfi-btn-button {
+    width: 180rpx;
+    height: 75rpx;
+    line-height: 75rpx;
+    text-align: center;
+    /*background-color: #FF1950;*/
+
+    /*border-radius: 5px;*/
+    color: #000;
+    font-size: 25rpx;
+}
+
+.sure-btn {
+    margin-top: 55rpx;
+}
+
+.sure-btn .sure-btn-button {
+    background-color: #FF1950;
+    color: #fff;
+}

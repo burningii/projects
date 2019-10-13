@@ -1,0 +1,106 @@
+page {
+    height: auto;
+    /*background-color: #fff;*/
+    padding: 25rpx;
+}
+
+.order-time-seat {
+    color: #999;
+    font-weight: normal;
+}
+
+.order-time-seat text {
+    font-size: 36rpx;
+    color: #000;
+    font-weight: 800;
+    margin-left: 25rpx;
+}
+
+.order-time-store-wrapper {
+    padding: 35rpx;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.order-time-store-wrapper .order-time-store-wrapper-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.order-time-store-wrapper-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.order-time-store-wrapper-right .store-wrapper-right-icon {
+   margin-right: 10rpx;
+    position: relative;
+    bottom: -3rpx;
+}
+.order-time-store-wrapper-right .store-wrapper-right-text {
+   color: #E60012;
+}
+
+.seat-info-select-right-selectDate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-time-store-wrapper .order-time-store-title {
+    margin-left: 15rpx;
+}
+.order-time-page-container {
+    /*width: 100%;*/
+    /*text-align: center;*/
+    /*margin-top: 100rpx;*/
+    /*line-height: 100rpx;*/
+    font-weight: 700;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px #cccccc;
+    position: relative;
+}
+
+.zb-notice-wrapper {
+    padding: 25rpx 55rpx 25rpx 55rpx;
+    font-weight: normal;
+    line-height: 55rpx;
+    /*text-align: center;*/
+}
+
+.zb-success-wrapper {
+    padding: 25rpx 55rpx 25rpx 55rpx;
+    font-weight: normal;
+    line-height: 55rpx;
+}
+
+.zb-notice-wrapper text {
+    margin-left: 35rpx;
+}
+.order-time-bottom-wrapper {
+    padding: 25rpx;
+    line-height: 120rpx;
+}
+
+.order-now-wrapper {
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*bottom: 35rpx;*/
+    margin-top: 300rpx;
+}
+
+.order-time-info {
+    color: #999999;
+    font-weight: normal;
+}
+
+.order-time-info text{
+    font-size: 36rpx;
+    color: #000;
+    margin-left: 25rpx;
+    font-weight: 800;
+}

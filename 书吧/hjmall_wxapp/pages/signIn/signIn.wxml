@@ -1,0 +1,36 @@
+<view wx:if="{{!showMoneyInfo}}" class="sign-container">
+    <van-tabs animated swipeable active="{{ activeSignIndex }}" bind:change="onChange">
+        <van-tab title="当前预约">
+                <view class="sign-content-time" wx:for="{{signInfo.list}}" wx:if="{{item.status=='1' || item.status=='2'}}" wx:key="index">
+    <!--                <view class="sign-content-time" wx:for="{{signInfo}}"  wx:key="index">-->
+                    <view class="sign-content-time-info">
+                        <view>时间: <text>{{item.pre_sign_time}}</text></view>
+                        <view>门店: <text>{{item.mch_name}}</text>  座位号: <text>{{item.seat_name}}</text></view>
+                    </view>
+                    <view id="{{item.id}}" wx:if="{{(item.status=='1' || item.status=='2') && item.showQrcode}}" bind:tap="showQrCode"><van-button size="small" color="#E60012" type="primary">出示核销码</van-button></view>
+                    <view wx:if="{{item.status=='2'}}"><van-button disabled size="small" color="#E60012" type="primary">使用中</van-button></view>
+<!--                    <view wx:if="{{item.status=='0'}}"><van-button disabled size="small" color="#E60012" type="primary">已超时取消</van-button></view>-->
+                    <view wx:if="{{item.status=='1' && !item.showQrcode}}"><van-button disabled size="small" color="#E60012" type="primary">当前未到时间段</van-button></view>
+                </view>
+                <view wx:if="{{nowSignList.length==0}}" class="no-sign-wrapper">
+                    <view>当前未预约</view>
+                </view>
+        </van-tab>
+        <van-tab title="预约历史">
+            <view class="sign-content-time" wx:for="{{signInfo.list}}" wx:if="{{item.status=='3' || item.status=='0'}}" wx:key="index">
+                <view>时间: <text>{{item.pre_sign_time}}</text></view>
+                <view>门店: <text>{{item.mch_name}}</text>  位置: <text>{{item.seat_name}}</text></view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+<van-popup show="{{ showQrCodeVisible }}" custom-class="my-class-popup" bind:close="onClose">
+    <image style="width: 400rpx;height: 400rpx;" src="{{qrCodeSrc}}"/>
+</van-popup>
+<view class="money-info-container" wx:if="{{showMoneyInfo}}">
+    <view><van-icon size="30px" name="passed" color="#0ABA07"/></view>
+    <view>您好,您本次消费</view>
+    <view wx:if="{{pre_time_name=='新用户9.9'}}">套餐名: <text>{{pre_time_name}}</text>, 消费明细: <text>{{9.9}}</text></view>
+    <view wx:if="{{pre_time_name=='期限卡'}}">套餐名: <text>{{pre_time_name}}</text>, 消费时间: <text>{{pre_time_name_hours}}小时</text></view>
+    <view wx:if="{{pre_time_name=='时间卡'}}">套餐名: <text>{{pre_time_name}}</text>, 消费时间: <text>{{pre_time_name_time_hours}}小时</text></view>
+</view>

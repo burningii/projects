@@ -1,0 +1,38 @@
+page{
+    height: auto;
+    background-color: #fff;
+}
+.sign-status-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 200rpx;
+}
+
+.status-top-wrapper {
+    font-size: 30rpx;
+    line-height: 98rpx;
+}
+
+.status-top-wrapper text {
+    font-size: 35rpx;
+    color: #c62015;
+    font-weight: 700;
+}
+
+.check-status-btn-group {
+    margin-top: 55rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.hei-xiao-wrapper {
+    text-align: center;
+    font-size: 35rpx;
+    margin-top: 100rpx;
+}
+
+.hei-xiao-wrapper text {
+    font-weight: 800;
+    margin-top: 25rpx;
+}

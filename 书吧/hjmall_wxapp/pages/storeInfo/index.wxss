@@ -1,0 +1,111 @@
+page {
+    background-color: #fff;
+}
+
+.zb-store-container {
+
+}
+
+.zb-store-top {
+    position: relative;
+    height: 450rpx;
+    width: 100%;
+    background-size: cover;
+    border-bottom-left-radius: 55px;
+    border-bottom-right-radius: 55px;
+}
+
+.posi-btn-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.posi-btn-group .posi-btn .order-zb-btn{
+    width: 100%;
+    height: 95rpx;
+    line-height: 95rpx;
+    background-color: #ff334b;
+    color:#fff;
+    border-radius: 0;
+}
+
+.zb-store-top-modal {
+    background:rgba(0,0,0,0.5);
+    width: 100%;
+    height: 450rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom-left-radius: 55px;
+    border-bottom-right-radius: 55px;
+}
+
+.zb-store-top-modal .zb-store-top-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 55rpx;
+}
+
+.zb-store-top-modal .zb-store-top-modal-avator {
+    /*position: absolute;*/
+    /*margin-top: 35rpx*/
+}
+
+.zb-store-top-modal .zb-store-top-modal-avator image{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    margin-top: 100rpx;
+}
+
+.zb-store-top-modal .zb-store-top-info .zb-store-top-modal-title {
+    color: #fff;
+    font-size: 35rpx;
+    font-weight: bold;
+    margin-top: 25rpx;
+}
+
+.store-margin {
+    margin-top: 40rpx;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 30rpx;
+}
+
+.zb-store-detail {
+    padding: 35rpx;
+}
+
+.zb-store-detail-location {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.zb-store-detail-info {
+    margin-top: 25rpx;
+    margin-bottom: 95rpx;
+}
+
+.zb-store-detail-info .detail-info-txtImg {
+    margin-top: 25rpx;
+    padding: 25rpx;
+}
+
+.zb-store-detail-info .detail-info-txtImg image{
+    width: 50%!important;
+}
+
+.zb-store-detail-info .detail-info-title {
+    text-align: center;
+}
+
+.zb-store-detail-info .detail-info-title text {
+    font-weight: 800;
+    letter-spacing: 10rpx;
+    font-size: 32rpx;
+}
